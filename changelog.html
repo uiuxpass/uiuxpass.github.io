@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v4.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -18,13 +19,12 @@
   <div class="wrap">
     <a class="brand" href="./"><img src="assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
     <nav class="nav-links" aria-label="Main">
+      <a class="link" href="examples.html">Examples</a>
       <a class="link" href="index.html#skills">Skills</a>
-      <a class="link" href="index.html#proof">Proof</a>
       <a class="link" href="check.html">Free checker</a>
       <a class="link" href="index.html#pricing">Pricing</a>
       <a class="link" href="guides/">Guides</a>
-      <a class="link" href="index.html#faq">FAQ</a>
-      <a class="btn btn-primary" data-buy href="index.html#pricing">Get UI/UX Pass</a>
+      <a class="btn btn-primary" data-buy href="index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
     </nav>
   </div>
 </header>
@@ -35,7 +35,7 @@
 <h2>2.3.0 · 23 November 2026</h2>
 <p>New name inside the kit, and one checker fix.</p>
 <ul><li><strong>One name:</strong> the plugin is now called <code>uiuxpass</code>, commands start with <code>uiuxpass:</code>, and the default workflow skill is <code>uiuxpass-workflow</code>. Had an earlier version? Remove the old plugin, then upload 2.3.0.</li>
-<li><strong>interface-polish:</strong> the Spanish words "todo" and "método" are no longer flagged as placeholder text. TODO, FIXME and TBD now count only in capitals.</li></ul>
+<li><strong>interface-polish:</strong> ordinary Spanish words such as "todo" and "método" are no longer flagged as unfinished copy. Unfinished-work markers now count only when written in capitals.</li></ul>
 <h2>2.2.4 · 23 November 2026</h2>
 <p>Skills switch on more reliably in Claude.ai. No changes to what they do.</p>
 <ul><li><strong>Tested in Claude.ai:</strong> onboarding-activation and product-video now switch on from everyday requests; four more skills have clearer descriptions.</li></ul>
@@ -75,11 +75,12 @@
   <div class="wrap">
     <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
     <nav aria-label="Footer">
-      <a href="guides/">Guides</a><a href="changelog.html">Changelog</a><a href="refund.html">Refunds</a><a href="terms.html">License &amp; terms</a><a href="privacy.html">Privacy</a>
+      <a href="examples.html">Examples</a><a href="guides/">Guides</a><a href="changelog.html">Changelog</a><a href="refund.html">Refunds</a><a href="terms.html">License &amp; terms</a><a href="privacy.html">Privacy</a>
     </nav>
   </div>
 </footer>
 
 <script src="assets/store.js"></script>
+<script src="assets/ui.js"></script>
 </body>
 </html>

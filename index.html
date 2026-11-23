@@ -21,19 +21,20 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"UI/UX Pass","description":"40 Claude skills and 38 checker scripts for product designers and product managers.","brand":{"@type":"Brand","name":"UI/UX Pass"},"offers":{"@type":"AggregateOffer","lowPrice":"49","highPrice":"299","offerCount":"3","priceCurrency":"USD","availability":"https://schema.org/InStock"}}
 </script>
+<link rel="stylesheet" href="assets/v4.css">
 </head>
-<body>
+<body data-buybar>
 <a class="skip" href="#main">Skip to content</a>
 <div class="promo" data-launch hidden></div>
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="./"><img src="assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
     <nav class="nav-links" aria-label="Main">
-      <a class="link" href="#does">What it does</a>
+      <a class="link" href="examples.html">Examples</a>
       <a class="link" href="#skills">Skills</a>
       <a class="link" href="check.html">Free checker</a>
       <a class="link" href="#pricing">Pricing</a>
-      <a class="link" href="#faq">FAQ</a>
+      <a class="link" href="guides/">Guides</a>
       <a class="btn btn-primary" data-buy href="#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
     </nav>
   </div>
@@ -94,6 +95,17 @@
   </div>
 </section>
 
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">How it works</p><h2>Three steps, about five minutes</h2></div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Add it to Claude</h3><p>Upload one plugin file in Claude.ai, or copy the skills folder into Claude Code, Cursor or Codex.</p></div>
+      <div class="step"><span class="n">2</span><h3>Ask in plain words</h3><p>Claude picks the right skill from what you ask. No commands to learn.</p><p class="ex mono">Check and fix this page: pricing.html</p></div>
+      <div class="step"><span class="n">3</span><h3>Get numbers, then the fix</h3><p>The skill runs its checker, fixes what failed and runs it again, so you see 38 → 66/66, not “looks good”.</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="does">
   <div class="wrap">
     <div class="head3">
@@ -106,33 +118,33 @@
         <p>Contrast, focus, tap targets and overflow, measured at desktop and phone width.</p>
         <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">uiuxpass.com/check</span></div><img src="media/out-check.jpg" alt="The free checker page" width="640" height="400" loading="lazy"></div>
       </a>
-      <a class="panel" href="samples/usability-report.html">
+      <a class="panel" href="examples.html#ex=usability-test" data-ex="usability-test">
         <h3>Read test results honestly</h3>
         <p>Success rates with 95% ranges, SUS grade and issues ranked by how much they hurt.</p>
         <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">usability-test</span></div><img src="media/out-usability-report.jpg" alt="Usability test report with confidence ranges" width="640" height="400" loading="lazy"></div>
       </a>
-      <a class="panel" href="samples/design-qa.html">
+      <a class="panel" href="examples.html#ex=design-qa" data-ex="design-qa">
         <h3>Compare the build with the design</h3>
         <p>Pixel differences in red, the worst areas listed, and tickets for developers.</p>
         <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">design-qa</span></div><img src="media/out-design-qa.jpg" alt="Design QA drag-to-compare page" width="640" height="400" loading="lazy"></div>
       </a>
-      <a class="panel" href="samples/design-system.html">
+      <a class="panel" href="examples.html#ex=design-system" data-ex="design-system">
         <h3>Start a design system that passes</h3>
         <p>Tokens in light and dark, every colour pair measured against WCAG AA, ready for Figma.</p>
         <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">design-system-starter</span></div><img src="media/out-design-system.jpg" alt="Design system page with components and contrast table" width="640" height="400" loading="lazy"></div>
       </a>
-      <a class="panel" href="samples/user-flow.html">
+      <a class="panel" href="examples.html#ex=user-flow" data-ex="user-flow">
         <h3>Map every path, not just the happy one</h3>
         <p>Flows checked for dead ends and missing empty, loading and error states.</p>
         <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">user-flows-wireframes</span></div><img src="media/out-user-flow.jpg" alt="User flow diagram with wireframes" width="640" height="400" loading="lazy"></div>
       </a>
-      <a class="panel" href="samples/deck.html">
+      <a class="panel" href="examples.html#ex=deck" data-ex="deck">
         <h3>Present what you found</h3>
         <p>One HTML deck that scrolls or presents, with PDF and PowerPoint export.</p>
         <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">presentation-deck</span></div><img src="media/out-deck.jpg" alt="Presentation deck made by the skill" width="640" height="400" loading="lazy"></div>
       </a>
     </div>
-    <p class="more"><a href="library.html">See all outputs with the requests that made them →</a></p>
+    <div class="more-row"><a class="btn btn-ghost btn-lg" href="examples.html">See all 11 examples, with the request that made each →</a></div>
   </div>
 </section>
 
@@ -226,7 +238,7 @@
       <h3>Core</h3>
       <p>The way of working that ties every skill together.</p>
       <div class="skills">
-        <div class="skill"><code>get-started</code><span class="tag new">new</span><p>The first thing to try: a two-minute demo that measures a real page, fixes it and measures again (39 → 66 of 66 in our run), or picks the right skill for what you have.</p></div>
+        <div class="skill"><code>get-started</code><span class="tag new">new</span><p>The first thing to try: a two-minute demo that measures a real page, fixes it and measures again, or picks the right skill for what you have.</p></div>
         <div class="skill"><code>uiuxpass-workflow</code><p>Goal, success criteria, what the best do, fixed constraints, result: every task, every time.</p></div>
         <div class="skill"><code>self-review</code><span class="tag check">checker</span><p>Five questions and a best-in-class comparison before anything is delivered.</p></div>
         <div class="skill"><code>prototype-five-directions</code><p>Five genuinely different working prototypes from one brief, the best two recommended.</p></div>
@@ -286,7 +298,7 @@
     <div class="card free" id="free">
       <h3>Try it free first</h3>
       <p>Two full skills, no email tricks: <code class="mono">heuristic-ux-copy-review</code> and <code class="mono">self-review</code>.</p>
-      <p style="margin-top:16px"><a class="btn btn-ghost" data-free href="#free">Download the free skills</a></p>
+      <p style="margin-top:16px"><a class="btn btn-free" data-free href="#free">Download the 2 free skills</a></p>
     </div>
     </div>
   </div>
@@ -305,18 +317,29 @@
     <details><summary>What languages does it work in?</summary><p>The skills are written in English; Claude answers in whatever language you write in.</p></details>
   </div>
 </section>
+<section class="final" id="final" style="background:var(--card);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <h2>Check your next page before it ships.</h2>
+    <p>40 skills, 38 checkers, one payment and every update after. Not sure yet? Run the free checker or open the examples first.</p>
+    <div class="ctas">
+      <a class="btn btn-primary btn-lg" data-buy href="#pricing">Get UI/UX Pass · <span data-price="49">$49</span></a>
+      <a class="btn btn-ghost btn-lg" href="examples.html">See the examples</a>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer class="footer">
   <div class="wrap">
     <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
     <nav aria-label="Footer">
-      <a href="library.html">Library</a><a href="guides/">Guides</a><a href="changelog.html">Changelog</a><a href="refund.html">Refunds</a><a href="terms.html">License &amp; terms</a><a href="privacy.html">Privacy</a>
+      <a href="examples.html">Examples</a><a href="guides/">Guides</a><a href="changelog.html">Changelog</a><a href="refund.html">Refunds</a><a href="terms.html">License &amp; terms</a><a href="privacy.html">Privacy</a>
     </nav>
   </div>
 </footer>
 
 <script src="assets/store.js"></script>
+<script src="assets/ui.js"></script>
 <script>
 const r=document.getElementById('ba-range'),t=document.getElementById('ba-top'),ba=document.getElementById('ba');
 function sizeTop(){t.querySelector('img').style.width=ba.clientWidth+'px';}
