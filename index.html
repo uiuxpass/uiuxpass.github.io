@@ -20,71 +20,133 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v3.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"Second Pass","description":"40 Claude skills and 38 checker scripts for product designers and product managers.","brand":{"@type":"Brand","name":"UI/UX Pass"},"offers":{"@type":"AggregateOffer","lowPrice":"49","highPrice":"299","offerCount":"3","priceCurrency":"USD","availability":"https://schema.org/InStock"}}
 </script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="promo" data-launch hidden></div>
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="./"><img src="assets/logo-mark.svg" alt="" width="28" height="28">Second Pass <small>by UI/UX Pass</small></a>
     <nav class="nav-links" aria-label="Main">
+      <a class="link" href="#does">What it does</a>
       <a class="link" href="#skills">Skills</a>
-      <a class="link" href="#proof">Proof</a>
-      <a class="link" href="library.html">Library</a>
       <a class="link" href="check.html">Free checker</a>
       <a class="link" href="#pricing">Pricing</a>
-      <a class="link" href="guides/">Guides</a>
       <a class="link" href="#faq">FAQ</a>
       <a class="lang" href="vi/" hreflang="vi" lang="vi" aria-label="Tiếng Việt">VI</a>
-      <a class="btn btn-primary" data-buy href="#pricing">Get Second Pass</a>
+      <a class="btn btn-primary" data-buy href="#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get Second Pass</span></a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-<section class="hero">
+<section class="hero3">
   <div class="wrap">
-    <p class="kicker plain">For product designers and PMs who use Claude</p>
-    <h1>Claude does the first pass. Second Pass checks it.</h1>
-    <p class="lede"><strong>Claude Design builds it. Second Pass checks it and fixes it.</strong> 40 skills and 38 checker scripts that make Claude work like a meticulous senior design partner. It measures contrast, keyboard focus, design tokens, WCAG criteria and test statistics in a real browser or with real maths, then fixes what it found.</p>
-    <p class="launch" data-launch hidden></p>
+    <h1>Claude Design builds it.<br><span class="soft">Second Pass checks it and fixes it.</span></h1>
+    <p class="lede">40 Claude skills for product designers and PMs. They measure contrast, keyboard focus, layout and test statistics in a real browser or with real maths, then fix what they found.</p>
     <div class="ctas">
-      <a class="btn btn-primary" data-buy href="#pricing">Get all 40 skills · <span data-price="49">$49</span></a>
-      <a class="btn btn-ghost" href="check.html">Check your page free</a>
+      <a class="btn btn-primary btn-lg" data-buy href="#pricing">Get Second Pass · <span data-price="49">$49</span></a>
+      <a class="btn btn-ghost btn-lg" href="check.html">Check your page free</a>
     </div>
-    <p class="fine">Or <a href="#free" data-free>try 2 skills free</a>. One payment, lifetime updates. Works in Claude.ai (Pro, Max, Team, Enterprise), Claude Code, Cursor and Codex. Team licences from <span data-price="149">$149</span>.</p>
-    <div class="hero-media">
-      <video src="media/demo.mp4" poster="media/poster.jpg" controls muted playsinline preload="none" width="1600" height="900" aria-label="29-second demo without sound: the interface checker takes a pricing page from 38 to 66 out of 66 checks"><track kind="captions" src="media/demo.vtt" srclang="en" label="English (describes the silent video)" default></video>
-    </div>
-    <div class="stats" role="list">
-      <div class="stat" role="listitem"><b>40</b><span>skills in five kits</span></div>
-      <div class="stat" role="listitem"><b>38</b><span>scripts that measure, not guess</span></div>
-      <div class="stat" role="listitem"><b>66</b><span>browser checks on every interface</span></div>
-      <div class="stat" role="listitem"><b>55</b><span>WCAG 2.2 A and AA criteria mapped</span></div>
-    </div>
+    <p class="works"><span>Works in</span> <b>Claude.ai</b> <b>Claude Code</b> <b>Cursor</b> <b>Codex</b> <b>Figma</b></p>
+  </div>
+
+  <div class="wrap wide">
+    <figure class="window" aria-label="A real run of the interface-polish skill">
+      <div class="win-bar"><i></i><i></i><i></i><span class="mono">interface-polish · real run, 21 Nov 2026 · numbers unedited</span></div>
+      <div class="win-body">
+        <div class="win-ba">
+          <div class="ba" id="ba">
+            <img src="media/after.jpg" alt="After: the same pricing page with readable contrast, real buttons and clear hierarchy, 66 of 66 checks" width="1600" height="1111">
+            <div class="top" id="ba-top"><img src="media/before.jpg" alt="Before: purple gradient pricing page with emoji icons and low contrast, 38 of 66 checks" width="1600" height="1111"></div>
+            <span class="chip bad mono">Before 38/66<span class="hide-xs"> · 7 critical</span></span>
+            <span class="chip good mono">After 66/66<span class="hide-xs"> · 0 critical</span></span>
+          </div>
+          <div class="ba-control"><label for="ba-range">Drag to compare</label><input id="ba-range" type="range" min="0" max="100" value="50"></div>
+        </div>
+        <div class="log mono" aria-label="Checker log">
+          <p class="cmd">$ check_polish.py pricing.html</p>
+          <p>Passed <b class="r">38/66</b> · critical: 7</p>
+          <p><span class="r">critical</span> Text contrast ≥4.5:1: 6</p>
+          <p><span class="r">critical</span> Clickable things are real buttons: 5</p>
+          <p><span class="r">critical</span> No horizontal overflow at 390: 7</p>
+          <p><span class="r">critical</span> Hit targets ≥44px at 390: 3</p>
+          <p><span class="r">critical</span> Pinch zoom is not disabled: 1</p>
+          <p><span class="r">critical</span> No placeholder copy: 2</p>
+          <p><span class="r">critical</span> Respects reduced motion: 1</p>
+          <p class="cmd">$ fix_polish.py <span class="dim">(safe fixes)</span> → 44/66</p>
+          <p class="cmd">$ check_polish.py pricing.fixed.html</p>
+          <p>Passed <b class="g">66/66</b> · critical: 0</p>
+          <p class="foot">Same content, same checker. Only the problems it found were changed.</p>
+        </div>
+      </div>
+    </figure>
+    <p class="caption">A typical AI-made pricing page, checked at 1440 and 390 px. The skill fixed exactly the 7 critical problems found. <a href="media/proof-polish.jpg">See the full log</a>.</p>
   </div>
 </section>
 
-<section id="proof">
+<section class="facts" aria-label="Facts you can check">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Real run, numbers unedited</p>
-      <h2>From 38 to 66 of 66 checks, on the same content</h2>
-      <p>A typical AI-made pricing page. The checker opened it at 1440 and 390 px wide, found 7 critical problems (contrast, fake buttons, blocked zoom, overflow), and the skill fixed exactly those.</p>
+    <div class="fact"><b class="num">38 → 66<small>/66</small></b><span>checks passed on the same page after one run</span></div>
+    <div class="fact"><b class="num">55<small>/55</small></b><span>WCAG 2.2 A and AA criteria in the accessibility audit</span></div>
+    <div class="fact"><b class="num">38</b><span>checker scripts across 40 skills, run inside Claude</span></div>
+    <div class="fact"><b class="num">v2.2.4</b><span>updated 23 Nov 2026</span><span class="links"><a href="changelog.html">Changelog</a><a href="https://github.com/uiuxpass/second-pass-free">Free skills on GitHub</a></span></div>
+  </div>
+</section>
+
+<section id="does">
+  <div class="wrap">
+    <div class="head3">
+      <h2>What Second Pass does</h2>
+      <p>Every window below is a file a skill made, not a mock-up. Open any of them.</p>
     </div>
-    <div class="ba" id="ba">
-      <img src="media/after.jpg" alt="After: dark pricing page with readable contrast, real buttons and clear hierarchy, 66 of 66 checks" width="1600" height="1111" loading="lazy">
-      <div class="top" id="ba-top"><img src="media/before.jpg" alt="Before: purple gradient pricing page with emoji icons and low contrast, 38 of 66 checks" width="1600" height="1111" loading="lazy"></div>
+    <div class="panels">
+      <a class="panel" href="check.html">
+        <h3>Check a page before it ships</h3>
+        <p>Contrast, focus, tap targets and overflow, measured at desktop and phone width.</p>
+        <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">uiuxpass.com/check</span></div><img src="media/thumbs/check.jpg" alt="The free checker page" width="640" height="400" loading="lazy"></div>
+      </a>
+      <a class="panel" href="samples/usability-report.html">
+        <h3>Read test results honestly</h3>
+        <p>Success rates with 95% ranges, SUS grade and issues ranked by how much they hurt.</p>
+        <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">usability-test</span></div><img src="media/thumbs/usability-report.jpg" alt="Usability test report with confidence ranges" width="640" height="400" loading="lazy"></div>
+      </a>
+      <a class="panel" href="samples/design-qa.html">
+        <h3>Compare the build with the design</h3>
+        <p>Pixel differences in red, the worst areas listed, and tickets for developers.</p>
+        <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">design-qa</span></div><img src="media/thumbs/design-qa.jpg" alt="Design QA drag-to-compare page" width="640" height="400" loading="lazy"></div>
+      </a>
+      <a class="panel" href="samples/design-system.html">
+        <h3>Start a design system that passes</h3>
+        <p>Tokens in light and dark, every colour pair measured against WCAG AA, ready for Figma.</p>
+        <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">design-system-starter</span></div><img src="media/thumbs/design-system.jpg" alt="Design system page with components and contrast table" width="640" height="400" loading="lazy"></div>
+      </a>
+      <a class="panel" href="samples/user-flow.html">
+        <h3>Map every path, not just the happy one</h3>
+        <p>Flows checked for dead ends and missing empty, loading and error states.</p>
+        <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">user-flows-wireframes</span></div><img src="media/thumbs/user-flow.jpg" alt="User flow diagram with wireframes" width="640" height="400" loading="lazy"></div>
+      </a>
+      <a class="panel" href="samples/deck.html">
+        <h3>Present what you found</h3>
+        <p>One HTML deck that scrolls or presents, with PDF and PowerPoint export.</p>
+        <div class="mini"><div class="win-bar"><i></i><i></i><i></i><span class="mono">presentation-deck</span></div><img src="media/thumbs/deck.jpg" alt="Presentation deck made by the skill" width="640" height="400" loading="lazy"></div>
+      </a>
     </div>
-    <div class="ba-labels"><span>Before: 38/66, 7 critical</span><span>After: 66/66, 0 critical</span></div>
-    <div class="ba-control"><label for="ba-range">Drag to compare before and after</label><input id="ba-range" type="range" min="0" max="100" value="50"></div>
-    <div class="grid2" style="margin-top:40px">
-      <figure class="card" style="margin:0"><img src="media/proof-polish.jpg" alt="Checker output: before 38/66 with the list of failures, after 66/66" width="1200" height="1061" loading="lazy"><figcaption class="note">interface-polish: the full checker log, before and after.</figcaption></figure>
-      <figure class="card" style="margin:0"><img src="media/proof-usability.jpg" alt="Usability test analysis with task success rates and 95% confidence ranges" width="1200" height="1061" loading="lazy"><figcaption class="note">usability-test: success rates with confidence ranges, SUS grade, issues ranked by severity × frequency.</figcaption></figure>
-    </div>
-    <p class="note">Tested on Claude.ai on 21 November 2026 with plain requests, as a customer would type them. Where a skill did not switch on by itself the first time, we rewrote it and tested again.</p>
+    <p class="more"><a href="library.html">See all outputs with the requests that made them →</a></p>
+  </div>
+</section>
+
+<section id="maker">
+  <div class="narrow">
+    <h2>A note from the maker</h2>
+    <p>I'm a product design lead. I run UX for AI products, and every week I review screens that AI made. The same problems keep coming back: text you can't read, buttons that aren't buttons, pages that break on a phone, research numbers with no range.</p>
+    <p>So I turned each of those reviews into a check Claude runs on its own work. Every check was tested on real pages before it shipped, and the numbers on this page are unedited.</p>
+    <p>Second Pass is new and has no public reviews yet. If something doesn't work as described, write to me at <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a>. I read every message.</p>
+    <p class="sign">— The maker of Second Pass</p>
   </div>
 </section>
 
@@ -94,30 +156,6 @@
     <div class="grid3 love-grid"></div>
   </div>
 </section>
-
-<section id="maker">
-  <div class="narrow">
-    <p class="kicker">Who makes this</p>
-    <h2>Built by a working design lead, for the review we never had time to do</h2>
-    <p style="margin-top:16px">Second Pass is made by a product design lead who runs UX for AI products and reviews AI-made screens every week. The same problems kept coming back: text you can't read, buttons that aren't buttons, pages that break on a phone, research numbers with no range. Each skill turns one of those reviews into a check Claude runs itself, and every check was tested on real work before it shipped.</p>
-    <p style="margin-top:12px;color:var(--muted)">Questions go straight to the maker: <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a>.</p>
-  </div>
-</section>
-
-<section id="why" style="background:var(--card);border-block:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Why it's different</p>
-      <h2>Most skill packs tell Claude what good looks like. These check it.</h2>
-    </div>
-    <div class="grid3">
-      <div class="card"><h3>Measured, not judged</h3><p>Contrast, focus, overflow, layout shift, token drift and pixel differences are measured in a real browser at desktop and mobile widths. Claude reports the number and where it is.</p></div>
-      <div class="card"><h3>Honest numbers</h3><p>Usability results, surveys and A/B tests come with 95% ranges, sample-size warnings and peeking checks. No "significant!" without the interval.</p></div>
-      <div class="card"><h3>Built to be used</h3><p>Every answer opens with the result, gives decisions as a pros/cons table and ends with a self-check, so you can forward it to your team as it is.</p></div>
-    </div>
-  </div>
-</section>
-
 <section id="skills">
   <div class="wrap">
     <div class="sec-head">
@@ -202,29 +240,6 @@
     </div>
   </div>
 </section>
-
-<section id="samples" style="background:var(--card);border-block:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">See real outputs</p>
-      <h2>Open what the skills produce</h2>
-      <p>These are files the skills made, not mock-ups. <a href="library.html">See the full library with requests to copy</a>.</p>
-    </div>
-    <div class="grid3">
-      <a class="card" href="check.html" style="text-decoration:none"><h3>Check your own page, free</h3><p>16 measured checks in your browser · nothing uploaded</p></a>
-      <a class="card" href="samples/deck.html" style="text-decoration:none"><h3>A deck you can present</h3><p>presentation-deck · press P to present</p></a>
-      <a class="card" href="samples/usability-report.html" style="text-decoration:none"><h3>Usability test results</h3><p>usability-test · confidence ranges and SUS</p></a>
-      <a class="card" href="samples/web-report.html" style="text-decoration:none"><h3>A research readout page</h3><p>web-report · conclusion first</p></a>
-      <a class="card" href="samples/journey-map.html" style="text-decoration:none"><h3>A journey map</h3><p>journey-map · emotion curve and evidence row</p></a>
-      <a class="card" href="samples/ux-benchmark.html" style="text-decoration:none"><h3>A UX benchmark</h3><p>competitive-ux-benchmark · weighted scorecard</p></a>
-      <a class="card" href="samples/design-qa.html" style="text-decoration:none"><h3>Design QA, build vs design</h3><p>design-qa · drag to compare, differences in red</p></a>
-      <a class="card" href="samples/design-system.html" style="text-decoration:none"><h3>A design system, light and dark</h3><p>design-system-starter · every component, contrast table</p></a>
-      <a class="card" href="samples/user-flow.html" style="text-decoration:none"><h3>A user flow with wireframes</h3><p>user-flows-wireframes · flow diagram and states</p></a>
-      <a class="card" href="media/launch-sample.mp4" style="text-decoration:none"><h3>A 12-second launch video</h3><p>product-video · rendered from HTML</p></a>
-    </div>
-  </div>
-</section>
-
 <section id="compare">
   <div class="wrap">
     <div class="sec-head">
@@ -249,7 +264,6 @@
     </div>
   </div>
 </section>
-
 <section id="pricing" style="background:var(--card);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head">
@@ -281,7 +295,6 @@
     </div>
   </div>
 </section>
-
 <section id="faq">
   <div class="narrow">
     <div class="sec-head"><p class="kicker">Questions</p><h2>FAQ</h2></div>
@@ -309,10 +322,13 @@
 
 <script src="assets/store.js"></script>
 <script>
-const r = document.getElementById('ba-range'), t = document.getElementById('ba-top'), ba = document.getElementById('ba');
-function sizeTop(){ t.querySelector('img').style.width = ba.clientWidth + 'px'; }
-r.addEventListener('input', () => { t.style.width = r.value + '%'; });
-window.addEventListener('resize', sizeTop); sizeTop();
+const r=document.getElementById('ba-range'),t=document.getElementById('ba-top'),ba=document.getElementById('ba');
+function sizeTop(){t.querySelector('img').style.width=ba.clientWidth+'px';}
+r.addEventListener('input',()=>{t.style.width=r.value+'%';});
+window.addEventListener('resize',sizeTop);sizeTop();
+const log=document.querySelector('.log');
+if('IntersectionObserver' in window){log.querySelectorAll('p').forEach((p,i)=>p.style.animationDelay=(i*0.18)+'s');
+new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){log.classList.add('play');o.disconnect();}})},{threshold:.3}).observe(log);}
 </script>
 </body>
 </html>
