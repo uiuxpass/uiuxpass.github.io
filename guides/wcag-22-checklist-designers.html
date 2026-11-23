@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WCAG 2.2 AA checklist for designers: what you can check in the design file · UI/UX Pass</title>
+<meta name="description" content="The WCAG 2.2 Level AA criteria a designer can check before any code exists: contrast, target size, focus, reflow, labels, errors and the six new A and AA criteria in 2.2.">
+<meta property="og:title" content="WCAG 2.2 AA checklist for designers: what you can check in the design file · UI/UX Pass">
+<meta property="og:description" content="The WCAG 2.2 Level AA criteria a designer can check before any code exists: contrast, target size, focus, reflow, labels, errors and the six new A and AA criteria in 2.2.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/wcag-22-checklist-designers.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/wcag-22-checklist-designers.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href=".././"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/" aria-current="page">Guides</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Accessibility</p>
+<h1>WCAG 2.2 AA checklist for designers: what you can check in the design file</h1>
+<p class="meta">7 min read · Updated 24 November 2026</p>
+<p>WCAG 2.2 Level AA has 55 success criteria: 31 at Level A and 24 at Level AA. Many of them are decided in the design file, long before a developer writes a line. Fixing contrast or a missing error state in Figma takes minutes; fixing it after release takes a ticket, a review and a deploy.</p>
+<p>This checklist covers the criteria a designer can check on a static frame, and marks the ones that only a test of the built page can confirm.</p>
+
+<h2>Check these on every frame</h2>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">Criterion</th><th scope="col">Level</th><th scope="col">What to check in the design</th></tr></thead>
+<tbody>
+<tr><td>1.4.3 Contrast (Minimum)</td><td>AA</td><td>Body text at least 4.5:1 against its background. Large text (24 px regular, or about 18.7 px bold) at least 3:1.</td></tr>
+<tr><td>1.4.11 Non-text Contrast</td><td>AA</td><td>Input borders, checkboxes, icons that carry meaning and chart lines at least 3:1 against what is next to them.</td></tr>
+<tr><td>1.4.1 Use of Color</td><td>A</td><td>Errors, required fields, links in text and chart series are not told apart by colour alone. Add an icon, text, underline or pattern.</td></tr>
+<tr><td>2.5.8 Target Size (Minimum)</td><td>AA</td><td>Every tap or click target at least 24 × 24 CSS px, or spaced so a 24 px circle centred on it touches no other target.</td></tr>
+<tr><td>2.4.7 Focus Visible</td><td>AA</td><td>A focus style is designed for every interactive component, not only buttons.</td></tr>
+<tr><td>2.4.11 Focus Not Obscured (Minimum)</td><td>AA</td><td>Sticky headers, cookie bars and chat bubbles cannot fully cover a focused element.</td></tr>
+<tr><td>1.4.10 Reflow</td><td>AA</td><td>A frame at 320 px wide exists and needs no sideways scrolling, except for content such as data tables and maps.</td></tr>
+<tr><td>1.3.1 Info and Relationships</td><td>A</td><td>Headings look like headings and follow one order. Each field has a visible label tied to it.</td></tr>
+<tr><td>2.4.6 Headings and Labels</td><td>AA</td><td>Headings and labels say what the section or field is about.</td></tr>
+<tr><td>3.3.2 Labels or Instructions</td><td>A</td><td>Format rules (date format, password rules) are shown before the person types, and stay visible while they type.</td></tr>
+<tr><td>3.3.1 Error Identification</td><td>A</td><td>Every error state names the field and the problem in text.</td></tr>
+<tr><td>3.3.3 Error Suggestion</td><td>AA</td><td>Every error says how to fix it, when a fix is known.</td></tr>
+<tr><td>1.4.13 Content on Hover or Focus</td><td>AA</td><td>Tooltips and popovers can be dismissed, can be hovered over, and stay until the person moves away.</td></tr>
+<tr><td>2.2.2 Pause, Stop, Hide</td><td>A</td><td>Carousels and anything that moves for more than 5 seconds have a visible pause control.</td></tr>
+<tr><td>1.1.1 Non-text Content</td><td>A</td><td>Each image and icon is marked as meaningful (write its alt text in the handoff notes) or decorative.</td></tr>
+</tbody></table></div>
+
+<h2>The six new A and AA criteria in WCAG 2.2</h2>
+<p>WCAG 2.2 added nine success criteria. Three of them are AAA. The other six are part of any AA audit, and most are design decisions:</p>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">Criterion</th><th scope="col">Level</th><th scope="col">Design decision</th></tr></thead>
+<tbody>
+<tr><td>2.4.11 Focus Not Obscured (Minimum)</td><td>AA</td><td>Leave room for focus around sticky bars, or make them push content instead of covering it.</td></tr>
+<tr><td>2.5.7 Dragging Movements</td><td>AA</td><td>Every drag (reorder, slider, map pan) has a single-tap alternative, such as up and down buttons or a number field.</td></tr>
+<tr><td>2.5.8 Target Size (Minimum)</td><td>AA</td><td>24 × 24 px minimum, or enough spacing. Platform guidance is larger: 44 pt on iOS and 48 dp on Android.</td></tr>
+<tr><td>3.2.6 Consistent Help</td><td>A</td><td>If help (contact link, chat, phone) appears on several pages, it sits in the same relative place on each.</td></tr>
+<tr><td>3.3.7 Redundant Entry</td><td>A</td><td>Do not ask for the same information twice in one process. Pre-fill it or offer "same as billing address".</td></tr>
+<tr><td>3.3.8 Accessible Authentication (Minimum)</td><td>AA</td><td>Sign-in does not depend on remembering or transcribing. Allow paste and password managers; avoid puzzle tests without an alternative.</td></tr>
+</tbody></table></div>
+<p>WCAG 2.2 also removed 4.1.1 Parsing, which was about HTML syntax and never a design concern.</p>
+
+<h2>Contrast numbers worth knowing</h2>
+<p>Most failures in AI-made and quickly made screens are light grey text. These ratios are against white (#FFFFFF), calculated with the WCAG formula:</p>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">Colour</th><th scope="col">Ratio on white</th><th scope="col">Body text</th><th scope="col">Large text and UI parts</th></tr></thead>
+<tbody>
+<tr><td>#767676</td><td>4.54:1</td><td>Passes</td><td>Passes</td></tr>
+<tr><td>#6B7280</td><td>4.83:1</td><td>Passes</td><td>Passes</td></tr>
+<tr><td>#8B8B8B</td><td>3.41:1</td><td>Fails</td><td>Passes</td></tr>
+<tr><td>#9CA3AF</td><td>2.54:1</td><td>Fails</td><td>Fails</td></tr>
+<tr><td>#D1D5DB (common input border)</td><td>1.47:1</td><td>Fails</td><td>Fails</td></tr>
+</tbody></table></div>
+<p>#767676 is the lightest neutral grey that passes 4.5:1 on white. A light border such as #D1D5DB is fine for a decorative divider, but not as the only edge of a text field.</p>
+
+<h2>What the design file cannot prove</h2>
+<p>Some criteria depend on the built page: keyboard order and keyboard traps, screen reader names, zoom to 200%, text spacing overrides, status messages announced without focus, and whether labels in code match the visible label. Write the intent in your handoff notes (tab order, alt text, what a screen reader should announce), then test the build. An automated scan finds a share of issues; a person with a keyboard and a screen reader finds the rest.</p>
+
+<div class="cta">
+<p><strong>Measure it instead of eyeballing it.</strong> The free checker runs 16 browser checks, including contrast and target size, in about 30 seconds. UI/UX Pass's <code>accessibility-audit</code> skill maps a page to all 55 WCAG 2.2 A and AA criteria (pass, fail, partly checked, manual), lists the manual tests a person must do, and gives a ranked fix list with code. <code>design-file-review</code> measures contrast and target sizes on a Figma frame or screenshot.</p>
+<a class="btn btn-primary" href="../check.html">Check your page free</a> <a class="btn btn-ghost" href="../index.html#pricing">See UI/UX Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to write error messages that tell people how to fix the problem · UI/UX Pass</title>
+<meta name="description" content="A three-part formula for error messages, before and after rewrites for common errors, where and when to show them, and the WCAG criteria that apply.">
+<meta property="og:title" content="How to write error messages that tell people how to fix the problem · UI/UX Pass">
+<meta property="og:description" content="A three-part formula for error messages, before and after rewrites for common errors, where and when to show them, and the WCAG criteria that apply.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/ux-error-messages.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/ux-error-messages.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href=".././"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/" aria-current="page">Guides</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · UX writing</p>
+<h1>How to write error messages that tell people how to fix the problem</h1>
+<p class="meta">6 min read · Updated 24 November 2026</p>
+<p>An error message has one job: get the person moving again. "Invalid input" tells them something went wrong and nothing else. They have to guess what, guess why and try again. A good error message removes the guessing.</p>
+
+<h2>The formula: what happened, then how to fix it</h2>
+<p>Most good error messages have two parts, sometimes three:</p>
+<ol>
+<li><strong>What happened</strong>, in the person's words: "This card number is too short."</li>
+<li><strong>How to fix it</strong>, as a clear action: "Enter the full number from the front of your card."</li>
+<li><strong>Why</strong>, only when it helps them decide: "We need this to send your receipt."</li>
+</ol>
+<p>If you can only keep one part, keep the fix. "Enter a date after today" works without "Invalid date" in front of it.</p>
+
+<h2>Before and after</h2>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Situation</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+<tbody>
+<tr><td>Empty required field</td><td>Field is required.</td><td>Enter your email address.</td></tr>
+<tr><td>Wrong format</td><td>Invalid email.</td><td>Enter an email address with an @, like name@example.com.</td></tr>
+<tr><td>Out of range</td><td>Value out of bounds.</td><td>Enter a quantity between 1 and 10.</td></tr>
+<tr><td>Password rules</td><td>Password does not meet requirements.</td><td>Add at least one number. Your password has the other three things it needs.</td></tr>
+<tr><td>Card declined</td><td>Transaction failed. Error 402.</td><td>Your bank declined this card. Try another card, or call the number on the back of this one.</td></tr>
+<tr><td>Lost connection</td><td>Network error.</td><td>You're offline. Your changes are saved on this device and will upload when you reconnect.</td></tr>
+<tr><td>Server problem</td><td>Something went wrong.</td><td>We couldn't save your changes. Try again in a minute. If it keeps happening, contact support and mention code 5021.</td></tr>
+<tr><td>No permission</td><td>Access denied.</td><td>Only workspace admins can change billing. Ask an admin, or request access.</td></tr>
+</tbody></table></div>
+<p>An error code is fine as a last line for support. It is never the whole message.</p>
+
+<h2>Six rules for the words</h2>
+<ul>
+<li><strong>Do not blame.</strong> "You entered the wrong date" becomes "Enter a date after today".</li>
+<li><strong>Be specific.</strong> Name the field and the rule. "Something went wrong" is only for errors you truly cannot explain.</li>
+<li><strong>Use plain words.</strong> Not "authentication token expired" but "You've been signed out. Sign in again to continue."</li>
+<li><strong>Keep it short.</strong> One or two sentences. People scan error text; they do not read it.</li>
+<li><strong>No jokes, no "Oops".</strong> Humour lands badly when someone has just lost their work.</li>
+<li><strong>Match the button.</strong> If the fix is an action, the button says it: "Try again", "Use another card".</li>
+</ul>
+
+<h2>Where and when to show errors</h2>
+<ul>
+<li><strong>Next to the field</strong>, directly below it, not only in a banner at the top.</li>
+<li><strong>After the person leaves the field</strong>, or on submit. Showing "Invalid email" while they are still typing the first letters is noise.</li>
+<li><strong>On submit with several errors</strong>, show a short summary at the top that links to each field, and move keyboard focus to it.</li>
+<li><strong>Keep what they typed.</strong> Never clear a form because one field failed.</li>
+<li><strong>Show rules before the error.</strong> Password and format rules belong under the label from the start, as visible hint text that stays while they type.</li>
+<li><strong>Remove the error as soon as it is fixed</strong>, so the screen confirms they got it right.</li>
+</ul>
+
+<h2>Accessibility rules that apply</h2>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">WCAG 2.2 criterion</th><th scope="col">Level</th><th scope="col">What it means for errors</th></tr></thead>
+<tbody>
+<tr><td>3.3.1 Error Identification</td><td>A</td><td>The field in error is identified and the error is described in text.</td></tr>
+<tr><td>3.3.3 Error Suggestion</td><td>AA</td><td>When a fix is known, the message suggests it.</td></tr>
+<tr><td>1.4.1 Use of Color</td><td>A</td><td>A red border alone is not enough. Add text and an icon.</td></tr>
+<tr><td>4.1.3 Status Messages</td><td>AA</td><td>Messages that appear without moving focus are announced to screen readers, for example with an ARIA live region.</td></tr>
+<tr><td>3.3.4 Error Prevention (Legal, Financial, Data)</td><td>AA</td><td>For payments, legal commitments and data changes, people can review, confirm or undo before it is final.</td></tr>
+</tbody></table></div>
+<p>In code, connect the message to its field with <code>aria-describedby</code> and mark the field with <code>aria-invalid="true"</code>, so a screen reader reads the error when the field gets focus.</p>
+
+<div class="cta">
+<p><strong>Review every message on a screen at once.</strong> UI/UX Pass's <code>ux-writing</code> skill writes and reviews interface copy, including error messages, empty states and button labels, against clear rules. The free <code>heuristic-ux-copy-review</code> skill checks a screen's copy and Nielsen's 10 heuristics, and the free checker runs 16 browser checks on any page in about 30 seconds.</p>
+<a class="btn btn-primary" href="../check.html">Check your page free</a> <a class="btn btn-ghost" href="../index.html#pricing">See UI/UX Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+</body>
+</html>

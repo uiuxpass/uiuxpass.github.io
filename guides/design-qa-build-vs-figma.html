@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design QA: how to check the build matches the Figma file · UI/UX Pass</title>
+<meta name="description" content="A practical design QA method: capture the build at the frame's exact width and scale, compare it with the Figma export, fix differences from the top down and write tickets developers can act on.">
+<meta property="og:title" content="Design QA: how to check the build matches the Figma file · UI/UX Pass">
+<meta property="og:description" content="A practical design QA method: capture the build at the frame's exact width and scale, compare it with the Figma export, fix differences from the top down and write tickets developers can act on.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/design-qa-build-vs-figma.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/design-qa-build-vs-figma.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href=".././"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/" aria-current="page">Guides</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Design QA</p>
+<h1>Design QA: how to check the build matches the Figma file</h1>
+<p class="meta">7 min read · Updated 24 November 2026</p>
+<p>Design QA is the step where a designer compares what was built with what was designed, before release. Done by eye, it takes an hour per screen and still misses things: a 2 px spacing change looks fine on its own and only shows up when you put the two side by side. Done with a fixed setup and a pixel comparison, it takes minutes and gives developers exact numbers.</p>
+
+<h2>1. Capture the build the same way the frame was drawn</h2>
+<p>Most "differences" in a design QA are setup errors. Match these before you compare anything:</p>
+<ul>
+<li><strong>Width.</strong> Set the browser viewport to the frame width, for example 1440 or 390 px. A page captured at 1366 px will never line up with a 1440 px frame.</li>
+<li><strong>Scale.</strong> If the Figma export is at 2x, capture the page at a device pixel ratio of 2. Compare pixels at the same scale, then report distances in design px (divide by 2).</li>
+<li><strong>Content.</strong> Use the same text, images and data as the frame. Real data that is longer or shorter moves everything below it.</li>
+<li><strong>Fonts.</strong> Wait until web fonts have loaded. A capture taken during the fallback font is not a real difference.</li>
+<li><strong>Motion.</strong> Turn off animations and carousels, or wait until they finish, so the capture is the final state.</li>
+</ul>
+
+<h2>2. Compare, then fix from the top down</h2>
+<p>Overlay the export on the capture (a slider or 50% opacity) and generate a difference map that marks every pixel that changed. Start with the highest difference on the page and work down.</p>
+<p>Top down matters because differences cascade. Take a paragraph of 10 lines set at 16 px. If the design uses a 24 px line height and the build uses 22 px, the paragraph ends 20 px higher, and every element below it is now 20 px off. The difference map turns red from that point to the bottom of the page, but there is only one bug. Fix it, capture again, and most of the red disappears.</p>
+<p>For scale: a 1440 × 900 capture has 1,296,000 pixels, so 1% of it is 12,960 pixels, about a 114 px square. Some difference always remains, because browsers and Figma draw text edges differently. Judge areas, not a single total.</p>
+
+<h2>3. What to check, in this order</h2>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">Order</th><th scope="col">Area</th><th scope="col">What usually differs</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Layout and spacing</td><td>Container width, gaps between sections, padding inside cards. Often a value off the spacing scale, such as 18 px where the scale has 16 and 24.</td></tr>
+<tr><td>2</td><td>Typography</td><td>Line height, letter spacing, weight. Figma letter spacing in % maps to em in CSS: 2% is 0.02em. A line height of 150% is 1.5.</td></tr>
+<tr><td>3</td><td>Colour</td><td>Hex values close to a token but not equal, such as #111111 instead of #111214. Invisible to the eye, but a sign the value was typed by hand.</td></tr>
+<tr><td>4</td><td>Corners, borders, shadows</td><td>Radius 6 instead of 8, a 1 px border where the design has none, a heavier shadow.</td></tr>
+<tr><td>5</td><td>Icons and images</td><td>Wrong size, cropped differently, blurry at 2x.</td></tr>
+<tr><td>6</td><td>States</td><td>Hover, focus, pressed, disabled, error, empty and loading. These are often missing from the build because they were missing from the file.</td></tr>
+<tr><td>7</td><td>Other widths</td><td>Repeat at your phone width (often 390 px) and one width between breakpoints, where layouts tend to break.</td></tr>
+</tbody></table></div>
+
+<h2>4. Write tickets developers can act on</h2>
+<p>"The header looks off" starts a conversation. A ticket with numbers ends one. Include:</p>
+<ul>
+<li>Where: page, width, element (with a cropped screenshot of design and build side by side).</li>
+<li>Expected and actual: "Card padding 24 px in the design, 20 px in the build."</li>
+<li>The token if there is one: "Use space-6 (24 px), not a typed value."</li>
+<li>Severity: blocks use, visibly wrong, or polish.</li>
+</ul>
+<p>Group tickets by cause. Ten spacing differences that all come from one wrong container padding are one ticket, not ten.</p>
+
+<h2>When the build is right and the design is wrong</h2>
+<p>Sometimes the developer made a better call: real content needed more room, or a state did not exist in the file. Update the design file so it stays the source of truth, and note the change in the ticket instead of asking for a revert.</p>
+
+<div class="cta">
+<p><strong>Let a script do the comparison.</strong> UI/UX Pass's <code>design-qa</code> skill captures the page at the design's exact width and scale, diffs it pixel by pixel against the Figma export, builds a drag-to-compare page and a difference map with the worst areas in design px, then names the causes and writes the fix tickets. The free checker runs 16 browser checks on any page in about 30 seconds.</p>
+<a class="btn btn-primary" href="../check.html">Check your page free</a> <a class="btn btn-ghost" href="../index.html#pricing">See UI/UX Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+</body>
+</html>
