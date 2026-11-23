@@ -23,6 +23,7 @@ window.SP = {
     if (on) {
       const vi = document.documentElement.lang === 'vi', f = v => '$' + (Math.round(v * (100 - L.percent)) / 100).toFixed(2);
       document.querySelectorAll('[data-price]').forEach(el => { if (el.dataset.done) return; const v = +el.dataset.price; el.dataset.done = 1; el.innerHTML = `<s class="was"><span class="sr-only">${vi ? 'giá gốc ' : 'was '}</span>$${v}</s> <span class="sr-only">${vi ? 'giá mở bán ' : 'now '}</span>${f(v)}`; });
+      document.querySelectorAll('[data-per]').forEach(el => { const v = +el.dataset.per * (100 - L.percent) / 100 / +el.dataset.seats; el.textContent = (vi ? '$' + v.toFixed(2) + ' mỗi người' : '$' + v.toFixed(2) + ' per person'); });
       document.querySelectorAll('[data-launch]').forEach(el => { el.textContent = vi ? L.vi : L.en; el.hidden = false; });
     }
     if (c.freeUrl) document.querySelectorAll('[data-free]').forEach(a => { a.href = c.freeUrl; });

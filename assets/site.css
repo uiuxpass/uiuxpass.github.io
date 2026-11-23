@@ -140,5 +140,5 @@ s.was{color:var(--muted);font-weight:400;text-decoration-thickness:1px;margin-ri
 .price .amt s.was{font-size:26px;vertical-align:.5em}
 .btn s.was,.upsell s.was{color:rgba(255,255,255,.72)}.btn-ghost s.was{color:var(--muted)}
 .upsell .launch{background:#fff;color:var(--accent-ink)}
-.tiers dd{white-space:nowrap}
+.tiers dd{white-space:nowrap;text-align:right}.tiers .per{display:block;font-size:13px;font-weight:500;color:var(--muted)}
 @media (max-width:520px){.price .amt small{display:block;margin-top:4px}.price .amt{font-size:40px}.price .amt s.was{font-size:20px}}
