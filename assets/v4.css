@@ -1,0 +1,139 @@
+/* UI/UX Pass 4.0: one nav, phone menu, examples gallery + viewer, sticky buy bar */
+
+/* nav: one set of links on every page */
+.nav-links a.link[aria-current="page"]{color:var(--ink);font-weight:500}
+.menu-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:999px;background:var(--panel,#F1F1EF);color:var(--ink);cursor:pointer}
+.menu-btn svg{width:20px;height:20px}
+@media (max-width:860px){.menu-btn{display:inline-flex}}
+.m-menu{position:fixed;left:0;right:0;top:64px;max-height:calc(100vh - 64px);overflow:auto;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(17,18,20,.25);padding:8px 24px 24px}
+.m-menu[hidden]{display:none}
+.m-menu a.m-link{display:flex;align-items:center;justify-content:space-between;min-height:52px;font-size:18px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.m-menu a.m-link[aria-current="page"]{font-weight:600}
+.m-menu .btn{width:100%;margin-top:18px;min-height:52px;font-size:17px}
+@media (prefers-reduced-motion:no-preference){.m-menu{animation:mIn .18s var(--ease-out)}}
+@keyframes mIn{from{opacity:0;transform:translateY(-6px)}}
+
+/* hero: the promise in the brand green, readable */
+.hero3 h1 .soft{color:var(--pass)}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:st}
+.step{background:var(--panel,#F1F1EF);border-radius:var(--r-xl,24px);padding:28px}
+.step .n{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:999px;background:var(--ink);color:#fff;font-size:15px;font-weight:600}
+.step h3{font-size:22px;font-weight:500;letter-spacing:-.02em;margin-top:18px}
+.step p{margin-top:8px;color:var(--muted);font-size:16px}
+.step .ex{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:12px 16px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* skills as tabs, one kit at a time */
+.kit-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.kit-tabs button{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:var(--panel,#F1F1EF);color:var(--ink-2);font:500 15px/1 var(--font-sans);cursor:pointer}
+.kit-tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.kit-tabs button .c{color:var(--muted);margin-left:8px;font-variant-numeric:tabular-nums}
+.kit-tabs button[aria-selected="true"] .c{color:#C9CACD}
+@media (hover:hover){.kit-tabs button:not([aria-selected="true"]):hover{background:#E9E9E6}}
+.kits-tabbed .kit{margin-top:24px}
+.kits-tabbed .kit[hidden]{display:none}
+
+/* free download made visible */
+.btn-free{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line-control,#8E9095)}
+@media (hover:hover){.btn-free:hover{background:var(--sunken)}}
+
+/* "see all examples" link as a real button */
+.more-row{display:flex;justify-content:center;margin-top:32px}
+
+/* final call to action */
+.final{text-align:center}
+.final h2{font-size:44px;line-height:1.08;letter-spacing:-.035em;font-weight:500;max-width:20ch;margin:0 auto}
+.final p{color:var(--muted);font-size:18px;margin:16px auto 0;max-width:52ch}
+.final .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+@media (max-width:700px){.final h2{font-size:32px}}
+
+/* examples gallery */
+.ex-head{padding:72px 0 8px}
+.ex-head h1{font-size:56px;line-height:1.04;letter-spacing:-.04em;font-weight:500;max-width:18ch}
+.ex-head .lede{font-size:19px;color:var(--muted);max-width:60ch;margin-top:18px}
+@media (max-width:700px){.ex-head{padding-top:48px}.ex-head h1{font-size:38px}}
+.ex-filter{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 28px}
+.ex-filter button{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:var(--panel,#F1F1EF);color:var(--ink-2);font:500 15px/1 var(--font-sans);cursor:pointer}
+.ex-filter button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.ex-filter button .c{color:var(--muted);margin-left:8px}
+.ex-filter button[aria-pressed="true"] .c{color:#C9CACD}
+@media (hover:hover){.ex-filter button:not([aria-pressed="true"]):hover{background:#E9E9E6}}
+.ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:1000px){.ex-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.ex-grid{grid-template-columns:1fr}}
+.ex-card{display:flex;flex-direction:column;background:var(--panel,#F1F1EF);border-radius:var(--r-xl,24px);padding:16px 16px 24px;text-decoration:none;color:var(--ink);transition:background-color 160ms var(--ease-out)}
+.ex-card[hidden]{display:none}
+.ex-card .shot{border-radius:var(--r-m);overflow:hidden;background:var(--card);box-shadow:0 0 0 1px rgba(17,18,20,.06),0 12px 28px -18px rgba(17,18,20,.3);transition:transform 200ms var(--ease-out)}
+.ex-card .shot .win-bar{height:34px}
+.ex-card .shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.ex-card h2{font-size:19px;font-weight:500;letter-spacing:-.02em;margin:16px 8px 0;line-height:1.25}
+.ex-card p{color:var(--muted);font-size:15px;margin:8px 8px 0}
+.ex-card .go{margin:16px 8px 0;font-size:15px;font-weight:500;color:var(--ink)}
+@media (hover:hover){.ex-card:hover{background:#ECECE9}.ex-card:hover .shot{transform:translateY(-3px)}}
+.ex-card:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.ex-note{font-size:14px;color:var(--muted);margin-top:28px;max-width:62ch}
+
+/* viewer */
+dialog.viewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(17,18,20,.55);color:var(--ink)}
+dialog.viewer::backdrop{background:rgba(17,18,20,.55)}
+.vw{position:absolute;inset:16px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);background:var(--paper);border-radius:var(--r-l);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.5)}
+.vw-top{display:flex;align-items:center;gap:8px;min-height:60px;padding:8px 12px 8px 20px;border-bottom:1px solid var(--line);background:var(--card)}
+.vw-top .count{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.vw-top .ttl{flex:1;min-width:0;font-weight:500;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vw-top .ic{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;height:44px;padding:0 12px;border:0;border-radius:999px;background:var(--panel,#F1F1EF);color:var(--ink);font:500 14px/1 var(--font-sans);text-decoration:none;cursor:pointer}
+.vw-top .ic svg{width:18px;height:18px}
+@media (hover:hover){.vw-top .ic:hover{background:#E6E6E3}}
+.vw-body{display:grid;grid-template-columns:minmax(0,1fr) 360px;min-height:0}
+.vw-stage{position:relative;min-height:0;background:#E9E9E6;display:flex;flex-direction:column}
+.vw-stage iframe{flex:1;width:100%;border:0;background:#fff}
+.vw-stage video{width:100%;height:100%;object-fit:contain;background:#0A111F}
+.vw-cmp{flex:1;min-height:0;overflow:auto;padding:20px;display:flex;flex-direction:column;align-items:center}
+.vw-cmp .ba{width:100%;max-width:1000px;border-radius:var(--r-m)}
+.vw-cmp .ba-control{width:100%;max-width:1000px;display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted)}
+.vw-cmp .ba-control input{flex:1}
+.vw-side{overflow:auto;padding:24px;border-left:1px solid var(--line);background:var(--card)}
+.vw-side .skill{display:inline-block;font:500 13px/1 "Geist Mono",monospace;color:var(--pass);background:var(--pass-soft);padding:8px 12px;border-radius:999px;border:0}
+.vw-side h2{font-size:24px;line-height:1.2;letter-spacing:-.025em;font-weight:500;margin-top:16px}
+.vw-side .res{color:var(--ink-2);font-size:16px;margin-top:12px}
+.vw-side .lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:24px}
+.vw-side .ask{margin-top:8px;background:var(--sunken);border-radius:var(--r-m);padding:14px;font-size:15px;line-height:1.5;color:var(--ink)}
+.vw-side .copy-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+.vw-side .copied{font-size:14px;color:var(--pass)}
+.vw-side .buy{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.vw-side .buy .btn{width:100%}
+.vw-side .buy .btn + .btn{margin-top:12px}
+.vw-side .buy p{font-size:14px;color:var(--muted);margin-top:12px}
+.vw-side .extra{font-size:14px;margin-top:16px}
+.vw-side .extra a{color:var(--ink)}
+.vw-nav{display:none}
+@media (max-width:900px){
+  .vw{inset:0;border-radius:0}
+  .vw-top{padding-left:14px}
+  .vw-top .hide-sm{display:none}
+  .vw-body{grid-template-columns:minmax(0,1fr);grid-template-rows:62vh auto;overflow-y:auto;overflow-x:hidden}
+  .vw-stage{height:62vh}
+  .vw-side{border-left:0;border-top:1px solid var(--line);overflow:visible;padding-bottom:96px}
+  .vw-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:2;gap:10px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line)}
+  .vw-nav button{flex:1;min-height:48px;border:0;border-radius:999px;background:var(--panel,#F1F1EF);font:500 15px/1 var(--font-sans);color:var(--ink);cursor:pointer}
+}
+html.vw-open{overflow:hidden}
+
+/* sticky buy bar on phones */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:25;display:none;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(251,251,250,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.buybar .t{flex:1;min-width:0;font-size:14px;line-height:1.3;color:var(--muted)}
+.buybar .t b{display:block;color:var(--ink);font-size:15px;font-weight:600}
+.buybar .t s.was{color:var(--muted)}
+.buybar .btn{min-height:48px;padding:0 20px;white-space:nowrap}
+@media (max-width:860px){.buybar.on{display:flex}body.has-buybar .footer{padding-bottom:96px}}
+@media (prefers-reduced-motion:no-preference){.buybar.on{animation:bbIn .2s var(--ease-out)}}
+@keyframes bbIn{from{transform:translateY(100%)}}
+
+/* bar on sample pages opened on their own */
+.sp-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:#111214;color:#fff;font:500 14px/1.3 Geist,system-ui,sans-serif}
+.sp-bar a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;min-height:36px}
+.sp-bar .sp-sp{flex:1}
+.sp-bar .sp-buy{background:#fff;color:#111214;border-radius:999px;padding:0 14px}
+.only-sm{display:none}
+@media (max-width:860px){.only-sm{display:inline}.only-lg{display:none}}
