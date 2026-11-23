@@ -337,5 +337,6 @@ function sel(i){tabs.forEach((b,j)=>{const s=i===j;b.setAttribute('aria-selected
 tabs.forEach((b,i)=>{b.addEventListener('click',()=>sel(i));b.addEventListener('keydown',e=>{if(e.key==='ArrowRight')sel((i+1)%tabs.length);if(e.key==='ArrowLeft')sel((i-1+tabs.length)%tabs.length);});});
 const d=document.getElementById('dlg');document.getElementById('open').onclick=()=>d.showModal();['close','close2'].forEach(id=>document.getElementById(id).onclick=()=>d.close());
 </script>
+<script src="../assets/samplebar.js" defer></script>
 </body>
 </html>
