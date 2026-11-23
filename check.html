@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Free AI interface checker: 16 checks in your browser · Second Pass</title>
+<title>Free AI interface checker: 16 checks in your browser · UI/UX Pass</title>
 <meta name="description" content="Paste the HTML of any AI-made page and get 16 measured checks in seconds: contrast, tiny text, tap targets, fake buttons, blocked zoom, mobile overflow and the generic AI look. Free, nothing is uploaded.">
-<meta property="og:title" content="Free AI interface checker · Second Pass">
+<meta property="og:title" content="Free AI interface checker · UI/UX Pass">
 <meta property="og:description" content="16 measured checks for any AI-made page, in your browser. Nothing is uploaded.">
 <meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
 <link rel="canonical" href="https://uiuxpass.com/check.html">
@@ -45,13 +45,13 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="./"><img src="assets/logo-mark.svg" alt="" width="28" height="28">Second Pass <small>by UI/UX Pass</small></a>
+    <a class="brand" href="./"><img src="assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
     <nav class="nav-links" aria-label="Main">
       <a class="link" href="index.html#skills">Skills</a>
       <a class="link" href="check.html" aria-current="page">Free checker</a>
       <a class="link" href="index.html#pricing">Pricing</a>
       <a class="link" href="guides/">Guides</a>
-      <a class="btn btn-primary" data-buy href="index.html#pricing">Get Second Pass</a>
+      <a class="btn btn-primary" data-buy href="index.html#pricing">Get UI/UX Pass</a>
     </nav>
   </div>
 </header>
@@ -81,7 +81,7 @@
 <section style="padding-top:24px">
   <div class="narrow">
     <h2 style="font-size:24px">What it checks</h2>
-    <p style="margin-top:8px;color:var(--muted)">Contrast, text size, tap targets at 390 px, sideways scrolling on phones, blocked zoom, fake buttons, unlabeled fields, missing alt text, heading order, removed focus outlines, motion without a reduced-motion rule, emoji used as icons, purple-gradient and gradient-text "AI look", cards inside cards, and unfinished filler copy. These are 16 of the 66 checks in Second Pass's interface-polish skill, which also walks the page with a real keyboard, measures layout shift and fixes what it finds.</p>
+    <p style="margin-top:8px;color:var(--muted)">Contrast, text size, tap targets at 390 px, sideways scrolling on phones, blocked zoom, fake buttons, unlabeled fields, missing alt text, heading order, removed focus outlines, motion without a reduced-motion rule, emoji used as icons, purple-gradient and gradient-text "AI look", cards inside cards, and unfinished filler copy. These are 16 of the 66 checks in UI/UX Pass's interface-polish skill, which also walks the page with a real keyboard, measures layout shift and fixes what it finds.</p>
   </div>
 </section>
 </main>
@@ -217,7 +217,7 @@ async function check(html){
   out.innerHTML = `<div class="score" style="margin-top:32px"><b>${pass}/16</b><span>checks passed${pass === 16 ? ' — now try the full 66.' : ` · ${16 - pass} to fix`}</span></div>
   <div class="share" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:16px"><span style="color:var(--muted)">Share your score</span><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SHARE_URL)}" data-share="linkedin">LinkedIn</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(shareText(pass))}" data-share="x">X</a><button class="btn btn-ghost" type="button" id="copy-score">Copy result</button></div>
   <ul class="res">${R.sort((a,b) => a.ok - b.ok).map(r => `<li class="${r.ok ? 'ok' : 'bad'}"><span class="st">${r.ok ? 'Pass' : 'Fix'}</span><h3>${esc(r.name)}${r.ok ? '' : ` <span style="color:var(--muted);font-weight:500">(${r.n})</span>`}</h3>${r.ok ? '' : `<p>${esc(r.fix)}</p><code>${r.ex.map(esc).join(' · ')}</code>`}</li>`).join('')}</ul>
-  <div class="upsell"><p class="launch" data-launch hidden></p><h2 style="font-size:24px">${pass === 16 ? 'Now run all 66 checks' : `Let Claude fix these ${16 - pass} for you`}</h2><p>This was 16 of 66 checks. Second Pass's interface-polish skill runs all 66 in a real browser, walks the page with a keyboard, measures layout shift, then fixes what it found. Start with two free skills, or get all 40.</p>
+  <div class="upsell"><p class="launch" data-launch hidden></p><h2 style="font-size:24px">${pass === 16 ? 'Now run all 66 checks' : `Let Claude fix these ${16 - pass} for you`}</h2><p>This was 16 of 66 checks. UI/UX Pass's interface-polish skill runs all 66 in a real browser, walks the page with a keyboard, measures layout shift, then fixes what it found. Start with two free skills, or get all 40.</p>
   <div class="row"><a class="btn btn-ghost" data-free href="index.html#free">Get 2 free skills</a><a class="btn btn-primary" data-buy href="index.html#pricing" style="box-shadow:0 0 0 1px #fff">Get all 40 · <span data-price="49">$49</span></a></div></div>`;
   if (window.SP) { SP.apply(); SP.track('Checker run', {score: pass}); }
   out.querySelectorAll('[data-share]').forEach(a => a.addEventListener('click', () => { if (window.SP) SP.track('Share score', {to: a.dataset.share}); }));
