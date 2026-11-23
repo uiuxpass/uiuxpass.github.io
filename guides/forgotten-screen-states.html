@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The screen states designers forget, and how to check every frame · UI/UX Pass</title>
+<meta name="description" content="Seven screen states to design for every screen, and how to measure contrast, target size and palette drift from a static design.">
+<meta property="og:title" content="The screen states designers forget, and how to check every frame · UI/UX Pass">
+<meta property="og:description" content="Seven screen states to design for every screen, and how to measure contrast, target size and palette drift from a static design.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/forgotten-screen-states.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/forgotten-screen-states.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">Second Pass <small>by UI/UX Pass</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../index.html#proof">Proof</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/">Guides</a>
+      <a class="link" href="../index.html#faq">FAQ</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing">Get Second Pass</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Design handoff</p>
+<h1>The screen states designers forget, and how to check every frame</h1>
+<p class="meta">7 min read · Updated 21 November 2026</p>
+<p>Most handoff questions are not about the happy path. They are about everything around it: what the list looks like with nothing in it, what the button does while it waits, what happens when the network drops. When those frames are missing, developers invent them, and the invented version ships.</p>
+<p>Here are the states worth designing for every screen, a quick way to check a file for them, and how to measure the parts of a static design you can actually measure.</p>
+
+<h2>The states</h2>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">State</th><th scope="col">What to design</th><th scope="col">Common miss</th></tr></thead>
+<tbody>
+<tr><td>Empty</td><td>Why it is empty and the next step ("No invoices yet. Create your first one.")</td><td>A blank area, or an illustration with no action.</td></tr>
+<tr><td>Loading</td><td>Skeleton or progress for waits over about 300 ms; nothing for shorter ones.</td><td>Spinners that flash on fast connections.</td></tr>
+<tr><td>Error</td><td>What happened and how to fix it, per cause: network, validation, permission, server.</td><td>One generic "Something went wrong".</td></tr>
+<tr><td>Success</td><td>Confirmation that names the result, with undo where possible.</td><td>Silence: the user is not sure it worked.</td></tr>
+<tr><td>Partial and long content</td><td>Very long names, 0, 1 and 200 items, missing optional fields.</td><td>Layouts that only work with the sample data.</td></tr>
+<tr><td>Disabled and read-only</td><td>Why it is unavailable and what would enable it.</td><td>Greyed-out buttons with no explanation.</td></tr>
+<tr><td>No permission</td><td>What this person can see, and who to ask.</td><td>A screen that looks broken.</td></tr>
+</tbody></table></div>
+<p>Not every screen needs all seven, but each one should be either designed or explicitly marked "not applicable". That single habit removes most handoff back-and-forth.</p>
+
+<h2>Measure what a static design can show</h2>
+<p>A PNG export cannot tell you about keyboard behaviour or motion, but it can tell you three things precisely:</p>
+<ol>
+<li><strong>Contrast.</strong> Draw a tight box around a piece of text or a control and compare its two main colours. Body text needs 4.5:1, large text and UI parts like borders and icons 3:1.</li>
+<li><strong>Target size.</strong> Divide the box size by the export scale (an @2x export of a 44 px button is 88 px wide in the image). Touch targets should be at least 44 px; the WCAG 2.2 minimum is 24 px with spacing.</li>
+<li><strong>Palette drift.</strong> Quantise the image to its main colours and look for near-duplicates: two blues 6 units apart are almost always one token used twice and an eyedropped copy.</li>
+</ol>
+<p>A real example, from a mobile invoice list exported at @2x:</p>
+<pre>Status text #B8BCC4 on white   1.90:1   fails 4.5 (text)
+"Send reminders" white on #7AA2FF   2.49:1   fails 4.5; 358×39 px, under 44
+Close ✕ #9AA0A6              2.64:1   fails 3.0 (icon)
+Client names #111827          17.7:1   passes</pre>
+<p>Notice the second line: a primary button at 2.49:1 also <em>looks disabled</em>. Contrast problems are often hierarchy problems in disguise.</p>
+<p>Two cautions. Anti-aliasing blurs thin text, so treat results within about 0.3 of a threshold as borderline, not pass or fail. And compressed exports shift colours slightly; compare against tokens with a small tolerance.</p>
+
+<h2>A five-minute review routine</h2>
+<ol>
+<li>Name the primary action of the screen. If you can't, the hierarchy is the first problem.</li>
+<li>Measure contrast and size for body text, small text, the primary button, icon buttons and form fields.</li>
+<li>Walk the state table above and list what is missing per frame.</li>
+<li>Read every label, button and error out loud: does it say what happens?</li>
+<li>Compare across frames: does the same component look and behave the same everywhere?</li>
+</ol>
+<p>Write findings as frame, issue, why it matters, fix. "Contrast is low" is a comment; "Status text 1.90:1, use a status pill with text at 4.5:1 or more" is a fix.</p>
+
+<div class="cta">
+<p><strong>Let Claude do the measuring.</strong> Second Pass's <code>design-file-review</code> skill measures contrast, sizes and palette drift from a screenshot or Figma frame, lists missing states per frame and ranks the fixes. Ask "Is this frame ready for dev?" and attach the export.</p>
+<a class="btn btn-primary" href="../index.html#pricing">See Second Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+</body>
+</html>

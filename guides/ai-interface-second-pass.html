@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before you ship an AI-built interface: a second pass in five areas · UI/UX Pass</title>
+<meta name="description" content="What 66 browser checks found on a typical AI-made page, and how to fix accessibility, layout, typography, motion and the generic AI look.">
+<meta property="og:title" content="Before you ship an AI-built interface: a second pass in five areas · UI/UX Pass">
+<meta property="og:description" content="What 66 browser checks found on a typical AI-made page, and how to fix accessibility, layout, typography, motion and the generic AI look.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/ai-interface-second-pass.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/ai-interface-second-pass.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">Second Pass <small>by UI/UX Pass</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../index.html#proof">Proof</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/">Guides</a>
+      <a class="link" href="../index.html#faq">FAQ</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing">Get Second Pass</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · AI-built interfaces</p>
+<h1>Before you ship an AI-built interface: a second pass in five areas</h1>
+<p class="meta">9 min read · Updated 21 November 2026</p>
+<p>AI tools now produce a working page in a minute. They also produce the same page: purple-to-blue gradient, emoji icons, glowing cards, a placeholder sentence someone forgot, and a "Submit" button that is actually a <code>&lt;span&gt;</code>. The first pass is fast. The second pass is where it becomes a product.</p>
+<p>We ran a typical AI-made pricing page through 66 automated browser checks. It passed 38. Here is what failed, grouped into the five areas worth checking on every AI-built interface, and how to fix each.</p>
+
+<h2>1. Accessibility: the failures that lock people out</h2>
+<p>Seven critical failures on our test page, all common in generated code:</p>
+<ul>
+<li><strong>Text contrast:</strong> a "Submit" button label at 2.82:1 and a "/mo" label at 4.18:1. Body text needs 4.5:1.</li>
+<li><strong>Fake buttons:</strong> clickable <code>&lt;span&gt;</code>s for the monthly/yearly toggle. They cannot be reached with Tab and are invisible to screen readers. Use <code>&lt;button&gt;</code>.</li>
+<li><strong>Blocked zoom:</strong> <code>maximum-scale=1</code> in the viewport tag stops people from enlarging text. Remove it.</li>
+<li><strong>Small targets:</strong> icon buttons under 44 px on mobile.</li>
+<li><strong>Ignored reduced motion:</strong> animations that run even when the user asked the system for less motion.</li>
+</ul>
+
+<h2>2. Layout: what breaks at 390 px</h2>
+<p>Generated layouts are usually designed at one desktop width. At 390 px, the three fixed-width cards ran off the screen; at 320 px the page was 740 px wider than the viewport. Check:</p>
+<ul>
+<li>No horizontal scrolling at 390 px (and at 320 px for WCAG reflow).</li>
+<li>No text cut off by its box, no overlapping controls.</li>
+<li>Layout shift under 0.1 while the page loads, so buttons don't jump under the cursor.</li>
+</ul>
+
+<h2>3. Typography: hierarchy and readability</h2>
+<ul>
+<li>Body text at least 16 px on mobile inputs (smaller makes iOS zoom in).</li>
+<li>Lines under about 90 characters, line height 1.3–2.0.</li>
+<li>The largest heading at least 1.5 times the body size, so the page has a clear entry point.</li>
+<li>No more than three font families and about twelve sizes.</li>
+<li>Tabular numbers for prices and metrics, so digits line up.</li>
+</ul>
+
+<h2>4. Motion: fast, purposeful, interruptible</h2>
+<ul>
+<li>UI motion under 300 ms (dialogs and drawers up to 500 ms).</li>
+<li>Ease-out for things entering, never ease-in.</li>
+<li>Animate <code>transform</code> and <code>opacity</code> only; never <code>width</code>, <code>top</code> or <code>margin</code>.</li>
+<li>No <code>transition: all</code>, no endless animations except loaders, nothing appearing from <code>scale(0)</code>.</li>
+</ul>
+
+<h2>5. Surface: the generic AI look</h2>
+<p>These are not bugs, but they make a product look generated and interchangeable:</p>
+<ul>
+<li>Default purple-blue gradients and gradient-filled text (unless they are your brand).</li>
+<li>Coloured glow shadows and cards nested inside cards.</li>
+<li>Emoji used as icons and a rounded icon tile above every heading.</li>
+<li>More than five corner radii or shadow styles on one page.</li>
+</ul>
+<p>And the content checks that embarrass launches: placeholder Latin or to-do notes left in the copy, links to <code>#</code>, JavaScript and console errors, failed requests and broken images.</p>
+
+<h2>The result</h2>
+<p>Fixing exactly what the checks found, with the content unchanged, took the page from 38 to 66 of 66: readable contrast, real buttons, zoom allowed, a layout that fits a phone, calmer surfaces. The first hand-fix still left two critical items (a button at 4.23:1 and a 40 px toggle); measuring again caught them. That is the point of a second pass: you check the fix too.</p>
+
+<h2>Make it routine</h2>
+<ol>
+<li>Run the checks at 1440 and 390 px on every page an AI tool produces.</li>
+<li>Fix critical items first (they block people), then major, then the generic look.</li>
+<li>Run the checks again. Ship when critical is zero.</li>
+</ol>
+
+<div class="cta">
+<p><strong>All 66 checks, in one request.</strong> Second Pass's <code>interface-polish</code> skill opens your page in a real browser at both widths, runs these checks, fixes the safe items and lists the rest. "Check the polish of this page" plus an HTML file or URL.</p>
+<a class="btn btn-primary" href="../index.html#pricing">See Second Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+</body>
+</html>

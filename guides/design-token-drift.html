@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to catch design-token drift before it ships · UI/UX Pass</title>
+<meta name="description" content="Find colour, type, spacing and radius drift with numbers: why reading CSS misses it, pass bars per category, and how to fix the three common causes.">
+<meta property="og:title" content="How to catch design-token drift before it ships · UI/UX Pass">
+<meta property="og:description" content="Find colour, type, spacing and radius drift with numbers: why reading CSS misses it, pass bars per category, and how to fix the three common causes.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/design-token-drift.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/design-token-drift.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">Second Pass <small>by UI/UX Pass</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../index.html#proof">Proof</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/">Guides</a>
+      <a class="link" href="../index.html#faq">FAQ</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing">Get Second Pass</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Design systems</p>
+<h1>How to catch design-token drift before it ships</h1>
+<p class="meta">8 min read · Updated 21 November 2026</p>
+<p>Every design system drifts. A developer picks <code>#2a5cf0</code> because it "looks like the brand blue". A button gets <code>padding: 13px 18px</code> because it fit the label. A browser default border sneaks onto a <code>&lt;button&gt;</code> nobody restyled. None of these break anything on their own. Together they are why a product starts to feel slightly off, and why every redesign has to start with an audit.</p>
+<p>This guide shows a repeatable way to find drift with numbers instead of squinting at screens.</p>
+
+<h2>Why reading the CSS is not enough</h2>
+<p>The obvious approach is to search the stylesheet for hex codes and pixel values and compare them with your tokens. It misses three kinds of drift:</p>
+<ul>
+<li><strong>Browser defaults.</strong> Buttons, inputs and selects come with their own fonts, borders and padding. If nobody overrode them, they are not in your CSS at all.</li>
+<li><strong>Inheritance.</strong> A text colour set on a parent three levels up is invisible in the rule you are reading.</li>
+<li><strong>Computed values.</strong> <code>1.0625rem</code>, <code>calc()</code> and percentages only become pixels in the browser.</li>
+</ul>
+<p>The reliable source is the <em>computed style</em> of every visible element, measured in a real browser at the widths people use.</p>
+
+<h2>Step 1: get your tokens into one file</h2>
+<p>Any of these formats works: W3C design tokens JSON (<code>$value</code>, <code>$type</code>), Tokens Studio JSON, a flat <code>{"color.brand": "#2457f5"}</code> file, or a CSS file with custom properties. If your tokens live in Figma variables, export them first. If you have no tokens at all, your page's <code>:root</code> variables are a weak but honest starting point: the check then tells you whether the page is consistent with itself.</p>
+
+<h2>Step 2: measure five categories</h2>
+<p>For each visible element, at 1440 and 390 px wide, collect:</p>
+<ol>
+<li><strong>Colours:</strong> text colour on elements that contain text, background colours that are not transparent, border colours where a border is drawn.</li>
+<li><strong>Font sizes</strong> and <strong>font families</strong> on text.</li>
+<li><strong>Spacing:</strong> margins, paddings and flex or grid gaps, ignoring zero and the left/right margins created by <code>margin: auto</code> centring.</li>
+<li><strong>Corner radius.</strong></li>
+</ol>
+<p>Count each distinct value once per element, so one long list does not outweigh everything else.</p>
+
+<h2>Step 3: compare with tolerance, and say how far off</h2>
+<p>A colour within a distance of about 3 (out of 441 in RGB space) is the token, rendered. A colour at distance 9 is almost certainly drift: someone eyedropped the brand colour from a screenshot. A colour at distance 50 may be a missing token. Report the nearest token every time; it is usually the fix.</p>
+<p>For sizes, allow half a pixel. Then set pass bars per category. These are the defaults we use and why:</p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Category</th><th scope="col">Bar (share of uses on-token)</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><td>Colours</td><td class="num">98%</td><td>Colour drift is the most visible and the easiest to fix.</td></tr>
+<tr><td>Font families</td><td class="num">100%</td><td>An off-brand font is never intentional; usually a control that did not inherit.</td></tr>
+<tr><td>Font sizes</td><td class="num">95%</td><td>Rare one-offs (a badge, a legal line) can be acceptable.</td></tr>
+<tr><td>Corner radius</td><td class="num">95%</td><td>Mixed radii read as unfinished.</td></tr>
+<tr><td>Spacing</td><td class="num">90%</td><td>Optical adjustments are sometimes deliberate; the rest should be on the scale.</td></tr>
+</tbody></table></div>
+
+<h2>Step 4: read the results like a designer</h2>
+<p>Here is a real result from a small pricing page with one "rogue" button:</p>
+<pre>Design system check: 0/5 categories pass
+  FAIL Colors: 72.7% of 11 uses on-token, 3 off-token values
+       #2a5cf0 ×1 → nearest color.brand (#2457f5, distance 9); e.g. button.rogue
+       #000000 ×1 → nearest color.ink (#111827, distance 49); e.g. button.rogue
+       #6b7280 ×1 → nearest color.muted (#4b5563, distance 52); e.g. p.note
+  FAIL Font families: 80.0% of 5 uses on-token, 1 off-token values
+       arial ×1 → nearest inter; e.g. button.rogue</pre>
+<p>Three causes explain almost every finding:</p>
+<ul>
+<li><strong>Near-miss colours</strong> (distance under 15): replace with the token variable.</li>
+<li><strong>Browser defaults</strong> (<code>#000000</code> borders and <code>arial</code> on buttons): add <code>border: 0</code> and <code>font-family: inherit</code> to your button and input base styles. One rule fixes every instance.</li>
+<li><strong>Off-scale spacing in one component</strong>: fix the component's rule, not each element.</li>
+</ul>
+<p>Values far from any token need a decision, not a fix: either the design system is missing something real, or the design should change. Put those in front of the design-system owner with a short pros and cons note.</p>
+
+<h2>Step 5: make it a habit</h2>
+<ul>
+<li>Run the check on every page you touch in a redesign, before and after.</li>
+<li>Run it on new components before they go into the library.</li>
+<li>Track the percentage per category over time; drift creeps back in releases with tight deadlines.</li>
+</ul>
+<p>What a token check cannot see: hover, focus, error and empty states that are not visible on load, and images. List those as "not checked" rather than implying they pass.</p>
+
+<div class="cta">
+<p><strong>Do this in one sentence.</strong> Second Pass's <code>design-system-check</code> skill runs exactly this method in a real browser: "Does this page follow our tokens?" plus your page and token file. It is one of 29 skills with 25 checker scripts for designers and PMs.</p>
+<a class="btn btn-primary" href="../index.html#pricing">See Second Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+</body>
+</html>
