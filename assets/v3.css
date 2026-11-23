@@ -22,6 +22,8 @@ h2{font-weight:500}
 .hero3 .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
 .works{margin-top:28px;display:flex;gap:8px 18px;justify-content:center;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
 .works b{font-weight:500;color:var(--ink-2);font-size:15px}
+.works b{display:inline-flex;align-items:center;gap:7px}
+.works .lg{width:18px;height:18px;flex:none;color:var(--ink)}
 .window{margin:64px 0 0;background:var(--card);border-radius:var(--r-xl);box-shadow:0 0 0 1px rgba(17,18,20,.06),0 30px 60px -30px rgba(17,18,20,.25);overflow:hidden;text-align:left}
 .win-bar{display:flex;align-items:center;gap:7px;height:44px;padding:0 16px;border-bottom:1px solid var(--line);background:#FDFDFC}
 .win-bar i{width:11px;height:11px;border-radius:50%;background:#DEDEDB}
