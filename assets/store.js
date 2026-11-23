@@ -6,7 +6,9 @@ window.SP_CONFIG = {
     code: "LAUNCH40", percent: 40,
     ends: "2026-12-01T07:59:00Z",   /* = Nov 30, 11:59 PM PST, same as the code's end date in Gumroad */
     en: "Launch week · 40% off until Nov 30",
-    vi: "Tuần mở bán · giảm 40% đến hết 30/11"
+    es: "Lanzamiento · 40% de descuento hasta el 30/11",
+    pt: "Lançamento · 40% de desconto até 30/11",
+    ja: "ローンチ週間 · 11月30日まで40%オフ"
   },
   clarityId: "zi120z41fi",  /* Microsoft Clarity, cookies off: visits, scroll, clicks, session replays */
   cloudflareToken: "",   /* Cloudflare Web Analytics token (free): visitors, pages, referrers */
@@ -21,10 +23,12 @@ window.SP = {
     const L = c.launch, on = !!(c.buyUrl && L && L.code && Date.now() < Date.parse(L.ends));
     if (c.buyUrl) document.querySelectorAll('[data-buy]').forEach(a => { a.href = on ? c.buyUrl.replace(/\/$/, '') + '/' + L.code : c.buyUrl; });
     if (on) {
-      const vi = document.documentElement.lang === 'vi', f = v => '$' + (Math.round(v * (100 - L.percent)) / 100).toFixed(2);
-      document.querySelectorAll('[data-price]').forEach(el => { if (el.dataset.done) return; const v = +el.dataset.price; el.dataset.done = 1; el.innerHTML = `<s class="was"><span class="sr-only">${vi ? 'giá gốc ' : 'was '}</span>$${v}</s> <span class="sr-only">${vi ? 'giá mở bán ' : 'now '}</span>${f(v)}`; });
-      document.querySelectorAll('[data-per]').forEach(el => { const v = +el.dataset.per * (100 - L.percent) / 100 / +el.dataset.seats; el.textContent = (vi ? '$' + v.toFixed(2) + ' mỗi người' : '$' + v.toFixed(2) + ' per person'); });
-      document.querySelectorAll('[data-launch]').forEach(el => { el.textContent = vi ? L.vi : L.en; el.hidden = false; });
+      const lang = (document.documentElement.lang || 'en').slice(0, 2);
+      const T = { en: ['was ', 'now ', v => '$' + v + ' per person'], es: ['antes ', 'ahora ', v => '$' + v + ' por persona'], pt: ['antes ', 'agora ', v => '$' + v + ' por pessoa'], ja: ['通常価格 ', 'セール価格 ', v => '1人あたり $' + v] }[lang] || null;
+      const t = T || ['was ', 'now ', v => '$' + v + ' per person'], f = v => '$' + (Math.round(v * (100 - L.percent)) / 100).toFixed(2);
+      document.querySelectorAll('[data-price]').forEach(el => { if (el.dataset.done) return; const v = +el.dataset.price; el.dataset.done = 1; el.innerHTML = `<s class="was"><span class="sr-only">${t[0]}</span>$${v}</s> <span class="sr-only">${t[1]}</span>${f(v)}`; });
+      document.querySelectorAll('[data-per]').forEach(el => { const v = +el.dataset.per * (100 - L.percent) / 100 / +el.dataset.seats; el.textContent = t[2](v.toFixed(2)); });
+      document.querySelectorAll('[data-launch]').forEach(el => { el.textContent = L[lang] || L.en; el.hidden = false; });
     }
     if (c.freeUrl) document.querySelectorAll('[data-free]').forEach(a => { a.href = c.freeUrl; });
   },
