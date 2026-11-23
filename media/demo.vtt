@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00.000 --> 00:06.000
+[No sound] A typical AI-made pricing page: purple gradient, emoji icons, glowing cards.
+
+00:06.000 --> 00:13.000
+The interface checker opens it at 1440 and 390 px: 38 of 66 checks pass, 7 critical.
+
+00:13.000 --> 00:21.000
+Failures listed: low contrast, fake buttons, blocked zoom, overflow on mobile, ignored reduced motion.
+
+00:21.000 --> 00:29.000
+After the fixes, same content: 66 of 66 checks pass, 0 critical.
