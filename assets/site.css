@@ -133,3 +133,12 @@ details p{color:var(--muted);padding-bottom:18px}
 .nav-links a.lang{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 10px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:15px;font-weight:600;letter-spacing:.02em}
 @media (hover:hover){.nav-links a.lang:hover{color:var(--ink)}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.launch{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:4px 14px;margin-top:24px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font-size:15px;font-weight:600}
+.launch::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.price .launch{margin:12px 0 4px}.upsell .launch{margin:0 0 12px}
+s.was{color:var(--muted);font-weight:400;text-decoration-thickness:1px;margin-right:.15em}
+.price .amt s.was{font-size:26px;vertical-align:.5em}
+.btn s.was,.upsell s.was{color:rgba(255,255,255,.72)}.btn-ghost s.was{color:var(--muted)}
+.upsell .launch{background:#fff;color:var(--accent-ink)}
+.tiers dd{white-space:nowrap}
+@media (max-width:520px){.price .amt small{display:block;margin-top:4px}.price .amt{font-size:40px}.price .amt s.was{font-size:20px}}

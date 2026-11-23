@@ -1,7 +1,13 @@
 /* ===== The one file to fill in before launch (used by every page) ===== */
 window.SP_CONFIG = {
-  buyUrl: "",   /* TEMP until Gumroad is published: https://uiuxpass.gumroad.com/l/second-pass */          /* Gumroad paid product, e.g. https://uiuxpass.gumroad.com/l/second-pass */
-  freeUrl: "https://github.com/uiuxpass/second-pass-free",   /* TEMP; later https://uiuxpass.gumroad.com/l/second-pass-free */          /* Gumroad free product, e.g. https://uiuxpass.gumroad.com/l/second-pass-free */
+  buyUrl: "",          /* Gumroad paid product, e.g. https://uiuxpass.gumroad.com/l/second-pass */
+  freeUrl: "https://github.com/uiuxpass/second-pass-free",          /* Gumroad free product, e.g. https://uiuxpass.gumroad.com/l/second-pass-free */
+  launch: {             /* launch sale: Gumroad discount code, applied to every buy link until it ends, then the page goes back to list prices by itself */
+    code: "LAUNCH40", percent: 40,
+    ends: "2026-12-01T07:59:00Z",   /* = Nov 30, 11:59 PM PST, same as the code's end date in Gumroad */
+    en: "Launch week · 40% off until Nov 30",
+    vi: "Tuần mở bán · giảm 40% đến hết 30/11"
+  },
   cloudflareToken: "",   /* Cloudflare Web Analytics token (free): visitors, pages, referrers */
   plausibleDomain: "",   /* optional, Plausible (paid): adds click events — Buy click, Free click, Checker run */
   testimonials: [        /* only real quotes, with permission. Leave empty and the section stays hidden. */
@@ -11,8 +17,14 @@ window.SP_CONFIG = {
 window.SP = {
   apply() {
     const c = window.SP_CONFIG;
-    if (c.buyUrl) document.querySelectorAll('[data-buy]').forEach(a => { a.href = c.buyUrl; });
-    else document.querySelectorAll('[data-buy]').forEach(a => { const vi = document.documentElement.lang === 'vi'; a.textContent = vi ? 'Mở bán trong tuần này' : 'Opening this week'; a.href = a.closest('#pricing') ? (vi ? '#free' : '#free') : '#pricing'; });
+    const L = c.launch, on = !!(c.buyUrl && L && L.code && Date.now() < Date.parse(L.ends));
+    if (c.buyUrl) document.querySelectorAll('[data-buy]').forEach(a => { a.href = on ? c.buyUrl.replace(/\/$/, '') + '/' + L.code : c.buyUrl; });
+    if (!c.buyUrl) document.querySelectorAll('[data-buy]').forEach(a => { const vi = document.documentElement.lang === 'vi'; a.textContent = vi ? 'Mở bán trong tuần này' : 'Opening this week'; a.href = a.closest('#pricing') ? (vi ? '#free' : '#free') : '#pricing'; });
+    if (on) {
+      const vi = document.documentElement.lang === 'vi', f = v => '$' + (Math.round(v * (100 - L.percent)) / 100).toFixed(2);
+      document.querySelectorAll('[data-price]').forEach(el => { if (el.dataset.done) return; const v = +el.dataset.price; el.dataset.done = 1; el.innerHTML = `<s class="was"><span class="sr-only">${vi ? 'giá gốc ' : 'was '}</span>$${v}</s> <span class="sr-only">${vi ? 'giá mở bán ' : 'now '}</span>${f(v)}`; });
+      document.querySelectorAll('[data-launch]').forEach(el => { el.textContent = vi ? L.vi : L.en; el.hidden = false; });
+    }
     if (c.freeUrl) document.querySelectorAll('[data-free]').forEach(a => { a.href = c.freeUrl; });
   },
   track(name, props) { try { if (window.plausible) window.plausible(name, props ? { props } : undefined); } catch (e) {} },
