@@ -8,6 +8,7 @@ window.SP_CONFIG = {
     en: "Launch week · 40% off until Nov 30",
     vi: "Tuần mở bán · giảm 40% đến hết 30/11"
   },
+  clarityId: "zi120z41fi",  /* Microsoft Clarity, cookies off: visits, scroll, clicks, session replays */
   cloudflareToken: "",   /* Cloudflare Web Analytics token (free): visitors, pages, referrers */
   plausibleDomain: "",   /* optional, Plausible (paid): adds click events — Buy click, Free click, Checker run */
   testimonials: [        /* only real quotes, with permission. Leave empty and the section stays hidden. */
@@ -26,10 +27,11 @@ window.SP = {
     }
     if (c.freeUrl) document.querySelectorAll('[data-free]').forEach(a => { a.href = c.freeUrl; });
   },
-  track(name, props) { try { if (window.plausible) window.plausible(name, props ? { props } : undefined); } catch (e) {} },
+  track(name, props) { try { if (window.plausible) window.plausible(name, props ? { props } : undefined); } catch (e) {} try { if (window.clarity) { window.clarity('event', name); if (props) Object.keys(props).forEach(k => window.clarity('set', name + ' ' + k, String(props[k]))); } } catch (e) {} },
   init() {
     const c = window.SP_CONFIG;
     this.apply();
+    if (c.clarityId) { (function (w, d, t, id) { w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); }; const s = d.createElement(t); s.async = 1; s.src = 'https://www.clarity.ms/tag/' + id; const f = d.getElementsByTagName(t)[0]; f.parentNode.insertBefore(s, f); })(window, document, 'script', c.clarityId); }
     if (c.cloudflareToken) { const s = document.createElement('script'); s.defer = true; s.src = 'https://static.cloudflareinsights.com/beacon.min.js'; s.setAttribute('data-cf-beacon', JSON.stringify({ token: c.cloudflareToken })); document.head.appendChild(s); }
     if (c.plausibleDomain) { const s = document.createElement('script'); s.defer = true; s.src = 'https://plausible.io/js/script.js'; s.setAttribute('data-domain', c.plausibleDomain); document.head.appendChild(s); window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); }; }
     document.addEventListener('click', e => { const a = e.target.closest('[data-buy],[data-free]'); if (a) this.track(a.hasAttribute('data-buy') ? 'Buy click' : 'Free click', { page: location.pathname }); });
