@@ -39,6 +39,7 @@ img,video{max-width:100%;height:auto;display:block}
 @media (hover:hover){.nav-links a.link:hover{color:var(--ink)}}
 .nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 @media (max-width:860px){.nav-links a.link{display:none}.brand small{display:none}}
+@media (max-width:1180px){.brand small{display:none}.nav-links a.link{padding:0 9px;white-space:nowrap}}
 section{padding:80px 0}
 .kicker{font-size:13px;font-weight:600;color:var(--accent-ink);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 .sec-head{max-width:680px;margin-bottom:40px}
