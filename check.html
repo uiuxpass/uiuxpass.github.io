@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free AI interface checker: 16 checks in your browser · Second Pass</title>
+<meta name="description" content="Paste the HTML of any AI-made page and get 16 measured checks in seconds: contrast, tiny text, tap targets, fake buttons, blocked zoom, mobile overflow and the generic AI look. Free, nothing is uploaded.">
+<meta property="og:title" content="Free AI interface checker · Second Pass">
+<meta property="og:description" content="16 measured checks for any AI-made page, in your browser. Nothing is uploaded.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<link rel="canonical" href="https://uiuxpass.com/check.html">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.tool{display:grid;gap:16px;margin-top:32px}
+.tool textarea{width:100%;min-height:220px;padding:14px 16px;border-radius:var(--r-m);border:1px solid var(--line-control);background:var(--card);font:14px/1.5 "Geist Mono",ui-monospace,monospace;color:var(--ink);resize:vertical}
+.tool label{font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.filebtn{position:relative;overflow:hidden}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.score{scroll-margin-top:96px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:8px 0 4px}
+.score b{font-size:56px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.res{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.res li{background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.res .st{font-weight:600;font-size:14px;padding:2px 10px;border-radius:999px;height:fit-content}
+.res .ok .st{background:var(--pass-soft);color:var(--pass)}
+.res .bad .st{background:var(--fail-soft);color:var(--fail)}
+.res h3{font-size:16px}
+.res p,.res code{grid-column:2;font-size:15px;color:var(--muted)}
+.res code{font-family:"Geist Mono",ui-monospace,monospace;font-size:13px;word-break:break-word}
+.upsell{margin-top:28px;background:var(--ink);color:#fff;border-radius:var(--r-l);padding:28px}
+.upsell p{color:#d5d7dc;margin:8px 0 18px;max-width:62ch}
+.upsell .btn-ghost{background:#fff}
+.frames{position:absolute;left:-10000px;top:0}
+.frames iframe{border:0}
+#out:empty{display:none}
+.privacy{font-size:15px;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/logo-mark.svg" alt="" width="28" height="28">Second Pass <small>by UI/UX Pass</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="index.html#skills">Skills</a>
+      <a class="link" href="check.html" aria-current="page">Free checker</a>
+      <a class="link" href="index.html#pricing">Pricing</a>
+      <a class="link" href="guides/">Guides</a>
+      <a class="btn btn-primary" data-buy href="index.html#pricing">Get Second Pass</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="padding-bottom:24px">
+  <div class="narrow">
+    <p class="kicker plain">Free tool</p>
+    <h1>Is your AI-made page actually finished?</h1>
+    <p class="lede">Paste the HTML of a page Claude, v0, Lovable or Cursor made. In a few seconds you get 16 measured checks at desktop and phone width, each with how to fix it.</p>
+    <p class="privacy">Runs entirely in your browser. Nothing is uploaded or stored. Scripts in your page are not run.</p>
+
+    <form class="tool" id="form">
+      <label for="html">Page HTML</label>
+      <textarea id="html" name="html" spellcheck="false" placeholder="<!doctype html> … paste the whole page here"></textarea>
+      <div class="row">
+        <button class="btn btn-primary" type="submit">Check this page</button>
+        <label class="btn btn-ghost filebtn" for="file">Choose an .html file<input type="file" id="file" accept=".html,.htm,text/html"></label>
+        <button class="btn btn-ghost" type="button" id="sample">Try an AI-made sample</button>
+      </div>
+    </form>
+
+    <div id="out" aria-live="polite"></div>
+  </div>
+</section>
+
+<section style="padding-top:24px">
+  <div class="narrow">
+    <h2 style="font-size:24px">What it checks</h2>
+    <p style="margin-top:8px;color:var(--muted)">Contrast, text size, tap targets at 390 px, sideways scrolling on phones, blocked zoom, fake buttons, unlabeled fields, missing alt text, heading order, removed focus outlines, motion without a reduced-motion rule, emoji used as icons, purple-gradient and gradient-text "AI look", cards inside cards, and unfinished filler copy. These are 16 of the 66 checks in Second Pass's interface-polish skill, which also walks the page with a real keyboard, measures layout shift and fixes what it finds.</p>
+  </div>
+</section>
+</main>
+
+<div class="frames" aria-hidden="true"><iframe id="f1" title="desktop render" width="1440" height="900" sandbox="allow-same-origin" tabindex="-1"></iframe><iframe id="f2" title="phone render" width="390" height="844" sandbox="allow-same-origin" tabindex="-1"></iframe></div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer"><a href="guides/">Guides</a><a href="changelog.html">Changelog</a><a href="refund.html">Refunds</a><a href="terms.html">License &amp; terms</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+</footer>
+
+<script src="assets/store.js"></script>
+<script>
+const SAMPLE = `<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><style>
+body{margin:0;font-family:system-ui;background:linear-gradient(135deg,#7c3aed,#c026d3);color:#fff}
+.hero{padding:80px 40px;text-align:center}.hero h1{font-size:56px;background:linear-gradient(90deg,#fff,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#e9d5ff;opacity:.7;font-size:13px}.grid{display:flex;gap:24px;padding:40px;width:1100px}
+.card{background:rgba(255,255,255,.12);border-radius:24px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.3)}.card .card{background:rgba(255,255,255,.1);min-height:90px;min-width:200px}
+.cta{display:inline-block;background:#a78bfa;color:#ede9fe;padding:8px 14px;border-radius:999px;cursor:pointer}
+button:focus{outline:none}.fade{animation:f 2s infinite}@keyframes f{50%{opacity:.6}}
+</style></head><body><div class="hero"><h1>🚀 Supercharge your workflow</h1><p class="sub">Lorem ipsum dolor sit amet, the all-in-one platform.</p>
+<div class="cta" onclick="go()">Get started</div></div><div class="grid"><div class="card"><h3>✨ Fast</h3><div class="card"><p class="fade">Blazing speed</p></div></div>
+<div class="card"><h4>🔒 Secure</h4><img src="shield.png"><input placeholder="Email"></div><div class="card"><h3>💡 Smart</h3><button>→</button></div></div></body></html>`;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function parseColor(c){ const m = c && c.match(/rgba?\(([^)]+)\)/); if(!m) return null; const p = m[1].split(/[ ,/]+/).filter(Boolean).map(Number); return {r:p[0],g:p[1],b:p[2],a:p.length>3?p[3]:1}; }
+const lin = v => (v/=255) <= .04045 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4);
+const L = c => .2126*lin(c.r) + .7152*lin(c.g) + .0722*lin(c.b);
+const ratio = (a,b) => { const x = Math.max(L(a),L(b)), y = Math.min(L(a),L(b)); return (x+.05)/(y+.05); };
+const blend = (top, bot) => ({r: top.r*top.a + bot.r*(1-top.a), g: top.g*top.a + bot.g*(1-top.a), b: top.b*top.a + bot.b*(1-top.a), a: 1});
+
+function load(frame, html){ return new Promise(res => { frame.onload = () => setTimeout(res, 150); frame.srcdoc = html; }); }
+
+function bgOf(el, win){
+  const layers = []; let e = el, img = false;
+  while (e && e.nodeType === 1){ const s = win.getComputedStyle(e); if (s.backgroundImage && s.backgroundImage !== 'none') img = true;
+    const c = parseColor(s.backgroundColor); if (c && c.a > 0){ layers.push(c); if (c.a >= 1) break; } e = e.parentElement; }
+  let base = {r:255,g:255,b:255,a:1}; for (let i = layers.length - 1; i >= 0; i--) base = blend(layers[i], base);
+  return {c: base, img};
+}
+function gradientColor(el, win){ let e = el; while (e && e.nodeType === 1){ const bi = win.getComputedStyle(e).backgroundImage; const m = bi && bi.match(/rgba?\([^)]+\)/g); if (m){ const cs = m.map(parseColor); return cs; } e = e.parentElement; } return null; }
+const vis = (el, win) => { const r = el.getBoundingClientRect(), s = win.getComputedStyle(el); return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && s.display !== 'none' && +s.opacity > 0.05; };
+const label = el => (el.getAttribute('aria-label') || el.innerText || el.value || el.getAttribute('placeholder') || el.tagName).trim().replace(/\s+/g,' ').slice(0,40);
+
+function run(desk, phone, raw){
+  const dw = desk.contentWindow, dd = desk.contentDocument, pw = phone.contentWindow, pd = phone.contentDocument;
+  const R = [];
+  const add = (name, fails, fix, ex) => R.push({name, ok: fails.length === 0, n: fails.length, fix, ex: fails.slice(0,3)});
+  // 1 contrast
+  const lowC = []; const seen = new Set(); const tw = dd.createTreeWalker(dd.body, NodeFilter.SHOW_TEXT); let n;
+  while ((n = tw.nextNode())){ const el = n.parentElement; if (!el || seen.has(el) || !n.textContent.trim() || !vis(el, dw)) continue; seen.add(el);
+    if (el.closest('[disabled],[aria-disabled=true]')) continue;
+    const s = dw.getComputedStyle(el); let fg = parseColor(s.color); if (!fg) continue; let {c: bg, img} = bgOf(el, dw);
+    if (fg.a < 1) fg = blend(fg, bg);
+    if (s.webkitTextFillColor && /0\)$/.test(s.webkitTextFillColor)) continue;
+    const op = +s.opacity < 1 ? +s.opacity : 1; if (op < 1) fg = blend({...fg, a: op}, bg);
+    let r = ratio(fg, bg);
+    if (img){ const g = gradientColor(el, dw); if (g && g.length) r = Math.min(...g.map(c => ratio(fg, blend(c, {r:255,g:255,b:255,a:1})))); }
+    const big = parseFloat(s.fontSize) >= 24 || (parseFloat(s.fontSize) >= 18.66 && +s.fontWeight >= 700);
+    if (r < (big ? 3 : 4.5)) lowC.push(`"${n.textContent.trim().slice(0,30)}" ${r.toFixed(2)}:1`); }
+  add('Text contrast meets WCAG AA (4.5:1, large text 3:1)', lowC, 'Darken the text or lighten the background until the ratio passes; check text on gradients against the lightest part.');
+  // 2 tiny text
+  const tiny = []; for (const el of seen){ const fs = parseFloat(dw.getComputedStyle(el).fontSize); if (fs < 12) tiny.push(`"${el.innerText.trim().slice(0,30)}" ${fs}px`); }
+  add('No text smaller than 12px', tiny, 'Body text 16px, nothing under 12px.');
+  // 3 targets at 390
+  const ctrls = [...pd.querySelectorAll('a[href],button,input,select,textarea,[role=button],[onclick]')].filter(e => vis(e, pw));
+  const box = e => { if (e.tagName === 'INPUT' && /checkbox|radio/.test(e.type)) { const l = e.closest('label') || (e.id && pd.querySelector(`label[for="${e.id}"]`)); if (l) return l.getBoundingClientRect(); } return e.getBoundingClientRect(); };
+  const small = ctrls.filter(e => { const r = box(e); return (r.width < 44 || r.height < 44) && !(e.tagName === 'A' && e.closest('p')); }).map(e => { const r = e.getBoundingClientRect(); const r2 = box(e); return `${e.tagName.toLowerCase()} "${label(e)}" ${Math.round(r2.width)}×${Math.round(r2.height)}`; });
+  add('Tap targets at least 44×44 px on a phone', small, 'Give buttons and links min-height: 44px and enough padding.');
+  // 4 overflow
+  const ov = Math.max(pd.documentElement.scrollWidth, pd.body.scrollWidth) - 390;
+  add('No sideways scrolling at 390 px', ov > 1 ? [`page is ${ov}px wider than the phone`] : [], 'Remove fixed widths; use max-width: 100% and flexible grids.');
+  // 5 zoom
+  const vp = (dd.querySelector('meta[name=viewport]') || {}).content || '';
+  const vpf = []; if (!/width=device-width/.test(vp.replace(/\s/g,''))) vpf.push('viewport meta missing width=device-width'); if (/user-scalable=(no|0)|maximum-scale=1(\.0)?(,|$)/.test(vp.replace(/\s/g,''))) vpf.push('zoom is blocked');
+  add('Phone viewport set and zoom allowed', vpf, 'Use <meta name="viewport" content="width=device-width, initial-scale=1"> and never block zoom.');
+  // 6 fake buttons
+  const fake = [...dd.querySelectorAll('div,span,li,img')].filter(e => vis(e, dw) && (e.hasAttribute('onclick') || dw.getComputedStyle(e).cursor === 'pointer') && !e.getAttribute('role') && !e.closest('a,button')).map(e => `${e.tagName.toLowerCase()} "${label(e)}"`);
+  add('Clickable things are real buttons or links', fake, 'Use <button> for actions and <a href> for navigation so keyboard and screen readers work.');
+  // 7 labels
+  const nolab = [...dd.querySelectorAll('input:not([type=hidden]):not([type=submit]):not([type=button]),select,textarea')].filter(e => !(e.labels && e.labels.length) && !e.getAttribute('aria-label') && !e.getAttribute('aria-labelledby')).map(e => `${e.tagName.toLowerCase()} "${label(e)}"`);
+  add('Every form field has a visible label', nolab, 'Add a <label for> above each field; a placeholder is not a label.');
+  // 8 alt
+  const noalt = [...dd.querySelectorAll('img')].filter(e => !e.hasAttribute('alt')).map(e => e.getAttribute('src') || 'img');
+  add('Images have alt text', noalt, 'Describe what the image shows; use alt="" for decoration.');
+  // 9 icon-only buttons have names
+  const noname = [...dd.querySelectorAll('button,a[href]')].filter(e => vis(e, dw) && !(e.getAttribute('aria-label') || '').trim() && !/[a-z0-9]/i.test(e.innerText || '') && !e.querySelector('img[alt]:not([alt=""])')).map(e => `${e.tagName.toLowerCase()} "${(e.innerText||'').trim()}"`);
+  add('Icon-only buttons have an accessible name', noname, 'Add aria-label="…" that says what the button does.');
+  // 10 headings
+  const hs = [...dd.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(h => +h.tagName[1]); const skip = []; let prev = 0; hs.forEach((h, i) => { if (prev && h > prev + 1) skip.push(`h${prev} → h${h}`); prev = h; });
+  if (!hs.includes(1)) skip.push('no h1');
+  add('Headings in order, with one h1', skip, 'Start with one h1 and never skip a level.');
+  // CSS text for rule checks
+  let css = ''; for (const ss of dd.styleSheets){ try { for (const r of ss.cssRules) css += r.cssText + '\n'; } catch(e){} }
+  // 11 focus removed
+  const focusOff = /:focus[^{-]*\{[^}]*outline:\s*(none|0)/.test(css) && !/:focus-visible[^{]*\{[^}]*(outline|box-shadow)/.test(css) ? ['outline removed on :focus with no replacement'] : [];
+  add('Keyboard focus stays visible', focusOff, 'Keep a clear :focus-visible outline (2px, 3:1 contrast).');
+  // 12 reduced motion
+  const anim = [...dd.querySelectorAll('*')].some(e => { const s = dw.getComputedStyle(e); return s.animationName !== 'none' && parseFloat(s.animationDuration) > 0; });
+  add('Animation respects reduced-motion settings', anim && !/prefers-reduced-motion/.test(css) ? ['animations run with no prefers-reduced-motion rule'] : [], 'Wrap motion in @media (prefers-reduced-motion: no-preference) or turn it off under reduce.');
+  // 13 emoji icons
+  const emo = [...dd.querySelectorAll('h1,h2,h3,h4,button,a,li,.icon')].filter(e => /\p{Extended_Pictographic}/u.test(e.textContent)).map(e => `"${e.textContent.trim().slice(0,24)}"`);
+  add('No emoji used as icons', emo, 'Use one consistent SVG icon set; emoji render differently on every device and read aloud oddly.');
+  // 14 AI look: purple gradients and gradient text
+  const look = [];
+  for (const e of dd.querySelectorAll('*')){ const s = dw.getComputedStyle(e); const bi = s.backgroundImage || '';
+    if (/gradient/.test(bi)){ const cs = (bi.match(/rgba?\([^)]+\)/g) || []).map(parseColor); if (cs.some(c => c && c.b > 150 && c.r > 90 && c.g < 120)) { look.push(`purple gradient on ${e.tagName.toLowerCase()}`); }
+      if ((s.webkitBackgroundClip || s.backgroundClip) === 'text') look.push(`gradient text "${e.textContent.trim().slice(0,24)}"`); }
+    if (look.length > 5) break; }
+  add('No generic "AI look" (purple gradients, gradient text)', [...new Set(look)], 'Pick a brand colour and a flat background; let type and spacing carry the hierarchy.');
+  // 15 cards in cards
+  const nest = [...dd.querySelectorAll('*')].filter(e => { const s = dw.getComputedStyle(e); const card = el => { if (!/^(DIV|SECTION|ARTICLE|ASIDE|LI|FIGURE)$/.test(el.tagName)) return false; const t = dw.getComputedStyle(el), r = el.getBoundingClientRect(); return r.width >= 160 && r.height >= 80 && parseFloat(t.paddingTop) >= 12 && parseFloat(t.borderTopLeftRadius) >= 8 && (t.boxShadow !== 'none' || (parseColor(t.backgroundColor)||{a:0}).a > 0.05); }; return card(e) && e.parentElement && e.parentElement.closest && [...ancestors(e)].some(card); }).slice(0,3).map(e => `${e.tagName.toLowerCase()}.${(e.className||'').toString().split(' ')[0]}`);
+  function* ancestors(e){ let p = e.parentElement, k = 0; while (p && p !== dd.body && k < 4){ yield p; p = p.parentElement; k++; } }
+  add('No cards inside cards', nest, 'Flatten nested containers; use spacing and dividers inside one card.');
+  // 16 placeholder text
+  const ph = /lorem ipsum|placeholder|your (text|title|company) here|todo|tbd|example\.com/i.test(dd.body.innerText) ? [(dd.body.innerText.match(/lorem ipsum[^.]{0,20}|your (text|title|company) here|todo|tbd|example\.com/i)||[''])[0]] : [];
+  add('No placeholder text left in', ph, 'Replace with real copy; placeholder text makes a page look unfinished.');
+  return R;
+}
+
+const SHARE_URL = 'https://uiuxpass.com/check.html';
+const shareText = (pass) => `My AI-made page passed ${pass}/16 measured checks (contrast, tap targets, fake buttons, mobile overflow) on the free UI/UX Pass checker. Try yours in 30 seconds: ${SHARE_URL}`;
+
+async function check(html){
+  const out = $('#out'); out.innerHTML = '<p style="margin-top:24px">Checking at 1440 px and 390 px…</p>';
+  const clean = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+  await Promise.all([load($('#f1'), clean), load($('#f2'), clean)]);
+  let R; try { R = run($('#f1'), $('#f2'), html); } catch (e) { out.innerHTML = `<p style="margin-top:24px">This page could not be checked (${esc(e.message)}). Make sure you pasted the whole HTML.</p>`; return; }
+  const pass = R.filter(r => r.ok).length;
+  out.innerHTML = `<div class="score" style="margin-top:32px"><b>${pass}/16</b><span>checks passed${pass === 16 ? ' — now try the full 66.' : ` · ${16 - pass} to fix`}</span></div>
+  <div class="share" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:16px"><span style="color:var(--muted)">Share your score</span><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SHARE_URL)}" data-share="linkedin">LinkedIn</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(shareText(pass))}" data-share="x">X</a><button class="btn btn-ghost" type="button" id="copy-score">Copy result</button></div>
+  <ul class="res">${R.sort((a,b) => a.ok - b.ok).map(r => `<li class="${r.ok ? 'ok' : 'bad'}"><span class="st">${r.ok ? 'Pass' : 'Fix'}</span><h3>${esc(r.name)}${r.ok ? '' : ` <span style="color:var(--muted);font-weight:500">(${r.n})</span>`}</h3>${r.ok ? '' : `<p>${esc(r.fix)}</p><code>${r.ex.map(esc).join(' · ')}</code>`}</li>`).join('')}</ul>
+  <div class="upsell"><h2 style="font-size:24px">Let Claude fix these for you</h2><p>This was 16 of 66 checks. Second Pass's interface-polish skill runs all 66 in a real browser, walks the page with a keyboard, measures layout shift, then fixes what it found. Start with two free skills, or get all 40.</p>
+  <div class="row"><a class="btn btn-ghost" data-free href="index.html#free">Get 2 free skills</a><a class="btn btn-primary" data-buy href="index.html#pricing" style="box-shadow:0 0 0 1px #fff">Get all 40 · $49</a></div></div>`;
+  if (window.SP) { SP.apply(); SP.track('Checker run', {score: pass}); }
+  out.querySelectorAll('[data-share]').forEach(a => a.addEventListener('click', () => { if (window.SP) SP.track('Share score', {to: a.dataset.share}); }));
+  const cp = out.querySelector('#copy-score');
+  if (cp) cp.addEventListener('click', async () => {
+    const t = shareText(pass);
+    try { await navigator.clipboard.writeText(t); cp.textContent = 'Copied'; }
+    catch (e) { const ta = document.createElement('textarea'); ta.value = t; document.body.append(ta); ta.select(); try { document.execCommand('copy'); cp.textContent = 'Copied'; } catch (e2) { cp.textContent = 'Copy failed'; } ta.remove(); }
+    if (window.SP) SP.track('Share score', {to: 'copy'});
+  });
+  out.querySelector('.score').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'});
+}
+$('#form').addEventListener('submit', e => { e.preventDefault(); const v = $('#html').value.trim(); if (v) check(v); else $('#html').focus(); });
+$('#sample').addEventListener('click', () => { $('#html').value = SAMPLE; check(SAMPLE); });
+$('#file').addEventListener('change', e => { const f = e.target.files[0]; if (!f) return; f.text().then(t => { $('#html').value = t; check(t); }); });
+</script>
+</body>
+</html>
