@@ -1,0 +1,107 @@
+/* v3: TinyFish layout, x.ai/bot calm look, identity A colours and Geist */
+:root{--panel:#F3F3F1;--r-xl:28px}
+body{background:var(--paper)}
+section{padding:112px 0}
+.kicker{display:none}
+.only-sm{display:none}
+@media (max-width:860px){.only-sm{display:inline}.only-lg{display:none}}
+.nav{background:rgba(251,251,250,.88);border-bottom:0;box-shadow:0 1px 0 rgba(17,18,20,.05)}
+.nav .btn{white-space:nowrap}
+.promo{background:var(--ink);color:#fff;text-align:center;font-size:14px;font-weight:500;padding:10px 16px}
+.wrap.wide{max-width:1240px}
+h2{font-weight:500}
+.btn-lg{min-height:52px;padding:0 26px;font-size:16px}
+.btn-ghost{box-shadow:none;background:var(--panel)}
+@media (hover:hover){.btn-ghost:hover{background:#E9E9E6}}
+
+/* hero */
+.hero3{padding:96px 0 40px;text-align:center}
+.hero3 h1{font-size:68px;line-height:1.04;letter-spacing:-.045em;font-weight:500;max-width:18ch;margin:0 auto}
+.hero3 h1 .soft{color:#8A8C91}
+.hero3 .lede{font-size:19px;color:var(--muted);max-width:52ch;margin:24px auto 0}
+.hero3 .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.works{margin-top:28px;display:flex;gap:8px 18px;justify-content:center;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+.works b{font-weight:500;color:var(--ink-2);font-size:15px}
+.window{margin:64px 0 0;background:var(--card);border-radius:var(--r-xl);box-shadow:0 0 0 1px rgba(17,18,20,.06),0 30px 60px -30px rgba(17,18,20,.25);overflow:hidden;text-align:left}
+.win-bar{display:flex;align-items:center;gap:7px;height:44px;padding:0 16px;border-bottom:1px solid var(--line);background:#FDFDFC}
+.win-bar i{width:11px;height:11px;border-radius:50%;background:#DEDEDB}
+.win-bar span{margin-left:10px;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win-body{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}
+.win-ba{padding:20px}
+.win-ba .ba{border-radius:14px}
+.ba .chip{position:absolute;top:12px;font-size:12px;font-weight:500;padding:6px 10px;border-radius:999px;z-index:3}
+.ba .chip.bad{left:12px;background:#FBE9E7;color:#B3261E}
+.ba .chip.good{right:12px;background:#E3F3EC;color:#087A54}
+.win-ba .ba-control{margin-top:14px;display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted)}
+.win-ba .ba-control input{flex:1}
+.log{background:#111214;color:#D7D8DB;font-size:13px;line-height:1.75;padding:24px 22px}
+.log p{margin:0}
+.log .cmd{color:#fff;margin-top:8px}.log .cmd:first-child{margin-top:0}
+.log .r{color:#FF8A80}.log .g{color:#3DD68C}.log .dim{color:#8A8C91}
+.log b{font-weight:500}
+@media (prefers-reduced-motion:no-preference){.log.play p{opacity:0;animation:logIn .3s var(--ease-out) forwards}}
+@keyframes logIn{to{opacity:1}}
+.caption{max-width:70ch;margin:18px auto 0;text-align:center;font-size:15px;color:var(--muted)}
+@media (max-width:900px){.win-body{grid-template-columns:1fr}.hero3 h1{font-size:44px}.hero3{padding-top:64px}}
+@media (max-width:420px){.hero3 h1{font-size:38px}.ba .chip{font-size:10.5px;padding:4px 8px}}
+
+/* facts */
+.facts{padding:56px 0 24px}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.fact{padding:4px 24px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{display:block;font-size:34px;font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.fact b small{font-size:20px;color:var(--muted);font-weight:500}
+.fact span{display:block;margin-top:8px;font-size:15px;color:var(--muted);line-height:1.5}
+@media (max-width:860px){.facts .wrap{grid-template-columns:1fr 1fr;gap:28px 0}.fact:nth-child(3){border-left:0;padding-left:0}}
+
+/* capability panels */
+.head3{max-width:640px;margin-bottom:48px}
+.head3 h2,#maker h2,.sec-head h2{font-size:44px;line-height:1.08;letter-spacing:-.04em;font-weight:500}
+.head3 p{margin-top:14px;font-size:18px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.panel{display:block;background:var(--panel);border-radius:var(--r-xl);padding:32px 32px 0;text-decoration:none;overflow:hidden;transition:background-color 160ms var(--ease-out)}
+@media (hover:hover){.panel:hover{background:#ECECE9}.panel:hover .mini{transform:translateY(-4px)}}
+.panel h3{font-size:24px;font-weight:500;letter-spacing:-.025em}
+.panel p{margin-top:8px;color:var(--muted);font-size:16px;max-width:44ch}
+.mini{margin-top:28px;background:var(--card);border-radius:16px 16px 0 0;box-shadow:0 0 0 1px rgba(17,18,20,.06),0 12px 30px -18px rgba(17,18,20,.25);overflow:hidden;transition:transform 200ms var(--ease-out)}
+.mini .win-bar{height:34px}
+.mini .win-bar i{width:9px;height:9px}
+.mini img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.more{margin-top:28px;font-size:16px}
+@media (max-width:760px){.panels{grid-template-columns:1fr}.panel{padding:24px 24px 0}.head3 h2,#maker h2,.sec-head h2{font-size:34px}}
+
+/* maker letter */
+#maker{background:var(--card)}
+#maker .narrow{max-width:640px}
+#maker p{margin-top:20px;font-size:19px;line-height:1.65;color:var(--ink-2)}
+#maker h2{margin-bottom:8px}
+#maker .sign{color:var(--muted);font-size:17px}
+
+/* existing sections, calmer */
+.sec-head{margin-bottom:48px}
+#skills .skill,.card{border:0;box-shadow:none;background:var(--panel);border-radius:18px}
+#compare .table-wrap{border:0;box-shadow:none;background:var(--card);border-radius:var(--r-xl)}
+#pricing{background:var(--paper)!important;border:0!important}
+.price{border:0;box-shadow:0 0 0 1px rgba(17,18,20,.06),0 30px 60px -36px rgba(17,18,20,.25);border-radius:var(--r-xl)}
+.price .launch{display:none!important}
+#faq details{border:0;background:var(--panel);border-radius:16px}
+.log{display:flex;flex-direction:column}
+.log .foot{margin-top:auto;padding-top:20px;border-top:1px solid #2A2B2F;color:#8A8C91;font-size:12px}
+@media (max-width:900px){.hero3{padding-top:44px}.log .foot{margin-top:16px}}
+@media (max-width:420px){.hero3 h1{font-size:34px}.hero3 .lede{font-size:17px}}
+.fact .links{display:flex;flex-wrap:wrap;gap:0 16px;margin-top:2px}
+.fact .links a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2)}
+@media (max-width:420px){.ba .chip{font-size:12px}.hide-xs{display:none}}
+.more a{display:inline-flex;align-items:center;min-height:44px}
+.caption{max-width:62ch}
+.hero3 .lede,#maker p{font-size:18px}
+.works,.works b,.win-ba .ba-control{font-size:15px}
+.win-bar span,.log .foot{font-size:12px}
+.fact b small{font-size:24px}
+#maker .sign{font-size:16px}
+.win-ba .ba{border:0;box-shadow:none}
+.log{font-size:14px;line-height:1.7}
+.tag,.tiers .per{font-size:12px}
+.card h3,.kit h3{font-size:18px}
+.price .amt s.was{font-size:24px}
