@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing · Flowdesk</title>
+<style>
+  :root { --bg: #14121f; --card: #1e1b2e; --line: #34304a; --ink: #f4f2fb; --muted: #b9b4cf; --accent: #c4b5fd; --accent-ink: #1b1530; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  main { max-width: 960px; margin: 0 auto; padding: 64px 24px; }
+  h1 { font-size: 44px; line-height: 1.15; margin: 0 0 12px; text-wrap: balance; }
+  h2 { font-size: 24px; margin: 0 0 8px; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 0 0 40px; text-wrap: pretty; }
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; min-width: 0; }
+  .price { font-size: 40px; font-weight: 700; font-variant-numeric: tabular-nums; margin: 8px 0 4px; }
+  .note { font-size: 14px; color: var(--muted); margin: 0 0 20px; }
+  .cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 12px; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: 16px; text-decoration: none; border: 0; cursor: pointer; transition: background-color .15s cubic-bezier(0.23,1,0.32,1), transform .12s cubic-bezier(0.23,1,0.32,1); }
+  .cta:active { transform: scale(0.96); }
+  .cta:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  @media (hover: hover) { .cta:hover { background: #ddd6fe; } }
+  .faq { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 32px; }
+  .faq p { color: var(--muted); max-width: 60ch; }
+  .faq a { color: var(--accent); display: inline-flex; align-items: center; min-height: 44px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Plan your team's week in one place</h1>
+  <p class="lede">Flowdesk keeps tasks, owners and due dates on one board, so nobody has to ask what's next.</p>
+  <div class="plans">
+    <section class="plan" aria-labelledby="p1">
+      <h2 id="p1">Starter</h2>
+      <p class="price">$9</p>
+      <p class="note">Per person per month, billed yearly. Cancel anytime.</p>
+      <a class="cta" href="#starter">Choose Starter</a>
+    </section>
+    <section class="plan" aria-labelledby="p2">
+      <h2 id="p2">Pro</h2>
+      <p class="price">$29</p>
+      <p class="note">Per person per month, billed yearly. Cancel anytime.</p>
+      <a class="cta" href="#pro">Choose Pro</a>
+    </section>
+  </div>
+  <section class="faq" aria-labelledby="faq">
+    <h2 id="faq">Can I cancel?</h2>
+    <p>Yes. Cancel from Settings at any time and keep access until the end of your billing period. <a href="#cancel">How cancelling works</a></p>
+  </section>
+</main>
+</body>
+</html>

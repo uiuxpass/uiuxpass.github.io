@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample deck: checkout redesign review</title>
+<style id="brand">
+:root{
+  --brand-primary:#2F5BD3;
+  --brand-on-primary:#ffffff;
+  --brand-primary-50:#f5f7fd;
+  --brand-primary-100:#e6ebfa;
+  --brand-primary-200:#c9d4f4;
+  --brand-primary-300:#a3b7ec;
+  --brand-primary-400:#6d8ce0;
+  --brand-primary-500:#2f5bd3;
+  --brand-primary-600:#274cb1;
+  --brand-primary-700:#203e8f;
+  --brand-primary-800:#182f6e;
+  --brand-primary-900:#122350;
+  --brand-primary-950:#0b1633;
+  --brand-secondary:#0E0F12;
+  --brand-on-secondary:#ffffff;
+  --brand-secondary-50:#f3f3f3;
+  --brand-secondary-100:#e2e2e3;
+  --brand-secondary-200:#c0c1c1;
+  --brand-secondary-300:#959597;
+  --brand-secondary-400:#565759;
+  --brand-secondary-500:#0e0f12;
+  --brand-secondary-600:#0c0d0f;
+  --brand-secondary-700:#0a0a0c;
+  --brand-secondary-800:#070809;
+  --brand-secondary-900:#050607;
+  --brand-secondary-950:#030404;
+  --brand-accent:#E8552B;
+  --brand-on-accent:#14161B;
+  --brand-accent-50:#fef6f4;
+  --brand-accent-100:#fcebe6;
+  --brand-accent-200:#f9d3c8;
+  --brand-accent-300:#f5b4a2;
+  --brand-accent-400:#ef886b;
+  --brand-accent-500:#e8552b;
+  --brand-accent-600:#c34724;
+  --brand-accent-700:#9e3a1d;
+  --brand-accent-800:#792c16;
+  --brand-accent-900:#582010;
+  --brand-accent-950:#38140a;
+  --brand-text:#14161B;
+  --brand-text-subtle:#5B5F68;
+  --brand-border:#E2E4E8;
+  --brand-surface:#FFFFFF;
+  --brand-surface-subtle:#F6F7F9;
+  --brand-success:#1E7F4F;
+  --brand-success-soft:#e4f0ea;
+  --brand-warning:#9A5A00;
+  --brand-warning-soft:#f3ebe0;
+  --brand-error:#B4312A;
+  --brand-error-soft:#f6e6e5;
+  --brand-info:#2F5BD3;
+  --brand-info-soft:#e6ebfa;
+  --brand-font-heading:"Manrope", system-ui, sans-serif;
+  --brand-font-body:"Manrope", system-ui, sans-serif;
+  --brand-font-mono:"JetBrains Mono", ui-monospace, monospace;
+  --brand-size-display:56px;
+  --brand-size-h1:40px;
+  --brand-size-h2:32px;
+  --brand-size-h3:24px;
+  --brand-size-body:16px;
+  --brand-size-small:14px;
+  --brand-size-caption:12px;
+  --brand-space-1:4px;
+  --brand-space-2:8px;
+  --brand-space-3:12px;
+  --brand-space-4:16px;
+  --brand-space-5:24px;
+  --brand-space-6:32px;
+  --brand-space-7:48px;
+  --brand-space-8:64px;
+  --brand-radius-sm:6px;
+  --brand-radius-md:12px;
+  --brand-radius-lg:20px;
+  --brand-radius-full:999px;
+  --brand-shadow-raised:0 1px 2px rgba(15,17,22,.06), 0 8px 24px -12px rgba(15,17,22,.18);
+  --brand-shadow-overlay:0 2px 4px rgba(15,17,22,.06), 0 24px 48px -20px rgba(15,17,22,.28);
+}
+[data-theme="dark"]{
+  --brand-text:#F2F3F5;
+  --brand-text-subtle:#A9AEB8;
+  --brand-border:#2A2E36;
+  --brand-surface:#0E0F12;
+  --brand-surface-subtle:#16181D;
+}
+
+:root{--brand-primary:#2F5BD3;--brand-on-primary:#fff;--brand-accent:#E8552B;--brand-text:#14161B;--brand-text-subtle:#5B5F68;
+--brand-border:#E2E4E8;--brand-surface:#fff;--brand-surface-subtle:#F6F7F9;--brand-primary-50:#f0f4fd;--brand-primary-900:#0f1e47;
+--brand-font-heading:"Manrope", system-ui, sans-serif;--brand-font-body:"Manrope", system-ui, sans-serif;--brand-radius-md:12px;--brand-radius-lg:20px;
+--brand-shadow-raised:0 1px 2px rgba(15,17,22,.06),0 8px 24px -12px rgba(15,17,22,.18)}
+</style>
+<style>
+*{box-sizing:border-box}html,body{margin:0}body{font-family:var(--brand-font-body);color:var(--brand-text);background:var(--brand-surface-subtle);-webkit-font-smoothing:antialiased}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;padding:10px 16px;background:var(--brand-surface);border-bottom:1px solid var(--brand-border)}
+.bar b{flex:1;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar button{min-height:44px;min-width:44px;padding:0 14px;border:1px solid var(--brand-border);background:var(--brand-surface);color:var(--brand-text);border-radius:999px;font:500 14px var(--brand-font-body);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.bar button.primary{background:var(--brand-primary);color:var(--brand-on-primary);border-color:transparent}
+.bar button:focus-visible,.toc a:focus-visible{outline:2px solid var(--brand-primary);outline-offset:2px}
+@media (hover:hover){.bar button:hover{border-color:var(--brand-text-subtle)}}
+.bar svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.wrap{display:grid;grid-template-columns:220px 1fr;gap:24px;max-width:1240px;margin:0 auto;padding:24px 16px}
+.toc{position:sticky;top:84px;align-self:start;font-size:14px}.toc a{display:flex;align-items:center;min-height:40px;color:var(--brand-text-subtle);text-decoration:none;padding:0 8px;border-radius:8px}
+.toc a.on{color:var(--brand-text);background:var(--brand-surface)}
+main{display:flex;flex-direction:column;gap:20px;min-width:0;container-type:inline-size}
+/* Slide: fixed 1600x900 stage, scaled to fit */
+.frame{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border-radius:var(--brand-radius-md);box-shadow:var(--brand-shadow-raised);background:var(--brand-surface)}
+.slide{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;padding:96px 112px 88px;display:flex;flex-direction:column;gap:32px;background:var(--brand-surface)}
+.slide h1,.slide h2{font-family:var(--brand-font-heading);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.slide h1{font-size:72px;line-height:1.05}.slide h2{font-size:56px;line-height:1.1;max-width:1300px}
+.slide p,.slide li,.slide td,.slide th{font-size:28px;line-height:1.45;text-wrap:pretty}
+.slide .label{font-size:22px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-primary)}
+.slide .lead{font-size:32px;color:var(--brand-text-subtle);max-width:1200px;margin:0}
+.slide .foot{position:absolute;left:112px;right:112px;bottom:32px;display:flex;justify-content:space-between;font-size:18px;color:var(--brand-text-subtle)}
+.slide .notes{display:none}
+.slide[data-layout=cover],.slide[data-layout=divider],.slide[data-layout=closing]{justify-content:center;background:var(--brand-primary-900);color:#fff}
+.slide[data-layout=cover] .lead,.slide[data-layout=divider] .lead,.slide[data-layout=closing] .lead,.slide[data-layout=cover] .foot,.slide[data-layout=divider] .foot,.slide[data-layout=closing] .foot{color:rgba(255,255,255,.82)}
+.slide[data-layout=cover] .label,.slide[data-layout=divider] .label{color:#fff;opacity:.85}
+.slide[data-layout=statement] h2{font-size:72px}
+.grid{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:28px;margin-top:auto;margin-bottom:auto}
+.stat b{display:block;font:700 96px/1 var(--brand-font-heading);font-variant-numeric:tabular-nums;color:var(--brand-primary);letter-spacing:-.03em}
+.stat p{margin:16px 0 0;color:var(--brand-text-subtle)}
+.card{background:var(--brand-surface-subtle);border-radius:var(--brand-radius-lg);padding:36px;display:flex;flex-direction:column;gap:14px}
+.card h3{font:600 34px/1.2 var(--brand-font-heading);margin:0;min-height:2.4em}.card p{margin:0;color:var(--brand-text-subtle)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;flex:1}.split img{width:100%;border-radius:var(--brand-radius-md)}
+.slide table{border-collapse:collapse;width:100%}.slide th,.slide td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--brand-border)}
+.slide td.n,.slide th.n{text-align:right;font-variant-numeric:tabular-nums}
+blockquote{margin:auto 0;font:500 48px/1.3 var(--brand-font-heading);max-width:1300px}blockquote cite{display:block;margin-top:28px;font:400 26px var(--brand-font-body);color:var(--brand-text-subtle);font-style:normal}
+.note-r{font-size:15px;color:var(--brand-text-subtle);padding:4px 4px 8px;line-height:1.55}
+/* Reading view on narrow screens: slide reflows instead of shrinking */
+@container (max-width:760px){
+ .frame{aspect-ratio:auto}.frame .slide{position:static;width:auto;height:auto;transform:none!important;padding:28px 22px 52px;gap:16px}
+ .slide h1{font-size:34px}.slide h2,.slide[data-layout=statement] h2{font-size:26px}.slide p,.slide li,.slide td,.slide th,.slide .lead{font-size:16px}
+ .slide .label{font-size:13px}.grid{grid-auto-flow:row;gap:12px}.stat b{font-size:44px}.card{padding:18px}.card h3{font-size:19px;min-height:0}
+ .split{grid-template-columns:1fr;gap:16px}blockquote{font-size:24px}blockquote cite{font-size:15px}.slide .foot{left:22px;right:22px;bottom:16px;font-size:12px}
+ .tbl{overflow-x:auto}.slide table{min-width:520px}}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}.toc{display:none}.bar .t{display:none}}
+/* ---- Styles: same brand tokens, different layout voice. Set data-style on <body>: clean (default) | editorial | bold ---- */
+body[data-style=editorial] .slide{padding:120px 140px 96px;gap:28px}
+body[data-style=editorial] .slide h1,body[data-style=editorial] .slide h2{font-weight:500;letter-spacing:-.025em}
+body[data-style=editorial] .slide h2{padding-top:28px;border-top:2px solid var(--brand-text)}
+body[data-style=editorial] .slide[data-layout=cover],body[data-style=editorial] .slide[data-layout=divider],body[data-style=editorial] .slide[data-layout=closing]{background:var(--brand-surface);color:var(--brand-text)}
+body[data-style=editorial] .slide[data-layout=cover] h1{font-size:92px;max-width:1200px}
+body[data-style=editorial] .slide[data-layout=cover] .lead,body[data-style=editorial] .slide[data-layout=divider] .lead,body[data-style=editorial] .slide[data-layout=closing] .lead,body[data-style=editorial] .slide[data-layout=cover] .foot,body[data-style=editorial] .slide[data-layout=divider] .foot,body[data-style=editorial] .slide[data-layout=closing] .foot{color:var(--brand-text-subtle)}
+body[data-style=editorial] .slide[data-layout=cover] .label,body[data-style=editorial] .slide[data-layout=divider] .label{color:var(--brand-primary);opacity:1}
+body[data-style=editorial] .stat b{font-weight:500;color:var(--brand-text)}
+body[data-style=editorial] .stat{border-top:1px solid var(--brand-border);padding-top:24px}
+body[data-style=editorial] .card{background:transparent;border-top:1px solid var(--brand-border);border-radius:0;padding:24px 0 0}
+body[data-style=bold] .slide{padding:88px 104px 84px}
+body[data-style=bold] .slide h1{font-size:104px;line-height:.98;letter-spacing:-.035em}
+body[data-style=bold] .slide h2{font-size:68px;line-height:1.02;letter-spacing:-.03em}
+body[data-style=bold] .slide[data-layout=cover],body[data-style=bold] .slide[data-layout=divider],body[data-style=bold] .slide[data-layout=closing]{background:var(--brand-primary);color:var(--brand-on-primary)}
+body[data-style=bold] .slide[data-layout=statement]{background:var(--brand-primary-50)}
+body[data-style=bold] .stat{background:var(--brand-primary-50);border-radius:var(--brand-radius-lg);padding:36px}
+body[data-style=bold] .stat b{font-size:96px;white-space:nowrap}
+body[data-style=bold] .card{background:var(--brand-primary-50)}
+@container (max-width:760px){body[data-style] .slide h1{font-size:34px}body[data-style] .slide h2{font-size:26px;padding-top:12px}body[data-style] .stat b{font-size:44px}body[data-style] .stat{padding:16px}}
+/* Present mode */
+body.present{background:#000;overflow:hidden}body.present .bar,body.present .toc,body.present .note-r{display:none}
+body.present .wrap{display:block;padding:0;max-width:none}body.present main{display:block}
+body.present .frame{display:none;position:fixed;inset:0;margin:auto;border-radius:0;box-shadow:none;width:min(100vw,177.78vh);height:min(56.25vw,100vh);aspect-ratio:auto}
+body.present .frame.cur{display:block}
+.editing [contenteditable]{outline:1px dashed var(--brand-primary);outline-offset:4px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--brand-text);color:var(--brand-surface);padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s ease;pointer-events:none;z-index:20}.toast.on{opacity:1}
+/* Presenter view */
+.pv{position:fixed;inset:0;z-index:30;background:#0e0f12;color:#f2f3f5;display:none;grid-template-columns:1.6fr 1fr;grid-template-rows:auto 1fr;gap:16px;padding:16px}
+.pv.on{display:grid}.pv header{grid-column:1/-1;display:flex;gap:10px;align-items:center;font-size:15px}.pv header span{flex:1}
+.pv button{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #2a2e36;background:#16181d;color:#f2f3f5;font:500 14px var(--brand-font-body)}
+.pv .cur-s,.pv .next-s{background:#000;border-radius:12px;overflow:hidden;position:relative}
+.pv .side{display:grid;grid-template-rows:auto 1fr;gap:16px;min-height:0}.pv .next-s{aspect-ratio:16/9}
+.pv .pn{overflow:auto;font-size:20px;line-height:1.6;background:#16181d;border-radius:12px;padding:18px}
+.pv .timer{font-variant-numeric:tabular-nums}
+@media print{@page{size:1600px 900px;margin:0}body{background:#fff}.bar,.toc,.note-r,.toast,.pv{display:none!important}.wrap{display:block;padding:0;max-width:none}main{display:block}
+ .frame{width:1600px;height:900px;aspect-ratio:auto;border-radius:0;box-shadow:none;break-after:page;page-break-after:always}.frame .slide{transform:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-style="clean">
+<div class="bar" role="toolbar" aria-label="Deck tools">
+  <b id="deckTitle">Checkout redesign review</b>
+  <button data-act="edit" aria-label="Edit text"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></svg><span class="t">Edit text</span></button>
+  <button data-act="save" aria-label="Save copy" hidden><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span class="t">Save copy</span></button>
+  <button data-act="pdf" aria-label="Export PDF"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7zM14 3v5h5"/></svg><span class="t">PDF</span></button>
+  <button data-act="pptx" aria-label="Export PowerPoint"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span class="t">PowerPoint</span></button>
+  <button data-act="presenter" aria-label="Presenter view"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="12" height="9" rx="1.5"/><path d="M18 8h3v9H9v-1"/></svg><span class="t">Presenter</span></button>
+  <button data-act="present" class="primary" aria-label="Present"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg><span class="t">Present</span></button>
+</div>
+<div class="wrap">
+<nav class="toc" aria-label="Slides"></nav>
+<main>
+<!-- ONE <section class="slide"> PER SLIDE. Replace the samples. -->
+<section class="slide" data-layout="cover">
+  <span class="label">Quarterly review</span>
+  <h1>The redesign cut support tickets by a third</h1>
+  <p class="lead">What changed, what it cost, and what we ask for next quarter</p>
+  <div class="foot"><span>Flowly design team · November 2026</span><span></span></div>
+  <aside class="notes">Open with the result. Three parts: what changed, the evidence, the ask.</aside>
+</section>
+<section class="slide" data-layout="stats">
+  <h2>Three numbers show the redesign worked</h2>
+  <div class="grid">
+    <div class="stat"><b>−38%</b><p>Support tickets per 1,000 users, so the team handles fewer repeat questions</p></div>
+    <div class="stat"><b>2.1×</b><p>Task completion on the new checkout, measured in 15 moderated sessions</p></div>
+    <div class="stat"><b>11 days</b><p>From brief to release, a week faster than the last comparable project</p></div>
+  </div>
+  <div class="foot"><span>Source: support desk export, usability study</span><span></span></div>
+  <aside class="notes">Say what each number means for the business, not just the number.</aside>
+</section>
+<section class="slide" data-layout="closing">
+  <h2>We ask for two more designers to extend this to onboarding</h2>
+  <p class="lead">Decision needed today · Thank you</p>
+  <div class="foot"><span>Flowly design team</span><span></span></div>
+  <aside class="notes">Stop on the ask. Wait for the decision.</aside>
+</section>
+</main>
+</div>
+<div class="pv" role="dialog" aria-label="Presenter view">
+  <header><span class="pv-pos"></span><span class="timer">00:00</span><button data-pv="pause">Pause</button><button data-pv="reset">Reset</button><button data-pv="smaller" aria-label="Smaller notes">A−</button><button data-pv="bigger" aria-label="Bigger notes">A+</button><button data-pv="prev" aria-label="Previous slide">←</button><button data-pv="next" aria-label="Next slide">→</button><button data-pv="close">Close</button></header>
+  <div class="cur-s"></div>
+  <div class="side"><div class="next-s"></div><div class="pn"></div></div>
+</div>
+<div class="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var main=document.querySelector('main'), slides=[].slice.call(main.querySelectorAll('.slide')), N=slides.length, cur=0;
+  var toast=document.querySelector('.toast'); function say(t){toast.textContent=t;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2400);}
+  document.getElementById('deckTitle').textContent=document.title;
+  var toc=document.querySelector('.toc');
+  slides.forEach(function(s,i){
+    var f=document.createElement('div'); f.className='frame'; f.id='s'+(i+1); s.parentNode.insertBefore(f,s); f.appendChild(s);
+    var n=s.querySelector('.foot span:last-child'); if(n) n.textContent=(i+1)+' / '+N;
+    var nt=s.querySelector('.notes'); if(nt&&nt.textContent.trim()){var r=document.createElement('div');r.className='note-r';r.textContent=nt.textContent.trim();f.after(r);}
+    var h=s.querySelector('h1,h2'); var a=document.createElement('a'); a.href='#s'+(i+1); a.textContent=(i+1)+'. '+(h?h.textContent:'Slide'); toc.appendChild(a);
+  });
+  var frames=[].slice.call(document.querySelectorAll('.frame'));
+  function fit(){frames.forEach(function(f){var s=f.firstChild; s.style.transform='scale('+(f.clientWidth/1600)+')';});}
+  window.addEventListener('resize',fit); fit();
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)});}})},{rootMargin:'-40% 0px -55% 0px'});frames.forEach(function(f){io.observe(f)});}
+  function show(i){cur=Math.max(0,Math.min(N-1,i));frames.forEach(function(f,k){f.classList.toggle('cur',k===cur)});fit();pvRender();}
+  function present(on){document.body.classList.toggle('present',on); if(on){show(cur); if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});} else {frames.forEach(function(f){f.classList.remove('cur')}); if(document.fullscreenElement) document.exitFullscreen(); fit(); frames[cur].scrollIntoView();}}
+  document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&document.body.classList.contains('present')) present(false);});
+  document.addEventListener('keydown',function(e){
+    if(document.body.classList.contains('editing')) return;
+    var on=document.body.classList.contains('present')||pv.classList.contains('on');
+    if(e.key==='p'||e.key==='P'){present(!document.body.classList.contains('present'));return;}
+    if(!on) return;
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(cur+1);}
+    if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(cur-1);}
+    if(e.key==='Escape'){present(false);pv.classList.remove('on');}
+  });
+  frames.forEach(function(f,i){f.addEventListener('click',function(){if(document.body.classList.contains('present')) show(cur+1); else cur=i;});});
+  // Presenter view
+  var pv=document.querySelector('.pv'), t0=Date.now(), paused=0, pausedAt=0, fs=20, tick;
+  function clone(i,box){box.innerHTML=''; if(i>=N){box.textContent='End';return;} var s=slides[i].cloneNode(true); box.appendChild(s); s.style.transform='scale('+(box.clientWidth/1600)+')';}
+  function pvRender(){ if(!pv.classList.contains('on')) return; clone(cur,pv.querySelector('.cur-s')); clone(cur+1,pv.querySelector('.next-s'));
+    var nt=slides[cur].querySelector('.notes'); pv.querySelector('.pn').textContent=nt?nt.textContent.trim():''; pv.querySelector('.pn').style.fontSize=fs+'px'; pv.querySelector('.pv-pos').textContent='Slide '+(cur+1)+' of '+N; }
+  pv.querySelector('.cur-s').style.aspectRatio='16/9';
+  function clock(){var ms=pausedAt?pausedAt-t0-paused:Date.now()-t0-paused, s=Math.floor(ms/1000); pv.querySelector('.timer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+  pv.addEventListener('click',function(e){var a=e.target.closest('[data-pv]'); if(!a) return; a=a.dataset.pv;
+    if(a==='close'){pv.classList.remove('on');clearInterval(tick);} if(a==='next') show(cur+1); if(a==='prev') show(cur-1);
+    if(a==='bigger'){fs=Math.min(40,fs+2);pvRender();} if(a==='smaller'){fs=Math.max(14,fs-2);pvRender();}
+    if(a==='reset'){t0=Date.now();paused=0;pausedAt=0;} if(a==='pause'){ if(pausedAt){paused+=Date.now()-pausedAt;pausedAt=0;e.target.textContent='Pause';} else {pausedAt=Date.now();e.target.textContent='Resume';} } clock(); });
+  // Toolbar
+  document.querySelector('.bar').addEventListener('click',function(e){var b=e.target.closest('button'); if(!b) return; var a=b.dataset.act;
+    if(a==='present') present(true);
+    if(a==='presenter'){pv.classList.add('on'); pvRender(); clearInterval(tick); tick=setInterval(clock,500);}
+    if(a==='pdf') window.print();
+    if(a==='edit'){var on=!document.body.classList.contains('editing'); document.body.classList.toggle('editing',on);
+      slides.forEach(function(s){[].forEach.call(s.querySelectorAll('h1,h2,h3,p,li,td,th,b,blockquote,.label,.notes'),function(el){el.contentEditable=on?'true':'false'; if(el.classList.contains('notes')) el.style.display=on?'block':'';});});
+      b.querySelector('.t').textContent=on?'Done':'Edit text'; document.querySelector('[data-act=save]').hidden=!on; if(on) say('Click any text to edit it. Save copy downloads the edited file.');}
+    if(a==='save') saveCopy();
+    if(a==='pptx') exportPptx();
+  });
+  function saveCopy(){var d=document.documentElement.cloneNode(true); d.querySelector('body').classList.remove('editing','present');
+    [].forEach.call(d.querySelectorAll('[contenteditable]'),function(el){el.removeAttribute('contenteditable'); if(el.classList.contains('notes')) el.style.display='';});
+    [].forEach.call(d.querySelectorAll('.frame'),function(f){var s=f.firstChild; s.style.transform=''; f.replaceWith(s);});
+    [].forEach.call(d.querySelectorAll('.note-r'),function(n){n.remove()}); d.querySelector('.toc').innerHTML=''; d.querySelector('[data-act=save]').hidden=true;
+    var blob=new Blob(['<!DOCTYPE html>\n'+d.outerHTML],{type:'text/html'}), u=URL.createObjectURL(blob), l=document.createElement('a'); l.href=u; l.download=document.title+'.html'; document.body.appendChild(l); l.click(); l.remove(); say('Saved a copy with your edits.');}
+  function load(src){return new Promise(function(ok,no){var s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
+  function exportPptx(){ say('Preparing PowerPoint…');
+    Promise.all([window.htmlToImage?0:load('https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js'), window.PptxGenJS?0:load('https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js')]).then(function(){
+      var p=new PptxGenJS(); p.layout='LAYOUT_16x9'; var chain=Promise.resolve();
+      slides.forEach(function(s){chain=chain.then(function(){var keep=s.style.transform; s.style.transform='none'; return htmlToImage.toPng(s,{width:1600,height:900,pixelRatio:1}).then(function(img){s.style.transform=keep; var sl=p.addSlide(); sl.addImage({data:img,x:0,y:0,w:10,h:5.625}); var nt=s.querySelector('.notes'); if(nt) sl.addNotes(nt.textContent.trim());});});});
+      return chain.then(function(){fit(); return p.writeFile({fileName:document.title+'.pptx'});});
+    }).then(function(){say('PowerPoint downloaded. Slides are images; edit text here, then export again.');}).catch(function(){fit(); say('PowerPoint export needs internet access to load two small libraries. Use PDF instead.');});
+  }
+})();
+</script>
+<div style="position:fixed;left:12px;bottom:12px;z-index:50;font:500 12px/1 system-ui,sans-serif;background:#16161d;color:#fff;padding:8px 12px;border-radius:999px">Sample output · fictional data</div>
+</body>
+</html>

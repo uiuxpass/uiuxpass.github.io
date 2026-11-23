@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; }
+  .hero { padding: 60px 30px; text-align: center; }
+  .hero h1 { font-size: 46px; margin: 0 0 10px; background: linear-gradient(90deg, #fff, #c4b5fd); -webkit-background-clip: text; color: transparent; }
+  .hero p { font-size: 15px; color: #c7c2f0; opacity: .8; }
+  .plans { display: flex; gap: 22px; justify-content: center; padding: 20px; }
+  .plan { width: 420px; flex: none; background: rgba(255,255,255,.12); border-radius: 18px; padding: 18px; box-shadow: 0 0 40px rgba(168,85,247,.8); transition: all .6s ease-in; }
+  .plan:hover { transform: scale(1.05); }
+  .plan .inner { background: rgba(255,255,255,.1); border-radius: 18px; padding: 18px; }
+  .icon { font-size: 30px; }
+  .price { font-size: 38px; font-weight: bold; }
+  .note { font-size: 10px; color: #b9b3e6; }
+  .cta { display: inline-block; margin-top: 12px; padding: 6px 12px; background: #fff; color: #7c3aed; border-radius: 8px; cursor: pointer; font-size: 13px; }
+  .faq-q { color: #d6d3f5; font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Supercharge your workflow ✨</h1>
+    <p>The all-in-one AI-powered platform that helps teams do more, faster, with less effort than ever before in history.</p>
+  </div>
+  <div class="plans">
+    <div class="plan"><div class="inner">
+      <div class="icon">🚀</div>
+      <h3>Starter</h3>
+      <div class="price">$9</div>
+      <p class="note">per month, billed yearly, cancel anytime, taxes may apply</p>
+      <div class="cta" onclick="location.href='#'">Get started</div>
+    </div></div>
+    <div class="plan"><div class="inner">
+      <div class="icon">💎</div>
+      <h3>Pro</h3>
+      <div class="price">$29</div>
+      <p class="note">per month, billed yearly, cancel anytime, taxes may apply</p>
+      <div class="cta" onclick="location.href='#'">Get started</div>
+    </div></div>
+  </div>
+  <div class="hero">
+    <h3>FAQ</h3>
+    <p class="faq-q">Can I cancel? <a href="#">Click here</a></p>
+    <img src="team.png">
+  </div>
+</body>
+</html>
