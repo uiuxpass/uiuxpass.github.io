@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour contrast ratio: what passes WCAG 2.2 and how to fix it fast · UI/UX Pass</title>
+<meta name="description" content="The WCAG 2.2 contrast ratios for text, large text and UI parts, real examples of common colours that fail, and three fixes that keep your brand.">
+<meta property="og:title" content="Colour contrast ratio: what passes WCAG 2.2 and how to fix it fast · UI/UX Pass">
+<meta property="og:description" content="The WCAG 2.2 contrast ratios for text, large text and UI parts, real examples of common colours that fail, and three fixes that keep your brand.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/color-contrast-ratio.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/color-contrast-ratio.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href=".././"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/" aria-current="page">Guides</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Accessibility</p>
+<h1>Colour contrast ratio: what passes WCAG 2.2 and how to fix it fast</h1>
+<p class="meta">6 min read · Updated 23 November 2026</p>
+<p>Low contrast is the most common accessibility failure on the web, and the easiest to fix once you can see the number. This guide gives you the thresholds, real ratios for colours designers use every day, and fixes that keep your brand intact.</p>
+
+<h2>The thresholds</h2>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">What</th><th scope="col">Minimum (AA)</th><th scope="col">Enhanced (AAA)</th><th scope="col">WCAG 2.2</th></tr></thead>
+<tbody>
+<tr><td>Body text</td><td>4.5:1</td><td>7:1</td><td>1.4.3, 1.4.6</td></tr>
+<tr><td>Large text (24 px regular, or about 18.7 px bold)</td><td>3:1</td><td>4.5:1</td><td>1.4.3, 1.4.6</td></tr>
+<tr><td>UI parts: input borders, icons, focus rings, chart lines</td><td>3:1</td><td>—</td><td>1.4.11</td></tr>
+<tr><td>Disabled controls, logos, pure decoration</td><td>No requirement</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p>The ratio runs from 1:1 (same colour) to 21:1 (black on white). It compares the relative luminance of the two colours, so hue alone never saves you: a saturated purple can still be too light.</p>
+
+<h2>Real ratios for colours you use every day</h2>
+<p>All measured on white unless noted. These are popular default greys and brand colours, the kind AI tools and UI kits reach for first.</p>
+<pre>#D1D5DB grey text on white      1.47:1  fails everything
+#9CA3AF grey text on white      2.54:1  fails body text and UI parts
+white on #7AA2FF light blue     2.49:1  fails, and the button looks disabled
+white on #8B5CF6 purple         4.23:1  fails body text, passes large text
+#6B7280 grey text on white      4.83:1  passes AA body text
+white on #2563EB blue           5.17:1  passes AA
+#4B5563 grey text on white      7.56:1  passes AAA</pre>
+<p>Notice the purple button: 4.23:1 is close enough that most people would call it fine by eye, and it still fails for body-size button labels. That is why measuring beats looking.</p>
+
+<h2>Three fixes that keep the brand</h2>
+<ol>
+<li><strong>Move one step darker on the same hue.</strong> #8B5CF6 to #6D28D9 takes white text from 4.23:1 to 7.1:1 and still reads as the same purple. Most palettes already have the step.</li>
+<li><strong>Split the brand colour into two tokens.</strong> Keep the light tint for large shapes and backgrounds; add a darker "on-surface" version for text and icons. This is how most mature design systems handle bright brand colours.</li>
+<li><strong>Make it bigger only when it is truly a heading.</strong> Large text needs only 3:1, but bumping body text to 24 px to pass is a hack readers notice. Use it for real headings, not to dodge the rule.</li>
+</ol>
+
+<h2>Where contrast hides</h2>
+<ul>
+<li>Hint text inside empty inputs (often around 2:1).</li>
+<li>Text over photos and gradients: measure the lightest area behind the text, not the average.</li>
+<li>Hover, focus and selected states, which are designed last and checked least.</li>
+<li>Dark mode: a colour that passes on white can fail on #111, and the reverse.</li>
+<li>Thin fonts: anti-aliasing makes 300-weight text read lighter than its colour suggests.</li>
+</ul>
+<p>Checking one screenshot with an eyedropper catches the obvious cases. Checking every text element on every state is what a script is for.</p>
+<div class="cta">
+<p><strong>Measure every text and UI part at once.</strong> The free checker opens your page in a real browser and reports each contrast failure with its ratio and where it is. UI/UX Pass's <code>accessibility-audit</code> skill maps all 55 WCAG 2.2 A and AA criteria and has Claude fix the failures.</p>
+<a class="btn btn-primary" href="../check.html">Check your page free</a> <a class="btn btn-ghost" href="../index.html#pricing">See UI/UX Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is my A/B test result real? A plain guide to significance and sample size · UI/UX Pass</title>
+<meta name="description" content="A worked example of an A/B test that looks like a win but is not significant, how many visitors you need per variant, and five mistakes that fake results.">
+<meta property="og:title" content="Is my A/B test result real? A plain guide to significance and sample size · UI/UX Pass">
+<meta property="og:description" content="A worked example of an A/B test that looks like a win but is not significant, how many visitors you need per variant, and five mistakes that fake results.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: Claude skills that measure design quality. Checks passed 38 to 66 of 66.">
+<meta property="og:url" content="https://uiuxpass.com/guides/ab-test-significance.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/ab-test-significance.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href=".././"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/" aria-current="page">Guides</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Experiments</p>
+<h1>Is my A/B test result real? A plain guide to significance and sample size</h1>
+<p class="meta">6 min read · Updated 23 November 2026</p>
+<p>Variant B converted at 3.75% and A at 3.00%. That is a 25% lift. Ship it? Not yet. Here is how to tell a real result from noise, in plain words.</p>
+
+<h2>A worked example</h2>
+<pre>A: 120 sign-ups from 4,000 visitors   3.00%
+B: 150 sign-ups from 4,000 visitors   3.75%
+Two-proportion test: z = 1.86, p = 0.063</pre>
+<p>A p-value of 0.063 means: if A and B were truly the same, you would see a gap this big about 6 times in 100 tests. The usual bar is 5 in 100 (p &lt; 0.05), so this result is <strong>promising but not proven</strong>. The right call is to keep running to the sample size you planned, not to ship and not to give up.</p>
+
+<h2>How many visitors you need</h2>
+<p>Visitors needed per variant to reliably detect a 20% relative lift (two-sided test, 5% significance, 80% power):</p>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">Current conversion</th><th scope="col">Lift you want to detect</th><th scope="col">Visitors per variant</th></tr></thead>
+<tbody>
+<tr><td>3%</td><td>3% → 3.6%</td><td>about 13,900</td></tr>
+<tr><td>5%</td><td>5% → 6%</td><td>about 8,200</td></tr>
+<tr><td>10%</td><td>10% → 12%</td><td>about 3,800</td></tr>
+</tbody></table></div>
+<p>Low conversion rates and small lifts need a lot of traffic. If you have 500 visitors a week, a test hunting for a 20% lift on a 3% rate would take over a year. In that case, test bigger changes or use qualitative research instead.</p>
+
+<h2>Five mistakes that fake a result</h2>
+<ol>
+<li><strong>Peeking and stopping early.</strong> Checking every day and stopping the moment p dips under 0.05 can multiply false wins several times over. Decide the sample size first.</li>
+<li><strong>Uneven split.</strong> If a 50/50 test ends at 52/48 with large numbers, something in the setup is broken (a sample-ratio mismatch). Fix it before reading results.</li>
+<li><strong>Too many metrics.</strong> Test 10 metrics and one will "win" by chance. Pick one primary metric up front, or correct for multiple comparisons.</li>
+<li><strong>Too short.</strong> Run at least one full week so weekday and weekend visitors both count.</li>
+<li><strong>Reporting only the lift.</strong> Report the range: "+25% (95% range roughly −1% to +58%)" tells the truth; "+25%" does not.</li>
+</ol>
+<div class="cta">
+<p><strong>Get a readout a PM can act on.</strong> UI/UX Pass's <code>experiment-analysis</code> skill sizes tests, then reads results with exact intervals, a two-proportion test, Holm correction, a sample-ratio check and a peeking warning, and writes the decision in plain language.</p>
+<a class="btn btn-primary" href="../check.html">Check your page free</a> <a class="btn btn-ghost" href="../index.html#pricing">See UI/UX Pass</a>
+</div>
+
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+</body>
+</html>
