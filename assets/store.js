@@ -1,7 +1,7 @@
 /* ===== The one file to fill in before launch (used by every page) ===== */
 window.SP_CONFIG = {
-  buyUrl: "https://uiuxpass.gumroad.com/l/second-pass",          /* Gumroad paid product, e.g. https://uiuxpass.gumroad.com/l/second-pass */
-  freeUrl: "https://uiuxpass.gumroad.com/l/second-pass-free",          /* Gumroad free product, e.g. https://uiuxpass.gumroad.com/l/second-pass-free */
+  buyUrl: "https://uiuxpass.gumroad.com/l/uiuxpass",          /* Gumroad paid product, e.g. https://uiuxpass.gumroad.com/l/uiuxpass */
+  freeUrl: "https://uiuxpass.gumroad.com/l/uiuxpass-free",          /* Gumroad free product, e.g. https://uiuxpass.gumroad.com/l/uiuxpass-free */
   launch: {             /* launch sale: Gumroad discount code, applied to every buy link until it ends, then the page goes back to list prices by itself */
     code: "LAUNCH40", percent: 40,
     ends: "2026-12-01T07:59:00Z",   /* = Nov 30, 11:59 PM PST, same as the code's end date in Gumroad */
