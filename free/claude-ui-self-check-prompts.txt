@@ -1,0 +1,39 @@
+20 prompts that make Claude check its own UI
+UI/UX Pass · uiuxpass.com/free · v1, November 2026
+Paste one after Claude builds a page. Each asks for numbers, not opinions.
+
+CONTRAST AND COLOUR
+1. List every text colour and the background behind it, with the WCAG contrast ratio for each pair. Fix every pair under 4.5:1 (3:1 for text 24px+ or 18.66px bold) without changing the brand colour itself.
+2. List every icon, input border and focus ring colour against its background with its contrast ratio. Anything under 3:1 fails; fix it.
+3. Find every place where colour alone carries meaning (status, errors, required fields, chart series). Add a word, icon or pattern to each.
+
+KEYBOARD AND FOCUS
+4. Walk the page in Tab order and list each stop: element, accessible name, and what the focus indicator looks like. Mark any stop where focused and unfocused look the same and fix it with a 2px outline at 3:1.
+5. List every element with an onclick that is not a <button> or <a href>. Replace each with the right element.
+6. Open every menu, dialog and popover with the keyboard only. Report where Escape does not close it or focus does not return to the trigger, then fix it.
+
+PHONE LAYOUT
+7. At 390px wide, list every element whose right edge goes past 390px, with its width. Fix each one so nothing scrolls sideways.
+8. At 390px, list every tappable element smaller than 44×44px with its measured size. Enlarge the hit area (padding or a pseudo-element) without enlarging the visual.
+9. At 390px, list every input with font-size under 16px (iOS zooms on focus). Set them to 16px.
+
+TYPE AND READING
+10. List every distinct font size, font family and line height on the page with where each is used. Remove anything that is not part of a clear scale; body line height 1.4–1.7.
+11. Find every text element under 12px and every paragraph wider than 75 characters per line. Fix both.
+12. Find every number in a table, price or metric. Make them use font-variant-numeric: tabular-nums so columns align.
+
+STATES AND CONTENT
+13. For each section that shows data, show me its empty, loading and error state. Write the copy for each: what happened and what to do next.
+14. List every number, name, logo, testimonial and statistic on the page. Mark each as real (with source) or invented. Remove or label every invented one.
+15. Rewrite every error message as: what went wrong, why if useful, and how to fix it. No "Oops", no "Something went wrong" alone.
+16. List every link with text like "click here", "learn more" or "read more" and every link to "#". Give each a destination and text that says where it goes.
+
+MOTION
+17. List every transition and animation with its property, duration and easing. Remove "transition: all", anything over 300ms (500ms for dialogs), any ease-in, and anything that animates width, height, top or left.
+18. Add a prefers-reduced-motion rule that turns off non-essential motion, and show me what changes.
+
+THE GENERIC AI LOOK
+19. Name the three things on this page that look most like a template or an AI default (gradient hero, emoji icons, identical icon cards, pill label above the heading, two buttons, glow shadows). Replace each with something specific to this product.
+20. Before you say it is done: give me a table of what you measured, the number for each, and pass or fail. Do not mark anything as passing that you did not measure.
+
+A prompt still lets the model grade its own work. To measure instead of ask, run the free checker (uiuxpass.com/check.html, 16 checks) or the interface-polish skill (all 66 checks plus 8 template-look signs).

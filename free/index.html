@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free tools for checking AI-made UI · UI/UX Pass</title>
+<meta name="description" content="A one-page 66-point checklist, 20 prompts that make Claude check its own UI, a free design system, Laws of AI UI cards, a monthly test of AI design skills and a free browser checker. No email needed.">
+<meta property="og:title" content="Free tools for checking AI-made UI · UI/UX Pass">
+<meta property="og:description" content="A one-page 66-point checklist, 20 prompts that make Claude check its own UI, a free design system, Laws of AI UI cards, a monthly test of AI design skills and a free browser checker. No email needed.">
+<meta property="og:image" content="https://uiuxpass.com/media/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="UI/UX Pass: free tools for checking AI-made UI">
+<meta property="og:url" content="https://uiuxpass.com/free/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/free/">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css?v=4.2">
+<link rel="stylesheet" href="../assets/free.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/">Guides</a>
+      <a class="link" href="../free/" aria-current="page">Free</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fr"><div class="wrap">
+<div class="fr-top">
+<div>
+<h1>Free tools for checking AI-made UI</h1>
+<p class="lede">AI tools build a page in a minute and miss the same things every time: contrast, focus, phone layout, real content, the template look. Everything here helps you catch them before anyone else does. Free, no email, share it with your team.</p>
+<div class="fr-actions">
+<a class="btn btn-primary" href="ship-ready-ai-ui-checklist.pdf" download data-track="Free checklist PDF">Download the 66-point checklist (PDF)</a>
+</div>
+<ul class="fr-jump" aria-label="On this page">
+<li><a href="#prompts">20 self-check prompts</a></li>
+<li><a href="#sprout">Free design system</a></li>
+<li><a href="#laws">Laws of AI UI</a></li>
+<li><a href="#state">State of AI-made UI</a></li>
+<li><a href="#tools">Checker, skills, guides</a></li>
+</ul>
+</div>
+<figure><img src="checklist.jpg" width="880" height="1245" alt="The Ship-ready AI UI checklist: 66 checks on one A4 page in six groups: Accessibility 17, Layout 11, Typography 12, Motion 10, Surface 11, Content 5." class="fr-shot" style="max-width:440px;margin-left:auto"></figure>
+</div>
+
+<section class="fr-block" id="checklist" aria-labelledby="h-checklist">
+<h2 id="h-checklist">Ship-ready AI UI: the 66-point checklist</h2>
+<p style="margin-top:12px">One A4 page, six groups, 66 checks you can measure in a browser. The 17 that block a release are marked. It is the same list the <code>interface-polish</code> skill runs automatically; on paper it works with any tool.</p>
+<p class="fr-meta">PDF · 1 page · 81 KB · v1, November 2026</p>
+</section>
+
+<section class="fr-block" id="prompts" aria-labelledby="h-prompts">
+<div class="fr-split">
+<div>
+<h2 id="h-prompts">20 prompts that make Claude check its own UI</h2>
+<p style="margin-top:12px">Paste one after Claude builds a page. Each one asks for numbers instead of opinions, so the answer is something you can verify.</p>
+<p class="fr-note">A prompt still lets the model grade its own work. Prompt 20 helps; a script that measures the page helps more.</p>
+<div class="fr-actions"><a class="tl" href="claude-ui-self-check-prompts.txt" download data-track="Free prompts txt">Download all 20 as a text file</a></div>
+</div>
+<ol class="fr-prompts"><h3>Contrast and Colour</h3><li><span>List every text colour and the background behind it, with the WCAG contrast ratio for each pair. Fix every pair under 4.5:1 (3:1 for text 24px+ or 18.66px bold) without changing the brand colour itself.</span><button class="copy" type="button" data-copy="List every text colour and the background behind it, with the WCAG contrast ratio for each pair. Fix every pair under 4.5:1 (3:1 for text 24px+ or 18.66px bold) without changing the brand colour itself." aria-label="Copy prompt 1">Copy</button></li><li><span>List every icon, input border and focus ring colour against its background with its contrast ratio. Anything under 3:1 fails; fix it.</span><button class="copy" type="button" data-copy="List every icon, input border and focus ring colour against its background with its contrast ratio. Anything under 3:1 fails; fix it." aria-label="Copy prompt 2">Copy</button></li><li><span>Find every place where colour alone carries meaning (status, errors, required fields, chart series). Add a word, icon or pattern to each.</span><button class="copy" type="button" data-copy="Find every place where colour alone carries meaning (status, errors, required fields, chart series). Add a word, icon or pattern to each." aria-label="Copy prompt 3">Copy</button></li><h3>Keyboard and Focus</h3><li><span>Walk the page in Tab order and list each stop: element, accessible name, and what the focus indicator looks like. Mark any stop where focused and unfocused look the same and fix it with a 2px outline at 3:1.</span><button class="copy" type="button" data-copy="Walk the page in Tab order and list each stop: element, accessible name, and what the focus indicator looks like. Mark any stop where focused and unfocused look the same and fix it with a 2px outline at 3:1." aria-label="Copy prompt 4">Copy</button></li><li><span>List every element with an onclick that is not a &lt;button&gt; or &lt;a href&gt;. Replace each with the right element.</span><button class="copy" type="button" data-copy="List every element with an onclick that is not a &lt;button&gt; or &lt;a href&gt;. Replace each with the right element." aria-label="Copy prompt 5">Copy</button></li><li><span>Open every menu, dialog and popover with the keyboard only. Report where Escape does not close it or focus does not return to the trigger, then fix it.</span><button class="copy" type="button" data-copy="Open every menu, dialog and popover with the keyboard only. Report where Escape does not close it or focus does not return to the trigger, then fix it." aria-label="Copy prompt 6">Copy</button></li><h3>Phone Layout</h3><li><span>At 390px wide, list every element whose right edge goes past 390px, with its width. Fix each one so nothing scrolls sideways.</span><button class="copy" type="button" data-copy="At 390px wide, list every element whose right edge goes past 390px, with its width. Fix each one so nothing scrolls sideways." aria-label="Copy prompt 7">Copy</button></li><li><span>At 390px, list every tappable element smaller than 44×44px with its measured size. Enlarge the hit area (padding or a pseudo-element) without enlarging the visual.</span><button class="copy" type="button" data-copy="At 390px, list every tappable element smaller than 44×44px with its measured size. Enlarge the hit area (padding or a pseudo-element) without enlarging the visual." aria-label="Copy prompt 8">Copy</button></li><li><span>At 390px, list every input with font-size under 16px (iOS zooms on focus). Set them to 16px.</span><button class="copy" type="button" data-copy="At 390px, list every input with font-size under 16px (iOS zooms on focus). Set them to 16px." aria-label="Copy prompt 9">Copy</button></li><h3>Type and Reading</h3><li><span>List every distinct font size, font family and line height on the page with where each is used. Remove anything that is not part of a clear scale; body line height 1.4–1.7.</span><button class="copy" type="button" data-copy="List every distinct font size, font family and line height on the page with where each is used. Remove anything that is not part of a clear scale; body line height 1.4–1.7." aria-label="Copy prompt 10">Copy</button></li><li><span>Find every text element under 12px and every paragraph wider than 75 characters per line. Fix both.</span><button class="copy" type="button" data-copy="Find every text element under 12px and every paragraph wider than 75 characters per line. Fix both." aria-label="Copy prompt 11">Copy</button></li><li><span>Find every number in a table, price or metric. Make them use font-variant-numeric: tabular-nums so columns align.</span><button class="copy" type="button" data-copy="Find every number in a table, price or metric. Make them use font-variant-numeric: tabular-nums so columns align." aria-label="Copy prompt 12">Copy</button></li><h3>States and Content</h3><li><span>For each section that shows data, show me its empty, loading and error state. Write the copy for each: what happened and what to do next.</span><button class="copy" type="button" data-copy="For each section that shows data, show me its empty, loading and error state. Write the copy for each: what happened and what to do next." aria-label="Copy prompt 13">Copy</button></li><li><span>List every number, name, logo, testimonial and statistic on the page. Mark each as real (with source) or invented. Remove or label every invented one.</span><button class="copy" type="button" data-copy="List every number, name, logo, testimonial and statistic on the page. Mark each as real (with source) or invented. Remove or label every invented one." aria-label="Copy prompt 14">Copy</button></li><li><span>Rewrite every error message as: what went wrong, why if useful, and how to fix it. No &quot;Oops&quot;, no &quot;Something went wrong&quot; alone.</span><button class="copy" type="button" data-copy="Rewrite every error message as: what went wrong, why if useful, and how to fix it. No &quot;Oops&quot;, no &quot;Something went wrong&quot; alone." aria-label="Copy prompt 15">Copy</button></li><li><span>List every link with text like &quot;click here&quot;, &quot;learn more&quot; or &quot;read more&quot; and every link to &quot;#&quot;. Give each a destination and text that says where it goes.</span><button class="copy" type="button" data-copy="List every link with text like &quot;click here&quot;, &quot;learn more&quot; or &quot;read more&quot; and every link to &quot;#&quot;. Give each a destination and text that says where it goes." aria-label="Copy prompt 16">Copy</button></li><h3>Motion</h3><li><span>List every transition and animation with its property, duration and easing. Remove &quot;transition: all&quot;, anything over 300ms (500ms for dialogs), any ease-in, and anything that animates width, height, top or left.</span><button class="copy" type="button" data-copy="List every transition and animation with its property, duration and easing. Remove &quot;transition: all&quot;, anything over 300ms (500ms for dialogs), any ease-in, and anything that animates width, height, top or left." aria-label="Copy prompt 17">Copy</button></li><li><span>Add a prefers-reduced-motion rule that turns off non-essential motion, and show me what changes.</span><button class="copy" type="button" data-copy="Add a prefers-reduced-motion rule that turns off non-essential motion, and show me what changes." aria-label="Copy prompt 18">Copy</button></li><h3>The Generic AI Look</h3><li><span>Name the three things on this page that look most like a template or an AI default (gradient hero, emoji icons, identical icon cards, pill label above the heading, two buttons, glow shadows). Replace each with something specific to this product.</span><button class="copy" type="button" data-copy="Name the three things on this page that look most like a template or an AI default (gradient hero, emoji icons, identical icon cards, pill label above the heading, two buttons, glow shadows). Replace each with something specific to this product." aria-label="Copy prompt 19">Copy</button></li><li><span>Before you say it is done: give me a table of what you measured, the number for each, and pass or fail. Do not mark anything as passing that you did not measure.</span><button class="copy" type="button" data-copy="Before you say it is done: give me a table of what you measured, the number for each, and pass or fail. Do not mark anything as passing that you did not measure." aria-label="Copy prompt 20">Copy</button></li></ol>
+</div>
+</section>
+
+<section class="fr-block" id="sprout" aria-labelledby="h-sprout">
+<div class="fr-split">
+<div>
+<h2 id="h-sprout">Sprout: a free, contrast-checked design system</h2>
+<p style="margin-top:12px">A complete starting system: W3C design tokens, CSS variables with light and dark themes, a Tailwind preset, Figma variable collections, a DESIGN.md that Claude can follow, and a page of every core component in every state.</p>
+<dl class="law-nums">
+<div><dt>Colour pairs passing WCAG 2.2 AA</dt><dd>22 of 22<small>light and dark; ratios in contrast.md</small></dd></div>
+<div><dt>Component page</dt><dd>66 of 66<small>automated interface checks, 24 Nov 2026</small></dd></div>
+</dl>
+<p style="margin-top:20px">Primary #1F8A5B, DM Sans, 10 px radius. Free for personal and commercial work. It is one of the three systems in the paid kit; the other two, and the script that builds one from your own brand colour, come with UI/UX Pass.</p>
+<div class="fr-actions"><a class="btn btn-primary" href="sprout-design-system.zip" download data-track="Free Sprout zip">Download Sprout (.zip, 17 KB)</a></div>
+</div>
+<figure style="margin:0"><img class="fr-shot" src="sprout.jpg" width="1200" height="760" alt="Sprout component page: buttons in six states and form fields with hint and error text, in green #1F8A5B and DM Sans."></figure>
+</div>
+</section>
+
+<section class="fr-block" id="laws" aria-labelledby="h-laws">
+<h2 id="h-laws">Laws of AI UI</h2>
+<p style="margin-top:12px">One mistake AI makes in interfaces per card, shown on a real page with the measured number and the fix in code. Each has a square image to post.</p>
+<ul class="fr-list"><li><a href="laws/390px-overflow.html"><strong>01 · The 390 px overflow</strong><span>662 px</span></a></li><li><a href="laws/17-pixel-link.html"><strong>02 · The 17-pixel link</strong><span>67 × 17 px</span></a></li><li><a href="laws/div-buttons.html"><strong>03 · Buttons a keyboard can&#x27;t reach</strong><span>0 of 2</span></a></li><li><a href="laws/text-on-gradients.html"><strong>04 · Grey text on a gradient</strong><span>1.57 : 1</span></a></li><li><a href="laws/three-ai-tells.html"><strong>05 · Three AI tells in one card</strong><span>3 of 3</span></a></li><li><a href="laws/broken-image.html"><strong>06 · The image nobody checked</strong><span>404</span></a></li></ul>
+<div class="fr-actions"><a class="tl" href="laws/">See all laws</a></div>
+</section>
+
+<section class="fr-block" id="state" aria-labelledby="h-state">
+<h2 id="h-state">State of AI-made UI, November 2026</h2>
+<p style="margin-top:12px">Every month we give the same brief to popular public design skills running in Claude Code, measure every result with the same 66 checks and 8 template signs, and publish the pages, the scores and the method. We sell skills too, so ours are never in the table.</p>
+<div class="fr-actions"><a class="tl" href="state-of-ai-ui.html">Read the November results</a></div>
+</section>
+
+<section class="fr-block" id="tools" aria-labelledby="h-tools">
+<h2 id="h-tools">Checker, free skills and guides</h2>
+<ul class="fr-list">
+<li><a href="../check.html" data-track="Free to checker"><strong>Free checker</strong><span>16 of the 66 checks, in your browser, about 30 seconds</span></a></li>
+<li><a href="https://uiuxpass.gumroad.com/l/uiuxpass-free" data-free data-track="Free skills"><strong>UI/UX Pass (free): 2 Claude skills</strong><span>heuristic-ux-copy-review and self-review</span></a></li>
+<li><a href="https://github.com/uiuxpass/free-skills"><strong>The same 2 skills on GitHub</strong><span>npx skills add uiuxpass/free-skills</span></a></li>
+</ul>
+<h3 style="margin-top:32px">11 guides</h3>
+<ul class="fr-list"><li><a href="../guides/wcag-22-checklist-designers.html"><strong>WCAG 2.2 AA checklist for designers: what you can check in the design file</strong></a></li><li><a href="../guides/design-qa-build-vs-figma.html"><strong>Design QA: how to check the build matches the Figma file</strong></a></li><li><a href="../guides/ux-error-messages.html"><strong>How to write error messages that tell people how to fix the problem</strong></a></li><li><a href="../guides/review-claude-design.html"><strong>How to review a design Claude made: a 10-minute checklist</strong></a></li><li><a href="../guides/color-contrast-ratio.html"><strong>Colour contrast ratio: what passes WCAG 2.2 and how to fix it fast</strong></a></li><li><a href="../guides/touch-target-size.html"><strong>Touch target size: 24 px, 44 pt and 48 dp explained</strong></a></li><li><a href="../guides/usability-test-sample-size.html"><strong>How many users do you need for a usability test? Honest numbers</strong></a></li><li><a href="../guides/ab-test-significance.html"><strong>Is my A/B test result real? A plain guide to significance and sample size</strong></a></li><li><a href="../guides/design-token-drift.html"><strong>How to catch design-token drift before it ships</strong></a></li><li><a href="../guides/forgotten-screen-states.html"><strong>The screen states designers forget, and how to check every frame</strong></a></li><li><a href="../guides/ai-interface-review.html"><strong>Before you ship an AI-built interface: a final check in five areas</strong></a></li></ul>
+</section>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../free/">Free resources</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+<script>
+document.addEventListener('click', e => { const a = e.target.closest('[data-track]'); if (a && window.SP && SP.track) SP.track(a.getAttribute('data-track')); });
+</script>
+<script>
+document.addEventListener('click', async e => { const b = e.target.closest('.copy'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copied'; b.setAttribute('data-done', ''); setTimeout(() => { b.textContent = 'Copy'; b.removeAttribute('data-done'); }, 1600); if (window.SP && SP.track) SP.track('Copy prompt'); } catch (err) { b.textContent = 'Select text'; } });
+</script>
+</body>
+</html>
