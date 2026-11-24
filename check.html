@@ -99,7 +99,7 @@
 </footer>
 
 <script src="assets/store.js"></script>
-<script src="assets/ui.js"></script>
+<script src="assets/ui.js?v=4.3"></script>
 <script>
 const SAMPLE = `<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><style>
 body{margin:0;font-family:system-ui;background:linear-gradient(135deg,#7c3aed,#c026d3);color:#fff}
@@ -221,8 +221,8 @@ async function check(html){
   out.innerHTML = `<div class="score" style="margin-top:32px"><b>${pass}/16</b><span>checks passed${pass === 16 ? ' — now try the full 66.' : ` · ${16 - pass} to fix`}</span></div>
   <div class="share" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:16px"><span style="color:var(--muted)">Share your score</span><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SHARE_URL)}" data-share="linkedin">LinkedIn</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://x.com/intent/post?text=${encodeURIComponent(shareText(pass))}" data-share="x">X</a><button class="btn btn-ghost" type="button" id="copy-score">Copy result</button></div>
   <ul class="res">${R.sort((a,b) => a.ok - b.ok).map(r => `<li class="${r.ok ? 'ok' : 'bad'}"><span class="st">${r.ok ? 'Pass' : 'Fix'}</span><h3>${esc(r.name)}${r.ok ? '' : ` <span style="color:var(--muted);font-weight:500">(${r.n})</span>`}</h3>${r.ok ? '' : `<p>${esc(r.fix)}</p><code>${r.ex.map(esc).join(' · ')}</code>`}</li>`).join('')}</ul>
-  <div class="upsell"><p class="launch" data-launch hidden></p><h2 style="font-size:24px">${pass === 16 ? 'Now run all 66 checks' : `Let Claude fix these ${16 - pass} for you`}</h2><p>This was 16 of 66 checks. UI/UX Pass's interface-polish skill runs all 66 in a real browser, walks the page with a keyboard, measures layout shift, then fixes what it found. Start with two free skills, or get all 41.</p>
-  <div class="row"><a class="btn btn-ghost" data-free href="index.html#free">Get 2 free skills</a><a class="btn btn-primary" data-buy href="index.html#pricing" style="box-shadow:0 0 0 1px #fff">Get all 41 · <span data-price="49">$49</span></a></div></div>`;
+  <div class="upsell"><p class="launch" data-launch hidden></p><h2 style="font-size:24px">${pass === 16 ? 'Now run all 66 checks' : `Let Claude fix these ${16 - pass} for you`}</h2><p>This was 16 of 66 checks. UI/UX Pass's interface-polish skill runs all 66 in a real browser, walks the page with a keyboard, measures layout shift, then fixes what it found. Start with two free skills, or get all 45.</p>
+  <div class="row"><a class="btn btn-ghost" data-free href="index.html#free">Get 2 free skills</a><a class="btn btn-primary" data-buy href="index.html#pricing" style="box-shadow:0 0 0 1px #fff">Get all 45 · <span data-price="49">$49</span></a></div></div>`;
   if (window.SP) { SP.apply(); SP.track('Checker run', {score: pass}); }
   out.querySelectorAll('[data-share]').forEach(a => a.addEventListener('click', () => { if (window.SP) SP.track('Share score', {to: a.dataset.share}); }));
   const cp = out.querySelector('#copy-score');

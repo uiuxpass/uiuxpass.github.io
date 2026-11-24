@@ -33,6 +33,14 @@
 <main id="main" class="article"><div class="narrow">
 <h1>Changelog</h1>
 <p class="meta">Every update is free for existing customers.</p>
+<h2>2.4.1 · 24 November 2026</h2>
+<p>A sixth kit, the AI Output Eval Kit: four new skills and four new scripts, 45 of each in all.</p>
+<ul><li><strong>ai-output-rubric (new):</strong> define what a good output from an AI agent looks like before judging it: 4 to 12 criteria anyone can score the same way, with pass and fail examples, severity and who checks each one; packs for answers, designs, HTML pages, documents and agent actions; a test set with edge and risky cases; a release gate; a linter that flags vague criteria.</li>
+<li><strong>ai-output-review (new):</strong> is one AI answer, generated screen, HTML page, document or agent action good enough for the person who receives it? A script counts what can be counted (answer first, filler, long sentences, buzzwords, numbers without a source, overclaims, placeholders, endings that hand the work back, unsafe requests; the 66-check polish checker for HTML), then the rest of the rubric is scored with evidence.</li>
+<li><strong>ai-output-eval (new):</strong> score many outputs and compare prompts, models or versions on the same cases: how many cases you need, a blind side-by-side page, pass rates with 95% ranges, cases fixed and broken, an exact paired test, a release gate and a report page.</li>
+<li><strong>ai-judge-calibration (new):</strong> can you trust an AI judge? Agreement, kappa and bias against your reviewers for each criterion, whether the judge agrees with itself on a second run, whether swapping the order changes the winner, and a verdict per criterion: trust, spot-check or score by hand.</li>
+<li><strong>Install:</strong> steps follow the new Plugins page in Claude (type / in any chat to call a skill). Team and Enterprise: Skills must stay on in admin settings, or plugins stop working from November 30, 2026.</li>
+<li><strong>figma-build:</strong> reuses a file's library variables and component slots before creating new ones, and explains what to do when a Figma admin must approve the connector.</li></ul>
 <h2>2.4.0 · 23 November 2026</h2>
 <p>One new skill, 41 in all, and three new scripts, 41 in all.</p>
 <ul><li><strong>sales-page-trust (new):</strong> would a stranger pay on this page? 12 checks a careful buyer makes, measured in a real browser: price and what you get, a working buy link to a known checkout, terms and refund policy, a real maker, a way to reach them, real product proof, the same number saying the same thing everywhere, sourced claims, checkable testimonials, countdowns reloaded as a new visitor to catch fake urgency, an FAQ that answers the usual worries, signs the page is current.</li>
@@ -88,6 +96,6 @@
 </footer>
 
 <script src="assets/store.js"></script>
-<script src="assets/ui.js"></script>
+<script src="assets/ui.js?v=4.3"></script>
 </body>
 </html>
