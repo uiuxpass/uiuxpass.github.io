@@ -89,7 +89,7 @@
           <p class="ask" id="vw-ask" aria-labelledby="vw-ask-l"></p>
           <div class="copy-row"><button class="btn btn-ghost" type="button" data-vw="copy">Copy request</button><span class="copied" role="status" id="vw-st"></span></div>
           <div class="buy">
-            <a class="btn btn-primary" data-buy href="${u('index.html#pricing')}">Get all 41 skills · <span data-price="49">$49</span></a>
+            <a class="btn btn-primary" data-buy href="${u('index.html#pricing')}">Get all 45 skills · <span data-price="49">$49</span></a>
             <a class="btn btn-free" data-free href="${u('index.html#pricing')}">Try 2 skills free</a>
             <p>One payment, lifetime updates. Sample data is invented; the numbers are what the checkers measured.</p>
           </div>
@@ -238,7 +238,7 @@
   function buybar() {
     if (!document.body.hasAttribute('data-buybar')) return;
     const bar = document.createElement('div'); bar.className = 'buybar'; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Buy UI/UX Pass');
-    bar.innerHTML = `<span class="t"><b>UI/UX Pass · <span data-price="49">$49</span></b>41 skills, pay once</span><a class="btn btn-primary" data-buy href="${u('index.html#pricing')}">Get it</a>`;
+    bar.innerHTML = `<span class="t"><b>UI/UX Pass · <span data-price="49">$49</span></b>45 skills, pay once</span><a class="btn btn-primary" data-buy href="${u('index.html#pricing')}">Get it</a>`;
     document.body.appendChild(bar); document.body.classList.add('has-buybar');
     const hero = document.querySelector('.hero3 .ctas, .ex-head'), pricing = document.getElementById('pricing'), final = document.getElementById('final');
     let heroOut = false, endIn = false;
