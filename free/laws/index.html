@@ -1,1 +1,67 @@
-<!-- placeholder, replaced by upload -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laws of AI UI: the mistakes AI makes in interfaces, measured · UI/UX Pass</title>
+<meta name="description" content="Short laws for the mistakes AI tools make in interfaces, each with a real before and after, the measured number and the fix in code. Free to share.">
+<meta property="og:title" content="Laws of AI UI: the mistakes AI makes in interfaces, measured · UI/UX Pass">
+<meta property="og:description" content="Short laws for the mistakes AI tools make in interfaces, each with a real before and after, the measured number and the fix in code. Free to share.">
+<meta property="og:image" content="https://uiuxpass.com/free/laws/390px-overflow-square.png"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta property="og:image:alt" content="UI/UX Pass: free tools for checking AI-made UI">
+<meta property="og:url" content="https://uiuxpass.com/free/laws/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/free/laws/">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/v4.css?v=4.2">
+<link rel="stylesheet" href="../../assets/free.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../../examples.html">Examples</a>
+      <a class="link" href="../../index.html#skills">Skills</a>
+      <a class="link" href="../../check.html">Free checker</a>
+      <a class="link" href="../../index.html#pricing">Pricing</a>
+      <a class="link" href="../../guides/">Guides</a>
+      <a class="link" href="../../free/" aria-current="page">Free</a>
+      <a class="btn btn-primary" data-buy href="../../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fr"><div class="wrap">
+<div class="fr-top">
+<div>
+<p class="fr-meta"><a href="../">Free resources</a> · Laws of AI UI</p>
+<h1>Laws of AI UI</h1>
+<p class="lede">AI builds interfaces fast and repeats the same mistakes. Each law below is one of them, shown on a real AI-made page, with the number we measured, the fix in code and a square card you can post. 6 laws so far; new ones every week.</p>
+</div>
+<figure><img src="390px-overflow-square.png" width="1080" height="1080" alt="Law card 01: The 390 px overflow. Before, the Pro plan ends at 662 px on a 390 px screen; after, the cards stack."></figure>
+</div>
+<ol class="law-grid"><li><a href="390px-overflow.html"><img src="390px-overflow-thumb.jpg" width="120" height="120" alt=""><div><strong>01 · The 390 px overflow</strong><span>If anything scrolls sideways on a 390 px phone, the page is broken.</span><span class="fr-meta">662 px · right edge of the Pro plan on a 390 px screen</span></div></a></li><li><a href="17-pixel-link.html"><img src="17-pixel-link-thumb.jpg" width="120" height="120" alt=""><div><strong>02 · The 17-pixel link</strong><span>Anything people tap needs a target of at least 44 × 44 px.</span><span class="fr-meta">67 × 17 px · the “Click here” link, measured at 390 px</span></div></a></li><li><a href="div-buttons.html"><img src="div-buttons-thumb.jpg" width="120" height="120" alt=""><div><strong>03 · Buttons a keyboard can&#x27;t reach</strong><span>If it does something, it is a &lt;button&gt; or an &lt;a href&gt;, never a &lt;div&gt;.</span><span class="fr-meta">0 of 2 · “Get started” buttons reachable with the Tab key</span></div></a></li><li><a href="text-on-gradients.html"><img src="text-on-gradients-thumb.jpg" width="120" height="120" alt=""><div><strong>04 · Grey text on a gradient</strong><span>Small text needs 4.5:1 against what is really behind it, gradients included.</span><span class="fr-meta">1.57 : 1 · contrast of the 10 px plan note (WCAG asks for 4.5 : 1)</span></div></a></li><li><a href="three-ai-tells.html"><img src="three-ai-tells-thumb.jpg" width="120" height="120" alt=""><div><strong>05 · Three AI tells in one card</strong><span>Gradient text, emoji icons and a coloured glow make a page read as generated.</span><span class="fr-meta">3 of 3 · template signs on one pricing card</span></div></a></li><li><a href="broken-image.html"><img src="broken-image-thumb.jpg" width="120" height="120" alt=""><div><strong>06 · The image nobody checked</strong><span>Every image loads, and either says what it shows or is marked as decoration.</span><span class="fr-meta">404 · team.png: file missing, and no alt text</span></div></a></li></ol>
+<p class="fr-note" style="margin-top:40px">Every number on these pages was measured, not estimated: in Chromium, at 1440 and 390 px wide, on 24 November 2026. Use the cards freely; a link back to the law is appreciated.</p>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../../examples.html">Examples</a><a href="../../guides/">Guides</a><a href="../../free/">Free resources</a><a href="../../changelog.html">Changelog</a><a href="../../refund.html">Refunds</a><a href="../../terms.html">License &amp; terms</a><a href="../../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/store.js"></script>
+<script src="../../assets/ui.js"></script>
+<script>
+document.addEventListener('click', e => { const a = e.target.closest('[data-track]'); if (a && window.SP && SP.track) SP.track(a.getAttribute('data-track')); });
+</script>
+</body>
+</html>

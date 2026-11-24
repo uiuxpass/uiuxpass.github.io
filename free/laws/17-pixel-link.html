@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 17-pixel link · Laws of AI UI · UI/UX Pass</title>
+<meta name="description" content="Anything people tap needs a target of at least 44 × 44 px. Measured on a real AI-made page: 67 × 17 px (the “Click here” link, measured at 390 px). The fix, in code, and how to check your own page.">
+<meta property="og:title" content="The 17-pixel link · Laws of AI UI · UI/UX Pass">
+<meta property="og:description" content="Anything people tap needs a target of at least 44 × 44 px. Measured on a real AI-made page: 67 × 17 px (the “Click here” link, measured at 390 px). The fix, in code, and how to check your own page.">
+<meta property="og:image" content="https://uiuxpass.com/free/laws/17-pixel-link-square.png"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta property="og:image:alt" content="Laws of AI UI 02: The 17-pixel link. Anything people tap needs a target of at least 44 × 44 px.">
+<meta property="og:url" content="https://uiuxpass.com/free/laws/17-pixel-link.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/free/laws/17-pixel-link.html">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/v4.css?v=4.2">
+<link rel="stylesheet" href="../../assets/free.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../../examples.html">Examples</a>
+      <a class="link" href="../../index.html#skills">Skills</a>
+      <a class="link" href="../../check.html">Free checker</a>
+      <a class="link" href="../../index.html#pricing">Pricing</a>
+      <a class="link" href="../../guides/">Guides</a>
+      <a class="link" href="../../free/" aria-current="page">Free</a>
+      <a class="btn btn-primary" data-buy href="../../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fr"><div class="wrap">
+<p class="fr-meta"><a href="./">Laws of AI UI</a> · 02 of 6</p>
+<h1>The 17-pixel link</h1>
+<p class="law-rule">Anything people tap needs a target of at least 44 × 44 px.</p>
+<div class="law-ba">
+<figure><img src="17-pixel-link-before.jpg" width="780" height="354" alt="Before: “Click here”, inline, 13 px text."><figcaption><b>Before</b><span>“Click here”, inline, 13 px text.</span></figcaption></figure>
+<figure><img src="17-pixel-link-after.jpg" width="780" height="408" alt="After: “How cancelling works”, 44 px tall."><figcaption><b>After</b><span>“How cancelling works”, 44 px tall.</span></figcaption></figure>
+</div>
+<div class="fr-split" style="margin-top:48px">
+<div>
+<h2>The number</h2>
+<dl class="law-nums">
+<div><dt>Before</dt><dd>67 × 17 px<small>hit area of the only FAQ link</small></dd></div>
+<div><dt>After</dt><dd>166 × 44 px<small>hit area after the fix</small></dd></div>
+</dl>
+<p style="margin-top:20px"><strong>Why it happened.</strong> An inline text link inherits the line height of 13 px text. Its tappable box is only as tall as the letters.</p>
+
+</div>
+<div>
+<h2>The fix</h2>
+<pre><code>.faq a { display: inline-flex; align-items: center;
+  min-height: 44px; }
+/* and give it words that say where it goes */</code></pre>
+<h3 style="margin-top:28px">Check your own page</h3>
+<p style="margin-top:8px">In DevTools, hover the link and read its box size, or run <code>el.getBoundingClientRect()</code>. WCAG 2.2 (2.5.8) sets 24 × 24 px as the AA minimum; Apple asks for 44 pt and Google for 48 dp.</p>
+<p class="fr-meta">Check in the 66: Hit targets ≥44px at 390 (critical)</p>
+</div>
+</div>
+<p style="margin-top:40px"><strong>Where these numbers come from.</strong> One pricing page an AI tool built from a single prompt, measured in Chromium at 1440 × 900 and 390 × 844 on 24 November 2026, before and after fixing exactly what the checks reported (38 → 66 of 66). Both pages are public.</p>
+<p class="fr-links"><a href="../../samples/demo-before.html">Before page</a><a href="../../samples/demo-after.html">After page</a><a href="../../guides/touch-target-size.html">Guide: Touch target size: 24 px, 44 pt and 48 dp explained</a></p>
+<div class="fr-actions">
+<a class="btn btn-primary" href="../../check.html" data-track="Law to checker">Check your page free</a>
+<a class="tl" href="17-pixel-link-square.png" download data-track="Law image">Download the 1080 × 1080 card</a>
+</div>
+<nav class="law-pager" aria-label="More laws">
+<a href="390px-overflow.html">← The 390 px overflow</a>
+<a href="div-buttons.html">Buttons a keyboard can&#x27;t reach →</a>
+</nav>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../../examples.html">Examples</a><a href="../../guides/">Guides</a><a href="../../free/">Free resources</a><a href="../../changelog.html">Changelog</a><a href="../../refund.html">Refunds</a><a href="../../terms.html">License &amp; terms</a><a href="../../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/store.js"></script>
+<script src="../../assets/ui.js"></script>
+<script>
+document.addEventListener('click', e => { const a = e.target.closest('[data-track]'); if (a && window.SP && SP.track) SP.track(a.getAttribute('data-track')); });
+</script>
+</body>
+</html>

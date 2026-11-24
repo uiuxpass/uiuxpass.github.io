@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The image nobody checked · Laws of AI UI · UI/UX Pass</title>
+<meta name="description" content="Every image loads, and either says what it shows or is marked as decoration. Measured on a real AI-made page: 404 (team.png: file missing, and no alt text). The fix, in code, and how to check your own page.">
+<meta property="og:title" content="The image nobody checked · Laws of AI UI · UI/UX Pass">
+<meta property="og:description" content="Every image loads, and either says what it shows or is marked as decoration. Measured on a real AI-made page: 404 (team.png: file missing, and no alt text). The fix, in code, and how to check your own page.">
+<meta property="og:image" content="https://uiuxpass.com/free/laws/broken-image-square.png"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta property="og:image:alt" content="Laws of AI UI 06: The image nobody checked. Every image loads, and either says what it shows or is marked as decoration.">
+<meta property="og:url" content="https://uiuxpass.com/free/laws/broken-image.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/free/laws/broken-image.html">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/v4.css?v=4.2">
+<link rel="stylesheet" href="../../assets/free.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../../examples.html">Examples</a>
+      <a class="link" href="../../index.html#skills">Skills</a>
+      <a class="link" href="../../check.html">Free checker</a>
+      <a class="link" href="../../index.html#pricing">Pricing</a>
+      <a class="link" href="../../guides/">Guides</a>
+      <a class="link" href="../../free/" aria-current="page">Free</a>
+      <a class="btn btn-primary" data-buy href="../../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fr"><div class="wrap">
+<p class="fr-meta"><a href="./">Laws of AI UI</a> · 06 of 6</p>
+<h1>The image nobody checked</h1>
+<p class="law-rule">Every image loads, and either says what it shows or is marked as decoration.</p>
+<div class="law-ba">
+<figure><img src="broken-image-before.jpg" width="1000" height="370" alt="Before: A 16 × 16 broken-image icon under the FAQ."><figcaption><b>Before</b><span>A 16 × 16 broken-image icon under the FAQ.</span></figcaption></figure>
+<figure><img src="broken-image-after.jpg" width="780" height="408" alt="After: Removed: it added nothing to the answer."><figcaption><b>After</b><span>Removed: it added nothing to the answer.</span></figcaption></figure>
+</div>
+<div class="fr-split" style="margin-top:48px">
+<div>
+<h2>The number</h2>
+<dl class="law-nums">
+<div><dt>Before</dt><dd>3 failures<small>from one tag: broken image · failed request · image without alt</small></dd></div>
+<div><dt>After</dt><dd>0 failures<small>image removed; 0 failed requests</small></dd></div>
+</dl>
+<p style="margin-top:20px"><strong>Why it happened.</strong> <code>&lt;img src="team.png"&gt;</code> pointed to a file that was never created. AI often writes image tags for pictures it cannot make.</p>
+
+</div>
+<div>
+<h2>The fix</h2>
+<pre><code>&lt;!-- keep it only if the file exists and it helps --&gt;
+&lt;img src=&quot;team.jpg&quot; width=&quot;640&quot; height=&quot;360&quot;
+     alt=&quot;The four-person support team at their desks&quot;&gt;
+&lt;!-- decoration: alt=&quot;&quot; --&gt;</code></pre>
+<h3 style="margin-top:28px">Check your own page</h3>
+<p style="margin-top:8px">Open the browser console and the Network tab, reload and filter by failed requests. Then list images without alt: <code>document.querySelectorAll('img:not([alt])')</code></p>
+<p class="fr-meta">Check in the 66: No broken images · No failed requests · Every image has alt (all critical)</p>
+</div>
+</div>
+<p style="margin-top:40px"><strong>Where these numbers come from.</strong> One pricing page an AI tool built from a single prompt, measured in Chromium at 1440 × 900 and 390 × 844 on 24 November 2026, before and after fixing exactly what the checks reported (38 → 66 of 66). Both pages are public.</p>
+<p class="fr-links"><a href="../../samples/demo-before.html">Before page</a><a href="../../samples/demo-after.html">After page</a><a href="../../guides/forgotten-screen-states.html">Guide: The screen states designers forget</a></p>
+<div class="fr-actions">
+<a class="btn btn-primary" href="../../check.html" data-track="Law to checker">Check your page free</a>
+<a class="tl" href="broken-image-square.png" download data-track="Law image">Download the 1080 × 1080 card</a>
+</div>
+<nav class="law-pager" aria-label="More laws">
+<a href="three-ai-tells.html">← Three AI tells in one card</a>
+<a href="../">All free resources →</a>
+</nav>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../../examples.html">Examples</a><a href="../../guides/">Guides</a><a href="../../free/">Free resources</a><a href="../../changelog.html">Changelog</a><a href="../../refund.html">Refunds</a><a href="../../terms.html">License &amp; terms</a><a href="../../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/store.js"></script>
+<script src="../../assets/ui.js"></script>
+<script>
+document.addEventListener('click', e => { const a = e.target.closest('[data-track]'); if (a && window.SP && SP.track) SP.track(a.getAttribute('data-track')); });
+</script>
+</body>
+</html>

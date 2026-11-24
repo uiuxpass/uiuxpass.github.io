@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 390 px overflow · Laws of AI UI · UI/UX Pass</title>
+<meta name="description" content="If anything scrolls sideways on a 390 px phone, the page is broken. Measured on a real AI-made page: 662 px (right edge of the Pro plan on a 390 px screen). The fix, in code, and how to check your own page.">
+<meta property="og:title" content="The 390 px overflow · Laws of AI UI · UI/UX Pass">
+<meta property="og:description" content="If anything scrolls sideways on a 390 px phone, the page is broken. Measured on a real AI-made page: 662 px (right edge of the Pro plan on a 390 px screen). The fix, in code, and how to check your own page.">
+<meta property="og:image" content="https://uiuxpass.com/free/laws/390px-overflow-square.png"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta property="og:image:alt" content="Laws of AI UI 01: The 390 px overflow. If anything scrolls sideways on a 390 px phone, the page is broken.">
+<meta property="og:url" content="https://uiuxpass.com/free/laws/390px-overflow.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/free/laws/390px-overflow.html">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/v4.css?v=4.2">
+<link rel="stylesheet" href="../../assets/free.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../../examples.html">Examples</a>
+      <a class="link" href="../../index.html#skills">Skills</a>
+      <a class="link" href="../../check.html">Free checker</a>
+      <a class="link" href="../../index.html#pricing">Pricing</a>
+      <a class="link" href="../../guides/">Guides</a>
+      <a class="link" href="../../free/" aria-current="page">Free</a>
+      <a class="btn btn-primary" data-buy href="../../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fr"><div class="wrap">
+<p class="fr-meta"><a href="./">Laws of AI UI</a> · 01 of 6</p>
+<h1>The 390 px overflow</h1>
+<p class="law-rule">If anything scrolls sideways on a 390 px phone, the page is broken.</p>
+<div class="law-ba">
+<figure><img src="390px-overflow-before.jpg" width="1000" height="1148" alt="Before: Two fixed 420 px cards in a row. The dashed line is the screen edge."><figcaption><b>Before</b><span>Two fixed 420 px cards in a row. The dashed line is the screen edge.</span></figcaption></figure>
+<figure><img src="390px-overflow-after.jpg" width="780" height="1520" alt="After: Cards stack; nothing passes the edge."><figcaption><b>After</b><span>Cards stack; nothing passes the edge.</span></figcaption></figure>
+</div>
+<div class="fr-split" style="margin-top:48px">
+<div>
+<h2>The number</h2>
+<dl class="law-nums">
+<div><dt>Before</dt><dd>6 elements<small>past the right edge at 390 px; rightmost at 662 px</small></dd></div>
+<div><dt>After</dt><dd>0 elements<small>past the edge at 390 px</small></dd></div>
+</dl>
+<p style="margin-top:20px"><strong>Why it happened.</strong> Each plan card had <code>width: 420px; flex: none</code> inside a flex row. Two of them need 900 px; a phone has 390.</p>
+
+</div>
+<div>
+<h2>The fix</h2>
+<pre><code>.plans { display: grid; gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.plan { min-width: 0; }</code></pre>
+<h3 style="margin-top:28px">Check your own page</h3>
+<p style="margin-top:8px">Set the browser to 390 px wide and scroll right. In the console, list offenders with:<br><code>[...document.querySelectorAll('*')].filter(e =&gt; e.getBoundingClientRect().right &gt; innerWidth)</code></p>
+<p class="fr-meta">Check in the 66: No horizontal overflow at 390 (critical)</p>
+</div>
+</div>
+<p style="margin-top:40px"><strong>Where these numbers come from.</strong> One pricing page an AI tool built from a single prompt, measured in Chromium at 1440 × 900 and 390 × 844 on 24 November 2026, before and after fixing exactly what the checks reported (38 → 66 of 66). Both pages are public.</p>
+<p class="fr-links"><a href="../../samples/demo-before.html">Before page</a><a href="../../samples/demo-after.html">After page</a><a href="../../guides/ai-interface-review.html">Guide: Before you ship an AI-built interface</a></p>
+<div class="fr-actions">
+<a class="btn btn-primary" href="../../check.html" data-track="Law to checker">Check your page free</a>
+<a class="tl" href="390px-overflow-square.png" download data-track="Law image">Download the 1080 × 1080 card</a>
+</div>
+<nav class="law-pager" aria-label="More laws">
+<a href="./">← All laws</a>
+<a href="17-pixel-link.html">The 17-pixel link →</a>
+</nav>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../../examples.html">Examples</a><a href="../../guides/">Guides</a><a href="../../free/">Free resources</a><a href="../../changelog.html">Changelog</a><a href="../../refund.html">Refunds</a><a href="../../terms.html">License &amp; terms</a><a href="../../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/store.js"></script>
+<script src="../../assets/ui.js"></script>
+<script>
+document.addEventListener('click', e => { const a = e.target.closest('[data-track]'); if (a && window.SP && SP.track) SP.track(a.getAttribute('data-track')); });
+</script>
+</body>
+</html>

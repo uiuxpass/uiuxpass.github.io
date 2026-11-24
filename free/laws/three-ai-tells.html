@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three AI tells in one card · Laws of AI UI · UI/UX Pass</title>
+<meta name="description" content="Gradient text, emoji icons and a coloured glow make a page read as generated. Measured on a real AI-made page: 3 of 3 (template signs on one pricing card). The fix, in code, and how to check your own page.">
+<meta property="og:title" content="Three AI tells in one card · Laws of AI UI · UI/UX Pass">
+<meta property="og:description" content="Gradient text, emoji icons and a coloured glow make a page read as generated. Measured on a real AI-made page: 3 of 3 (template signs on one pricing card). The fix, in code, and how to check your own page.">
+<meta property="og:image" content="https://uiuxpass.com/free/laws/three-ai-tells-square.png"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta property="og:image:alt" content="Laws of AI UI 05: Three AI tells in one card. Gradient text, emoji icons and a coloured glow make a page read as generated.">
+<meta property="og:url" content="https://uiuxpass.com/free/laws/three-ai-tells.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/free/laws/three-ai-tells.html">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/v4.css?v=4.2">
+<link rel="stylesheet" href="../../assets/free.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../../examples.html">Examples</a>
+      <a class="link" href="../../index.html#skills">Skills</a>
+      <a class="link" href="../../check.html">Free checker</a>
+      <a class="link" href="../../index.html#pricing">Pricing</a>
+      <a class="link" href="../../guides/">Guides</a>
+      <a class="link" href="../../free/" aria-current="page">Free</a>
+      <a class="btn btn-primary" data-buy href="../../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="fr"><div class="wrap">
+<p class="fr-meta"><a href="./">Laws of AI UI</a> · 05 of 6</p>
+<h1>Three AI tells in one card</h1>
+<p class="law-rule">Gradient text, emoji icons and a coloured glow make a page read as generated.</p>
+<div class="law-ba">
+<figure><img src="three-ai-tells-before.jpg" width="1200" height="750" alt="Before: Gradient heading, rocket and gem emoji as icons, 40 px purple glow."><figcaption><b>Before</b><span>Gradient heading, rocket and gem emoji as icons, 40 px purple glow.</span></figcaption></figure>
+<figure><img src="three-ai-tells-after.jpg" width="1200" height="750" alt="After: Solid heading, no icons, a 1 px border for structure."><figcaption><b>After</b><span>Solid heading, no icons, a 1 px border for structure.</span></figcaption></figure>
+</div>
+<div class="fr-split" style="margin-top:48px">
+<div>
+<h2>The number</h2>
+<dl class="law-nums">
+<div><dt>Before</dt><dd>3 signs<small>gradient-filled h1 · emoji used as icons · rgba(168, 85, 247, 0.8) 0 0 40px glow</small></dd></div>
+<div><dt>After</dt><dd>0 signs<small>and the page still reads as a pricing page</small></dd></div>
+</dl>
+<p style="margin-top:20px"><strong>Why it happened.</strong> These are defaults a model reaches for when a prompt does not say what the product is. None of them tells a buyer anything about the product.</p>
+
+</div>
+<div>
+<h2>The fix</h2>
+<pre><code>h1 { color: var(--ink); }            /* no background-clip: text */
+.plan { border: 1px solid var(--line);
+  box-shadow: none; }                 /* no coloured glow */
+/* delete the emoji; use one icon set or none */</code></pre>
+<h3 style="margin-top:28px">Check your own page</h3>
+<p style="margin-top:8px">Look for: text filled with a gradient, emoji standing in for icons, glow shadows in the accent colour, a pill label above the title, exactly two hero buttons, three identical icon cards.</p>
+<p class="fr-meta">Check in the 66: No gradient-filled text · No emoji used as icons · No colored glow shadows</p>
+</div>
+</div>
+<p style="margin-top:40px"><strong>Where these numbers come from.</strong> One pricing page an AI tool built from a single prompt, measured in Chromium at 1440 × 900 and 390 × 844 on 24 November 2026, before and after fixing exactly what the checks reported (38 → 66 of 66). Both pages are public.</p>
+<p class="fr-links"><a href="../../samples/demo-before.html">Before page</a><a href="../../samples/demo-after.html">After page</a><a href="../../guides/review-claude-design.html">Guide: How to review a design Claude made</a></p>
+<div class="fr-actions">
+<a class="btn btn-primary" href="../../check.html" data-track="Law to checker">Check your page free</a>
+<a class="tl" href="three-ai-tells-square.png" download data-track="Law image">Download the 1080 × 1080 card</a>
+</div>
+<nav class="law-pager" aria-label="More laws">
+<a href="text-on-gradients.html">← Grey text on a gradient</a>
+<a href="broken-image.html">The image nobody checked →</a>
+</nav>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../../examples.html">Examples</a><a href="../../guides/">Guides</a><a href="../../free/">Free resources</a><a href="../../changelog.html">Changelog</a><a href="../../refund.html">Refunds</a><a href="../../terms.html">License &amp; terms</a><a href="../../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/store.js"></script>
+<script src="../../assets/ui.js"></script>
+<script>
+document.addEventListener('click', e => { const a = e.target.closest('[data-track]'); if (a && window.SP && SP.track) SP.track(a.getAttribute('data-track')); });
+</script>
+</body>
+</html>
