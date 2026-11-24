@@ -137,3 +137,13 @@ html.vw-open{overflow:hidden}
 .sp-bar .sp-buy{background:#fff;color:#111214;border-radius:999px;padding:0 14px}
 .only-sm{display:none}
 @media (max-width:860px){.only-sm{display:inline}.only-lg{display:none}}
+
+/* install row (24/11) */
+.works a{display:inline-flex;align-items:center;gap:7px;font-weight:500;color:var(--ink-2);font-size:15px;text-decoration:none;min-height:44px;padding:0 4px;border-radius:8px}
+@media (hover:hover){.works a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}}
+.steps.inst{grid-template-columns:repeat(3,1fr)}
+.steps.inst .step{scroll-margin-top:96px}
+.steps.inst .step:target{box-shadow:0 0 0 2px var(--ink)}
+.steps.inst code{font-size:14px;word-break:break-word}
+#install .lead{margin-top:10px;color:var(--muted);font-size:17px}
+@media (max-width:860px){.steps.inst{grid-template-columns:1fr}}
