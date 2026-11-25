@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPhone Duo frame sizes: design at 951 × 669, not 890 × 626 · UI/UX Pass</title>
+<meta name="description" content="The real point sizes for iPhone Duo open and closed, why the 890 × 626 preset is about 7% too small, where the fold is, and a free starter with 24 screens and a 12-check script.">
+<meta property="og:title" content="iPhone Duo frame sizes: design at 951 × 669, not 890 × 626 · UI/UX Pass">
+<meta property="og:description" content="The real point sizes for iPhone Duo open and closed, why the 890 × 626 preset is about 7% too small, where the fold is, and a free starter with 24 screens and a 12-check script.">
+<meta property="og:image" content="https://uiuxpass.com/free/duo-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="iPhone, Duo closed and Duo open drawn to scale: 393 × 852, 466 × 678 and 951 × 669 points.">
+<meta property="og:url" content="https://uiuxpass.com/guides/iphone-duo-frame-sizes.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uiuxpass.com/guides/iphone-duo-frame-sizes.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/v4.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href=".././"><img src="../assets/logo-mark.svg" alt="" width="28" height="28">UI/UX Pass</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="link" href="../examples.html">Examples</a>
+      <a class="link" href="../index.html#skills">Skills</a>
+      <a class="link" href="../check.html">Free checker</a>
+      <a class="link" href="../index.html#pricing">Pricing</a>
+      <a class="link" href="../guides/" aria-current="page">Guides</a>
+      <a class="link" href="../free/">Free</a>
+      <a class="btn btn-primary" data-buy href="../index.html#pricing"><span class="only-sm">Buy</span><span class="only-lg">Get UI/UX Pass</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="article"><div class="narrow">
+<p class="kicker">Guide · Mobile</p>
+<h1>iPhone Duo frame sizes: design at 951 × 669, not 890 × 626</h1>
+<p class="meta">6 min read · Updated 25 November 2026</p>
+<p>If you design the open iPhone Duo on an 890 × 626 frame, your layout is about 7% smaller than what the app actually renders. Here are the sizes to use, where they come from, and what changes in each pose.</p>
+<figure style="margin:24px 0"><img src="../free/duo-poses.jpg" width="1600" height="900" alt="iPhone, Duo closed and Duo open drawn to the same scale: 393 × 852, 466 × 678 and 951 × 669 points, with a striped band over the fold of the open screen." style="width:100%;height:auto;border-radius:12px"></figure>
+
+<h2>The sizes</h2>
+<div class="table-wrap"><table style="font-variant-numeric:tabular-nums">
+<thead><tr><th scope="col">Pose</th><th scope="col">Points</th><th scope="col">Where it comes from</th></tr></thead>
+<tbody>
+<tr><td>Duo closed (outer display)</td><td>466 × 678</td><td>Panel 1398 × 2034 px at 3x. Screenshot size and panel match, so no scaling.</td></tr>
+<tr><td>Duo open, landscape</td><td>951 × 669</td><td>App Store Connect asks for inner-display screenshots at 2853 × 2007 px, which is 951 × 669 pt at 3x.</td></tr>
+<tr><td>Duo open, portrait</td><td>669 × 951</td><td>The same display turned.</td></tr>
+<tr><td>Split View, one half</td><td>about 475 × 669</td><td>Half of 951. Use it to test each app in a two-app layout.</td></tr>
+<tr><td>Preset to avoid</td><td>890 × 626</td><td>The inner panel's 1878 × 2670 px divided by 3. About 6.9% smaller than the size apps render at.</td></tr>
+</tbody></table></div>
+<p><strong>Why two numbers exist.</strong> The panel has 1878 × 2670 pixels, but the screenshot size Apple asks for is larger. The likely reading, shared by designers who compared the two, is that iOS draws the open screen at 951 × 669 pt and scales it down to the panel, as iPhone 8 Plus once did. Apple has not stated this in one sentence, so treat it as the best evidence, not a quote.</p>
+
+<h2>What changes in each pose</h2>
+<ul>
+<li><strong>Closed:</strong> Apple moves tab bars and toolbars to the side to give content more height. In Apple's iOS 27 UI kit the side rail measures 84 pt wide. Keep content out of that strip.</li>
+<li><strong>Open:</strong> the screen is wide, close to the shape of a paper page. A phone-width column in the middle wastes it; use two panes, such as a list on the left and detail on the right.</li>
+<li><strong>The fold:</strong> keep text and controls off the hinge line at x = 475.5 pt. Our starter keeps a 24 pt band clear around it. That band is our own design reserve, not an Apple number.</li>
+<li><strong>Split View:</strong> each app gets about half the open screen, so your layout must also work at roughly 475 pt wide.</li>
+</ul>
+
+<h2>A 2-minute check for any screen</h2>
+<ol>
+<li>Set the open frame to 951 × 669 (portrait 669 × 951), never 890 × 626.</li>
+<li>Turn on a guide at x = 475.5 and move any text or button off it.</li>
+<li>When open, is content on both halves? When closed, is the side strip clear for the rail?</li>
+<li>Tap targets at least 44 × 44 pt, with 8 pt between neighbours.</li>
+<li>Make text 200% larger: nothing clips, nothing scrolls sideways.</li>
+</ol>
+
+<div class="cta">
+<p><strong>Free: Duo-ready starter.</strong> List and detail, Settings, and Search, each in iPhone, closed, open and Split View, light and dark: 24 HTML screens at the real sizes, plus <code>duo_check.py</code>, a script that runs the 12 checks above on your own screens in a real browser. The 24 screens pass 222 of 222 checks. No sign-up.</p>
+<a class="btn btn-primary" href="../free/duo-ready-starter.zip" download data-track="Free Duo zip">Download the starter (.zip, 45 KB)</a> <a class="btn btn-ghost" href="https://uiuxpass.gumroad.com/l/uiuxpass-kits-waitlist" data-track="Kits waitlist">Get told when the full Duo kit ships</a>
+</div>
+
+<h2>Sources</h2>
+<ul class="small">
+<li>Apple, iPhone Duo technical specifications (panel resolutions).</li>
+<li>Apple Human Interface Guidelines, "Designing for iPhone Duo" (side placement of toolbars and tab bars when closed).</li>
+<li>Figma Forum, "iPhone Duo Open preset is 890×626, but Apple's kit and App Store Connect point to 951×669", 27 October 2026.</li>
+<li>Blake Crosley, "iPhone Duo for Developers: The 1.42 Problem and the SDK Gap", updated 10 September 2026.</li>
+</ul>
+<p class="small">iPhone is a trademark of Apple Inc. UI/UX Pass is not affiliated with Apple.</p>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 UI/UX Pass · <a href="mailto:support@uiuxpass.com">support@uiuxpass.com</a><br>Not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+    <nav aria-label="Footer">
+      <a href="../examples.html">Examples</a><a href="../guides/">Guides</a><a href="../free/">Free resources</a><a href="../changelog.html">Changelog</a><a href="../refund.html">Refunds</a><a href="../terms.html">License &amp; terms</a><a href="../privacy.html">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/store.js"></script>
+<script src="../assets/ui.js"></script>
+</body>
+</html>
